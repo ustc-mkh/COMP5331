@@ -1,0 +1,5 @@
+# Starting settings, not a claim of reproducing the paper's reported metrics.
+data:
+  name: baby
+model:
+  name: mgcn

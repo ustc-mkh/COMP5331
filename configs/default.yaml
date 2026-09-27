@@ -1,0 +1,39 @@
+seed: 2024
+data:
+  name: baby
+  root: data
+  interactions: baby.inter
+  separator: "\t"
+  user_field: userID
+  item_field: itemID
+  split_field: x_label
+  features:
+    image: image_feat.npy
+    text: text_feat.npy
+model:
+  name: mgcn
+optimizer:
+  name: adam
+  lr: 0.001
+  weight_decay: 0.0
+  decay_base: 0.96
+  decay_steps: 50
+train:
+  epochs: 1000
+  batch_size: 2048
+  eval_every: 1
+  patience: 20
+eval:
+  topk: [10, 20]
+  monitor: Recall@20
+  mode: max
+  history: train
+  require_train_user: true
+  user_batch_size: 256
+  item_chunk_size: 4096
+runtime:
+  device: auto
+  output_root: runs
+  cache_root: cache
+  num_threads: 4
+  deterministic: true

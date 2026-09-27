@@ -216,3 +216,11 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Downloaded MMRec datasets (keep usage documentation)
+/data/*
+!/data/README.md
+
+# Rebuildable experiment artifacts
+/runs/
+/cache/

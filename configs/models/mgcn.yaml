@@ -1,0 +1,17 @@
+model:
+  name: mgcn
+  embedding_dim: 64
+  n_ui_layers: 2
+  n_item_layers: 1
+  knn_k: 10
+  knn_chunk_size: 512
+  knn_self_loops: true
+  knn_symmetrize: false
+  knn_edge_weight: cosine
+  knn_normalization: symmetric
+  temperature: 0.2
+  cl_weight: 0.01
+  reg_weight: 0.0001
+  fusion: paper
+  regularization: parameters
+  trainable_features: false

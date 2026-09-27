@@ -1,0 +1,8 @@
+# Author-code conventions, explicitly different from equations (15) and (19).
+data:
+  name: baby
+model:
+  name: mgcn
+  fusion: author
+  regularization: batch_final
+  trainable_features: true
