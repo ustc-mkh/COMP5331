@@ -1,4 +1,5 @@
-seed: 2024
+# MMRec/src/configs/overall.yaml
+seed: 999
 data:
   name: baby
   root: data

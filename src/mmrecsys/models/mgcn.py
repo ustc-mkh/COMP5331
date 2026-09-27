@@ -30,9 +30,9 @@ class MGCNConfig:
     temperature: float = 0.2
     cl_weight: float = 0.01
     reg_weight: float = 0.0001
-    fusion: str = "paper"
-    regularization: str = "parameters"
-    trainable_features: bool = False
+    fusion: str = "author"
+    regularization: str = "batch_final"
+    trainable_features: bool = True
 
     def __post_init__(self):
         for name in ("embedding_dim", "knn_k", "knn_chunk_size", "n_item_layers"):

@@ -1,6 +1,29 @@
 # MGCN 实现与复现实验
 
-实现依据：项目根目录的 *Multi-View Graph Convolutional Network for Multimedia Recommendation*，ACM MM 2023；[作者仓库](https://github.com/demonph10/MGCN)用于核对实现约定。本项目独立实现，不导入 MMRec。
+模型公式依据：项目根目录的 *Multi-View Graph Convolutional Network for Multimedia Recommendation*（ACM MM 2023）。默认训练配置依据 Wang 等的 *Enhancing Multimodal Recommendation via Multimodal Representation Calibration in Spectral Domain*（KDD 2026）第 4.1 节，并核对本地 MMRec 的配置与实现。本项目独立实现，不导入 MMRec。
+
+## Wang 等（2026）的实验设置
+
+论文第 4.1 节（印刷页 1464–1465）说明：基线使用 MMRec，沿用各 backbone 的默认超参数；训练/验证/测试划分为 80%/10%/10%，使用全物品排序，报告 Recall 和 NDCG 的 @10、@20。当前配置对应表 2 的 MGCN **raw 基线**；`+Ours` 需要额外实现 DAMPS，不能仅靠训练配置得到。
+
+具体数值来自本地 [MMRec 公共配置](../MMRec/src/configs/overall.yaml)、[MGCN 配置](../MMRec/src/configs/model/MGCN.yaml)和 [MGCN 实现](../MMRec/src/models/mgcn.py)，不是论文逐项列出的参数：
+
+| 设置 | 本项目配置 | MMRec 来源 |
+| --- | --- | --- |
+| 随机种子 | `seed=999` | `seed: [999]` |
+| 优化器、初始学习率 | Adam，`0.001`，weight decay `0` | 公共配置与 MGCN 配置 |
+| 学习率衰减 | `0.96^(epoch/50)` | `learning_rate_scheduler: [0.96, 50]` |
+| 训练轮数、batch | 最多 1000 轮，2048 | `epochs`、`train_batch_size` |
+| 验证、早停 | 每轮验证，`patience=20`，监控 `Recall@20` | `eval_step=1`、`stopping_step=20`、`valid_metric` |
+| embedding、图层数 | 64，UI 图 2 层，物品图 1 层 | `embedding_size`、`n_ui_layers`、`n_layers` |
+| kNN、正则系数 | 10，`0.0001` | `knn_k`、`reg_weight` |
+| InfoNCE 温度 | `0.2` | `calculate_loss` 的实际调用值；不是未使用的 `self.tau=0.5` |
+| 对比损失权重 | 单次默认 `0.01`；候选 `0.001 / 0.01 / 0.1` | `cl_loss` 列表，由 MMRec 枚举 |
+| 融合、正则、特征微调 | `author`、`batch_final`、`true` | MGCN 实现 |
+
+Baby、Sports、Clothing、Elec 共用这些默认值。论文没有报告各数据集最终选中的 `cl_loss`，因此不能将 `0.01` 当作已验证的最优值。配置加载器只接受单个 `model.cl_weight`；下面提供枚举候选值的命令。
+
+沿用发布数据中的 `x_label`，不重新随机划分。评估 K 采用论文的 `[10, 20]`；MMRec 公共配置还计算 @5、@50 及 Precision、MAP。评估用户分块保留 256（MMRec 为 4096），物品分块为 4096，以控制内存，不改变全物品排序协议。论文报告的 Python 3.8.20 / PyTorch 2.4.1 是其运行环境，本项目仍遵循 `pyproject.toml` 的依赖要求。
 
 ## 公式对应
 
@@ -11,26 +34,20 @@
 | (6)–(9) Item-Item View | 原始特征余弦 kNN，保留余弦边权，归一化后传播净化表示；默认一层 |
 | (10) 用户模态表示 | 使用归一化二部图的用户—物品块聚合物品模态表示 |
 | (11)–(14) Behavior-Aware Fuser | 共享的 attention 网络提取公共表示；各模态残差乘以行为表示生成的偏好门 |
-| (15) 模态融合 | 默认 `common + mean(gated_residuals)` |
+| (15) 模态融合 | `author` 使用 MMRec 的 `(common + residual_sum) / 3`（双模态） |
 | (16) 对比目标 | 用户和正物品各计算一项方向性 in-batch InfoNCE，温度 0.2 |
 | (17)–(18) 打分 | 行为与多模态表示相加，用户/物品内积 |
 | (19) 总损失 | BPR + `cl_weight * InfoNCE` + `reg_weight * regularizer` |
 
 InfoNCE 使用归一化向量、batch 内对侧向量作为候选，以及 cross-entropy/log-sum-exp 的稳定实现。这与作者的 batch 近似一致；不会照搬论文式 (16) 中分母索引的排版问题。重复用户/物品在 batch 中保留独立位置，正对为对角线；这是作者代码的约定。
 
-## 论文与作者代码的区别
+## MMRec 实现约定
 
-默认配置优先采用论文明确给出的融合和参数正则公式，同时提供可选的作者约定：
+实验配置位于 `configs/experiments/mgcn_{baby,sports,clothing,elec}.yaml`，分别对应 Baby、Sports、Clothing、Electronics；也可使用 `--dataset` 切换数据集。各数据集共享 `configs/models/mgcn.yaml` 中的 MGCN 设置。
 
-| 配置 | 默认 `mgcn_baby.yaml` | `mgcn_baby_author.yaml` |
-| --- | --- | --- |
-| `model.fusion` | `paper`：`common + residual_sum / M` | `author`：`(common + residual_sum) / (M + 1)` |
-| `model.regularization` | `parameters`：所有可训练参数的平方和 | `batch_final`：batch 最终用户、正负物品表示平方和除以 `2B` |
-| `model.trainable_features` | `false`：发布特征作为固定输入，训练投影和门控 | `true`：同时微调发布特征表 |
+融合使用 `(common + residual_sum) / 3`（双模态），正则化使用 batch 最终用户、正负物品表示的平方和除以 `2B`。模态特征按 MMRec 的 `freeze=False` 开启微调，可训练特征表保存到 checkpoint；kNN 图仍由最初发布特征构建，训练中不更新。
 
-论文未明确说明是否微调预提取特征，因此将此选择显式配置。特征固定时使用不持久化 buffer；微调时使用可训练 embedding 并保存到 checkpoint。即使特征微调，kNN 图仍由最初发布特征构建，训练中不更新。
-
-作者实现的正则除数是配置 batch size；本实现使用当前实际 B，避免最后不足一批时改变正则强度。因此 `author` 是作者计算约定的可对照配置，不保证逐位复刻旧框架。学习率默认 `0.001 * 0.96^(epoch/50)`，对比系数默认 0.01，均是实验起点，未宣称为每个数据集的最优值。调参仅使用验证集。
+配置对齐不等于逐位复刻 MMRec：其正则除数是配置 batch size，本实现使用当前实际 B；其早停在无提升次数 `>20` 时触发，本实现在 `>=20` 时触发；初始化顺序、采样和同分排序等也可能影响训练结果。本地 MMRec 的 `quick_start.py` 按测试指标汇总候选组合，本项目始终按验证集选择超参数，测试标签不参与选模。尚未验证达到论文表格指标。
 
 ## 图构建与缓存
 
@@ -61,18 +78,47 @@ InfoNCE 使用归一化向量、batch 内对侧向量作为候选，以及 cross
 ```bash
 python -m pip install -e '.[test]'
 python -m pytest -q
-python -m mmrecsys.cli train --model mgcn --dataset baby --seed 2024
-python -m mmrecsys.cli train --config configs/experiments/mgcn_baby_author.yaml
+python -m mmrecsys.cli train --model mgcn --dataset baby --seed 999
+python -m mmrecsys.cli train --config configs/experiments/mgcn_baby.yaml
 ```
+
+指定训练 GPU（编号为当前进程可见的 CUDA 设备编号）：
+
+```bash
+python -m mmrecsys.cli train --dataset baby --device cuda:2
+```
+
+程序在初始化前设置当前 CUDA 设备，随机种子与 checkpoint 中的 CUDA 随机状态仅处理训练所在的 GPU；CPU 训练不读取 CUDA 随机状态。旧版保存的多 GPU 随机状态仍可读取，恢复时只使用目标 GPU 的状态。修复前已启动的进程需要重启，已有 CUDA 上下文不会因源码更新而释放。
+
+如需限制进程只看到指定 GPU，可以使用：
+
+```bash
+CUDA_VISIBLE_DEVICES=2 python -m mmrecsys.cli train --dataset baby --device cuda:0
+```
+
+此时可见 GPU 会重新编号，进程内的 `cuda:0` 对应被选中的 GPU。恢复旧训练时应保持原有可见设备映射和 `--device`，例如原运行使用 `cuda:2`，恢复也使用 `--device cuda:2`。
 
 完整数据短跑与其他数据集：
 
 ```bash
 python -m mmrecsys.cli train --dataset baby --device cpu --set train.epochs=2
-python -m mmrecsys.cli train --dataset sports --device cuda:0 --set model.cl_weight=0.1
+python -m mmrecsys.cli train --dataset sports --device cuda:0
 python -m mmrecsys.cli train --dataset clothing --device cuda:0
 python -m mmrecsys.cli train --dataset elec --device cuda:0 --set model.knn_chunk_size=128
 ```
+
+按 MMRec 提供的候选值运行四个数据集（共 12 次完整训练）：
+
+```bash
+for dataset in baby sports clothing elec; do
+  for cl_weight in 0.001 0.01 0.1; do
+    python -m mmrecsys.cli train --dataset "$dataset" --seed 999 \
+      --set "model.cl_weight=$cl_weight"
+  done
+done
+```
+
+每个数据集比较各 run 的 `result.json` 中的 `best_validation_metric`（Recall@20），选择最大值对应的配置，再报告该 run 的测试指标。每次训练只运行一个候选值；上述循环不是已完成的调参结果。
 
 恢复与独立评估（将 `<run_id>` 替换为训练输出的目录名）：
 
@@ -86,7 +132,7 @@ python -m mmrecsys.cli evaluate --run runs/<run_id> --split valid --device cpu
 
 每次训练生成 `config.yaml`、`manifest.json`、`metrics.jsonl`、`best.pt`、`last.pt`、`result.json`。manifest 包括数据摘要、Git 版本/脏状态、依赖版本、设备和评估规则。
 
-恢复只接受原 run 的 `last.pt`，并要求保留该 run 的 `best.pt`。保存模型、优化器、调度器、epoch、global step、早停状态和 Python/NumPy/Torch/CUDA/采样器随机状态。允许延长 epoch 上限和变更输出/缓存位置；其他训练配置及数据指纹必须匹配。不承诺批次中途恢复或跨设备/依赖版本逐位相同；已早停的 run 恢复时仍保留其早停状态。
+恢复只接受原 run 的 `last.pt`，并要求保留该 run 的 `best.pt`。保存模型、优化器、调度器、epoch、global step、早停状态和 Python/NumPy/Torch/训练 GPU CUDA/采样器随机状态。允许延长 epoch 上限和变更输出/缓存位置；其他训练配置及数据指纹必须匹配。不承诺批次中途恢复或跨设备/依赖版本逐位相同；已早停的 run 恢复时仍保留其早停状态。
 
 ## 验证范围
 

@@ -1,6 +1,6 @@
 # MMRec MGCN baseline for Wang et al. (2026), without the DAMPS module.
 # Inherits seed=999 and MMRec model conventions; cl_weight=0.01 is one candidate.
 data:
-  name: baby
+  name: sports
 model:
   name: mgcn

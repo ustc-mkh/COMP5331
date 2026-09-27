@@ -9,22 +9,23 @@
 ```bash
 python -m pip install -e '.[test]'
 python -m pytest -q
-python -m mmrecsys.cli train --model mgcn --dataset baby --seed 2024
 ```
 
-默认自动选择 CUDA 或 CPU，可使用 `--device cpu` 或 `--device cuda:0` 指定设备。完整数据短跑：
+默认自动选择 CUDA 或 CPU，可使用 `--device cpu` 或 `--device cuda:0` 指定设备。
+
+训练命令：
 
 ```bash
-python -m mmrecsys.cli train --config configs/experiments/mgcn_baby.yaml --set train.epochs=2
+python -m mmrecsys.cli train --config configs/experiments/mgcn_baby.yaml  --device cuda:2
 ```
 
-默认遵循论文融合公式，并提供作者代码约定的对照配置：
+其他数据集的完整训练配置（Elec 对应 Electronics）：
 
 ```bash
-python -m mmrecsys.cli train --config configs/experiments/mgcn_baby_author.yaml
+python -m mmrecsys.cli train --config configs/experiments/mgcn_sports.yaml
+python -m mmrecsys.cli train --config configs/experiments/mgcn_clothing.yaml
+python -m mmrecsys.cli train --config configs/experiments/mgcn_elec.yaml
 ```
-
-两种配置的融合系数、特征微调和正则化区别，以及公式对应和评估协议，见 [MGCN 实现说明](docs/mgcn.md)。默认超参数是实验起点，尚未验证达到论文表格指标。
 
 ## 数据
 

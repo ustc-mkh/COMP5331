@@ -19,7 +19,7 @@ def save_checkpoint(path, model, optimizer, scheduler, sampler, state, config, f
     atomic_torch_save({"format_version": 1, "model": model.state_dict(),
                        "optimizer": optimizer.state_dict(), "scheduler": scheduler.state_dict(),
                        "sampler": sampler.state_dict(), "state": state.copy(),
-                       "random": random_state(), "config": config, "fingerprint": fingerprint}, path)
+                       "random": random_state(next(model.parameters()).device), "config": config, "fingerprint": fingerprint}, path)
 
 
 def load_checkpoint(path, model, config, fingerprint, *, optimizer=None, scheduler=None, sampler=None):
@@ -36,5 +36,5 @@ def load_checkpoint(path, model, config, fingerprint, *, optimizer=None, schedul
         optimizer.load_state_dict(record["optimizer"])
         scheduler.load_state_dict(record["scheduler"])
         sampler.load_state_dict(record["sampler"])
-        restore_random_state(record["random"])
+        restore_random_state(record["random"], next(model.parameters()).device)
     return record["state"]

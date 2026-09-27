@@ -27,9 +27,12 @@ def resolve_device(value):
 
 
 def assemble(config):
-    seed_everything(config["seed"], config["runtime"]["deterministic"])
-    torch.set_num_threads(config["runtime"]["num_threads"])
     device = resolve_device(config["runtime"]["device"])
+    if device.type == "cuda":
+        # Explicit tensor placement does not change CUDA's current device.
+        torch.cuda.set_device(device)
+    seed_everything(config["seed"], config["runtime"]["deterministic"], device)
+    torch.set_num_threads(config["runtime"]["num_threads"])
     entry = get_model(config["model"]["name"])
     print(f"Loading {config['data']['name']} on {device}", flush=True)
     train, views, metadata = load_dataset(config["data"], entry.modalities, config["eval"])

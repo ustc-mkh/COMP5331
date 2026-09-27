@@ -13,7 +13,7 @@ from mmrecsys.experiment.seed import random_state, restore_random_state
 
 def test_config_precedence_unknown_fields_and_root(tmp_path, monkeypatch):
     monkeypatch.chdir(tmp_path)
-    config = load_config("configs/experiments/mgcn_baby_author.yaml", overrides=["model.cl_weight=0.1"])
+    config = load_config("configs/experiments/mgcn_baby.yaml", overrides=["model.cl_weight=0.1"])
     assert config["model"]["fusion"] == "author" and config["model"]["cl_weight"] == 0.1
     assert config["data"]["root"].endswith("COMP5331/data")
     for expression in ("model.cl_weigth=1", "train.bach_size=1", "eval.topk=[]", "train.epochs=-1", "train=false"):

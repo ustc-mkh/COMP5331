@@ -220,6 +220,7 @@ __marimo__/
 # Downloaded MMRec datasets (keep usage documentation)
 /data/*
 !/data/README.md
+*.pdf
 
 # Rebuildable experiment artifacts
 /runs/
