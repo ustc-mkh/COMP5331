@@ -1,13 +1,14 @@
 import numpy as np
 import torch
 
-from .metrics import user_metrics
+from .metrics import batch_user_metrics
 
 
-def stable_topk(scores, items, k):
+def stable_topk(scores, items, k, *, items_sorted=False):
     # Lexicographic ordering: score descending, exact ties by item ID ascending.
-    by_id = torch.argsort(items, dim=1, stable=True)
-    scores, items = scores.gather(1, by_id), items.gather(1, by_id)
+    if not items_sorted:
+        by_id = torch.argsort(items, dim=1, stable=True)
+        scores, items = scores.gather(1, by_id), items.gather(1, by_id)
     order = torch.argsort(scores, dim=1, descending=True, stable=True)[:, :k]
     return scores.gather(1, order), items.gather(1, order)
 
@@ -29,7 +30,7 @@ def rank_users(scorer, users: np.ndarray, history, n_items: int, k: int,
         rows = torch.as_tensor(sparse_history.row[mask], dtype=torch.long, device=device)
         columns = torch.as_tensor(sparse_history.col[mask] - start, dtype=torch.long, device=device)
         scores[rows, columns] = -torch.inf
-        chunk_scores, chunk_items = stable_topk(scores, items.expand(len(users), -1), k)
+        chunk_scores, chunk_items = stable_topk(scores, items.expand(len(users), -1), k, items_sorted=True)
         best_scores, best_items = stable_topk(torch.cat((best_scores, chunk_scores), dim=1),
                                              torch.cat((best_items, chunk_items), dim=1), k)
     best_items[~torch.isfinite(best_scores)] = -1
@@ -51,8 +52,9 @@ class Evaluator:
             users = view.users[start:start + self.config["user_batch_size"]]
             predictions = rank_users(scorer, users, view.history, self.n_items,
                                      max(self.config["topk"]), self.config["item_chunk_size"], self.device)
-            for user, predictions_for_user in zip(users, predictions):
-                target = view.targets.indices[view.targets.indptr[user]:view.targets.indptr[user + 1]]
-                for name, value in user_metrics(predictions_for_user, target, self.config["topk"]).items():
-                    totals[name] += value
+            for name, values in batch_user_metrics(predictions, view.targets, users,
+                                                   self.config["topk"]).items():
+                # Preserve the scalar evaluator's user-order accumulation.
+                for value in values:
+                    totals[name] += float(value)
         return {**{name: value / len(view.users) for name, value in totals.items()}, "n_users": len(view.users)}

@@ -1,0 +1,5 @@
+# Optional DAMPS release grid (not required by paper section 4.1): 192 paired configurations, 384 training runs per seed.
+model.n_ui_layers: [1, 2, 3, 4]
+model.n_item_layers: [1, 2, 3, 4]
+model.knn_k: [10, 15, 20, 40]
+model.cl_weight: [0.01, 0.02, 0.03]

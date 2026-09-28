@@ -1,4 +1,4 @@
-# Wang et al. (KDD 2026), section 4.1: use the MMRec backbone defaults.
+# Fixed MGCN backbone parameters shared by baseline and DAMPS experiments.
 # Sources: MMRec/src/configs/model/MGCN.yaml and MMRec/src/models/mgcn.py.
 model:
   name: mgcn
@@ -12,8 +12,7 @@ model:
   knn_edge_weight: cosine
   knn_normalization: symmetric
   temperature: 0.2
-  # Single-run starting value; MMRec sweeps [0.001, 0.01, 0.1].
-  # Select with validation Recall@20; no per-dataset optimum is given in the paper.
+  # cl_weight corresponds to cl_loss in the original MGCN configuration.
   cl_weight: 0.01
   reg_weight: 0.0001
   fusion: author

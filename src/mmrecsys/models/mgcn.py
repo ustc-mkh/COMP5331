@@ -13,6 +13,7 @@ from ..data.views import TrainBatch, TrainData
 from ..experiment.artifacts import GraphCache
 from ..nn.graph import interaction_block, interaction_graph, knn_graph
 from ..nn.losses import bpr_loss, info_nce
+from ..nn.damps import DAMPS
 
 
 @dataclass(frozen=True)
@@ -33,6 +34,11 @@ class MGCNConfig:
     fusion: str = "author"
     regularization: str = "batch_final"
     trainable_features: bool = True
+    damps_enabled: bool = False
+    damps_apc: bool = True
+    damps_avrf: bool = True
+    damps_imcf: bool = True
+    damps_eps: float = 1e-6
 
     def __post_init__(self):
         for name in ("embedding_dim", "knn_k", "knn_chunk_size", "n_item_layers"):
@@ -46,9 +52,12 @@ class MGCNConfig:
                 raise ValueError(f"Invalid model.{name}")
         if self.temperature == 0:
             raise ValueError("temperature must be positive")
-        for name in ("knn_self_loops", "knn_symmetrize", "trainable_features"):
+        for name in ("knn_self_loops", "knn_symmetrize", "trainable_features",
+                     "damps_enabled", "damps_apc", "damps_avrf", "damps_imcf"):
             if type(getattr(self, name)) is not bool:
                 raise ValueError(f"model.{name} must be boolean")
+        if type(self.damps_eps) not in (int, float) or not math.isfinite(self.damps_eps) or self.damps_eps <= 0:
+            raise ValueError("model.damps_eps must be finite and positive")
         if self.fusion not in ("paper", "author") or self.regularization not in ("parameters", "batch_final"):
             raise ValueError("Invalid fusion or regularization mode")
         if self.knn_edge_weight not in ("cosine", "binary") or self.knn_normalization not in ("symmetric", "none"):
@@ -69,6 +78,8 @@ class MGCN(Recommender):
     def __init__(self, config: MGCNConfig, data: TrainData, cache: GraphCache):
         super().__init__()
         self.config = config
+        self._capture_diagnostics = False
+        self._diagnostics = {}
         self.n_users, self.n_items = data.n_users, data.n_items
         self.modalities = ("image", "text")
         if not set(self.modalities).issubset(data.features):
@@ -108,6 +119,16 @@ class MGCN(Recommender):
             self.register_buffer(f"{modality}_graph", graph, persistent=False)
         self.common_attention = nn.Sequential(nn.Linear(dim, dim), nn.Tanh(), nn.Linear(dim, 1, bias=False))
 
+        # Preserve the author's separate feature Parameters (sharing raw storage)
+        # and independent DAMPS projections. Backbone projections remain registered.
+        raw = {name: (self.feature_embeddings[name].weight.detach() if config.trainable_features
+                      else getattr(self, f"{name}_features")) for name in self.modalities}
+        self.damps = (DAMPS(dim, apc=config.damps_apc, avrf=config.damps_avrf,
+                            imcf=config.damps_imcf, eps=config.damps_eps,
+                            raw_image=raw["image"], raw_text=raw["text"],
+                            trainable_features=config.trainable_features)
+                      if config.damps_enabled else None)
+
     def encode(self):
         # Eq. (3)-(5): ID-only LightGCN, including layer zero in the mean.
         hidden = torch.cat((self.user_embedding.weight, self.item_embedding.weight))
@@ -116,15 +137,29 @@ class MGCN(Recommender):
             hidden = torch.sparse.mm(self.ui_graph, hidden)
             behavior = behavior + hidden
         behavior = behavior / (self.config.n_ui_layers + 1)
+        projected = {}
+        if self.damps is not None:
+            projected["image"], projected["text"] = self.damps()
+        else:
+            for modality in self.modalities:
+                raw = (self.feature_embeddings[modality].weight if self.config.trainable_features
+                       else getattr(self, f"{modality}_features"))
+                projected[modality] = self.projections[modality](raw)
         views = []
         for modality in self.modalities:
-            raw = (self.feature_embeddings[modality].weight if self.config.trainable_features
-                   else getattr(self, f"{modality}_features"))
             # Eq. (1)-(2): ID embeddings multiplied by the modality-derived gate.
-            items = self.item_embedding.weight * self.purifiers[modality](self.projections[modality](raw))
+            gate = self.purifiers[modality](projected[modality])
+            if self.training and self._capture_diagnostics:
+                with torch.no_grad():
+                    detached = gate.detach()
+                    self._diagnostics[f"gate/{modality}/saturated_fraction"] = ((detached < 0.01) | (detached > 0.99)).float().mean()
+                    self._diagnostics[f"gate/{modality}/exact_zero_one_fraction"] = ((detached == 0) | (detached == 1)).float().mean()
+                    self._diagnostics[f"gate/{modality}/mean_derivative"] = (detached * (1 - detached)).mean()
+            items = self.item_embedding.weight * gate
             for _ in range(self.config.n_item_layers):
                 items = torch.sparse.mm(getattr(self, f"{modality}_graph"), items)
             views.append(torch.cat((torch.sparse.mm(self.ui_block, items), items)))
+        self._capture_diagnostics = False
         # Eq. (11)-(15): shared attention and behavior-gated modality residuals.
         weights = torch.softmax(torch.cat([self.common_attention(view) for view in views], dim=1), dim=1)
         common = sum(weights[:, index:index + 1] * view for index, view in enumerate(views))
@@ -136,6 +171,27 @@ class MGCN(Recommender):
             multimodal = (common + residual) / (len(views) + 1)
         final = behavior + multimodal
         return final[:self.n_users], final[self.n_users:], behavior, multimodal
+
+    def on_epoch_start(self, epoch: int) -> None:
+        self._diagnostics = {}
+        self._capture_diagnostics = True
+
+    @torch.no_grad()
+    def training_diagnostics(self):
+        result = dict(self._diagnostics)
+        observed = {f"projection/{m}": self.projections[m].weight for m in self.modalities}
+        observed.update({f"gate/{m}": self.purifiers[m][0].weight for m in self.modalities})
+        if self.damps is not None:
+            observed.update({f"damps/{name}": parameter for name, parameter in self.damps.named_parameters()})
+            if self.damps.mix_logits is not None:
+                weights = self.damps.mix_logits.softmax(0)
+                result["damps/avrf_mix_weight"] = weights[0]
+                result["damps/imcf_mix_weight"] = weights[1]
+        for name, parameter in observed.items():
+            if parameter.grad is not None:
+                result[f"gradient/{name}/l2"] = parameter.grad.detach().norm()
+                result[f"gradient/{name}/zero_fraction"] = (parameter.grad == 0).float().mean()
+        return result
 
     def compute_loss(self, batch: TrainBatch) -> LossOutput:
         if batch.negative_items is None or batch.negative_items.ndim != 2:

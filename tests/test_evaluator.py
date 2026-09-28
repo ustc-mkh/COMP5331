@@ -27,3 +27,19 @@ def test_chunked_ranking_mask_ties_and_padding():
     assert metrics["Recall@3"] == 1
     assert np.isclose(metrics["NDCG@3"], 1.5 / (1 + 1 / np.log2(3)))
     assert user_metrics(expected[2], np.array([0]), [10])["Recall@10"] == 0
+
+
+def test_batch_metrics_match_scalar_with_padding_and_large_k():
+    from mmrecsys.engine.metrics import batch_user_metrics
+    rng = np.random.default_rng(123)
+    targets = sp.csr_matrix(rng.random((17, 23)) < .3)
+    users = np.array([9, 2, 16, 0, 5])
+    recommended = np.stack([rng.permutation(23)[:11] for _ in users])
+    recommended[1, 4:] = -1
+    recommended[3, :] = -1
+    topk = [1, 5, 11, 30]
+    actual = batch_user_metrics(recommended, targets, users, topk)
+    for row, user in enumerate(users):
+        expected = user_metrics(recommended[row], targets[user].indices, topk)
+        for name, value in expected.items():
+            assert actual[name][row] == value

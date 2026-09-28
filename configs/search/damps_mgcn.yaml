@@ -1,0 +1,7 @@
+# DAMPS section 4.1: retain backbone defaults; no dedicated backbone tuning.
+# MMRec/src/configs/model/MGCN.yaml fixes graph settings and searches only cl_loss.
+# Three paired settings = six training runs per seed.
+model.n_ui_layers: [2]
+model.n_item_layers: [1]
+model.knn_k: [10]
+model.cl_weight: [0.001, 0.01, 0.1]

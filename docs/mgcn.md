@@ -1,10 +1,10 @@
-# MGCN 实现与复现实验
+# DAMPS 的 MGCN backbone 与基线实验
 
 模型公式依据：项目根目录的 *Multi-View Graph Convolutional Network for Multimedia Recommendation*（ACM MM 2023）。默认训练配置依据 Wang 等的 *Enhancing Multimodal Recommendation via Multimodal Representation Calibration in Spectral Domain*（KDD 2026）第 4.1 节，并核对本地 MMRec 的配置与实现。本项目独立实现，不导入 MMRec。
 
 ## Wang 等（2026）的实验设置
 
-论文第 4.1 节（印刷页 1464–1465）说明：基线使用 MMRec，沿用各 backbone 的默认超参数；训练/验证/测试划分为 80%/10%/10%，使用全物品排序，报告 Recall 和 NDCG 的 @10、@20。当前配置对应表 2 的 MGCN **raw 基线**；`+Ours` 需要额外实现 DAMPS，不能仅靠训练配置得到。
+论文第 4.1 节（印刷页 1464–1465）说明：基线使用 MMRec，沿用各 backbone 的默认超参数；训练/验证/测试划分为 80%/10%/10%，使用全物品排序，报告 Recall 和 NDCG 的 @10、@20。当前配置对应表 2 的 MGCN **raw 基线**；`+Ours` 对应本项目新增的 DAMPS 模块，可用 `configs/experiments/damps_mgcn_*.yaml` 启用；实现约定和论文歧义见 [DAMPS 文档](damps.md)。本文的 `mgcn_*.yaml` 命令仍表示关闭 DAMPS 的 raw 基线。
 
 具体数值来自本地 [MMRec 公共配置](../MMRec/src/configs/overall.yaml)、[MGCN 配置](../MMRec/src/configs/model/MGCN.yaml)和 [MGCN 实现](../MMRec/src/models/mgcn.py)，不是论文逐项列出的参数：
 

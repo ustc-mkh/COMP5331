@@ -7,7 +7,7 @@ import yaml
 
 from ..config import PROJECT_ROOT, read_yaml, validate
 from ..data.dataset import load_dataset
-from ..data.sampling import TrainingSampler
+from ..data.sampling import TrainingSampler, DeviceTrainingSampler
 from ..engine.checkpoint import load_checkpoint
 from ..engine.evaluator import Evaluator
 from ..engine.trainer import Trainer
@@ -43,10 +43,13 @@ def assemble(config):
     return train, views, metadata, model, evaluator, device
 
 
-def train_experiment(config, resume=None):
+def train_experiment(config, resume=None, *, evaluate_test=True):
     if resume is None:
         identifier = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ") + "-" + uuid.uuid4().hex[:8]
-        run_dir = Path(config["runtime"]["output_root"]) / f"{config['model']['name']}-{config['data']['name']}-{identifier}"
+        model_name = config["model"]["name"]
+        if config["model"].get("damps_enabled", False):
+            model_name = f"damps-{model_name}"
+        run_dir = Path(config["runtime"]["output_root"]) / f"{model_name}-{config['data']['name']}-{identifier}"
         run_dir.mkdir(parents=True, exist_ok=False)
     else:
         resume = Path(resume).resolve()
@@ -56,7 +59,11 @@ def train_experiment(config, resume=None):
     print(f"run_dir={run_dir}", flush=True)
     train, views, metadata, model, evaluator, device = assemble(config)
     entry = get_model(config["model"]["name"])
-    sampler = TrainingSampler(train, entry.batch_spec, config["train"]["batch_size"], config["seed"])
+    if config["train"].get("preload_to_device", False) and device.type == "cuda":
+        sampler = DeviceTrainingSampler(train, entry.batch_spec, config["train"]["batch_size"],
+                                        config["seed"], device)
+    else:
+        sampler = TrainingSampler(train, entry.batch_spec, config["train"]["batch_size"], config["seed"])
     options = config["optimizer"]
     optimizer = torch.optim.Adam(model.parameters(), lr=options["lr"], weight_decay=options["weight_decay"])
     scheduler = torch.optim.lr_scheduler.LambdaLR(optimizer, lambda epoch: options["decay_base"] ** (epoch / options["decay_steps"]))
@@ -70,7 +77,7 @@ def train_experiment(config, resume=None):
         write_json(run_dir / "manifest.json", manifest(PROJECT_ROOT, config, metadata, device))
     trainer = Trainer(model, optimizer, scheduler, sampler, evaluator, config["train"], run_dir,
                       device, config, metadata["fingerprint"])
-    result = trainer.fit(views["valid"], views["test"], resume)
+    result = trainer.fit(views["valid"], views["test"], resume, evaluate_test=evaluate_test)
     return run_dir, result
 
 

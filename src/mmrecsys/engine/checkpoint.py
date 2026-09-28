@@ -10,6 +10,7 @@ def compatible_config(config):
     result = deepcopy(config)
     # Only epoch budget and artifact locations may change for a resumed trajectory.
     result["train"].pop("epochs")
+    result["train"].setdefault("preload_to_device", False)
     result["runtime"].pop("output_root")
     result["runtime"].pop("cache_root")
     return result

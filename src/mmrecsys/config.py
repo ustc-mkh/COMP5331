@@ -61,6 +61,10 @@ def _check_keys(config: dict, template: dict, prefix=""):
 
 
 def validate(config: dict) -> dict:
+    config = deepcopy(config)
+    # Configs saved before resident sampling keep their original CPU sampler.
+    if isinstance(config.get("train"), dict):
+        config["train"].setdefault("preload_to_device", False)
     template = read_yaml(PROJECT_ROOT / "configs/default.yaml")
     _check_keys(config, template)
     for group, fields in template.items():
@@ -88,7 +92,8 @@ def validate(config: dict) -> dict:
         raise ValueError("eval.mode must be min or max")
     if config["eval"]["history"] not in ("train", "train_valid"):
         raise ValueError("eval.history must be train or train_valid")
-    for group, key in (("eval", "require_train_user"), ("runtime", "deterministic")):
+    for group, key in (("eval", "require_train_user"), ("runtime", "deterministic"),
+                       ("train", "preload_to_device")):
         if type(config[group][key]) is not bool:
             raise ValueError(f"{group}.{key} must be boolean")
     if config["optimizer"]["name"] != "adam":

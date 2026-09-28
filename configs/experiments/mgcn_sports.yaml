@@ -1,5 +1,5 @@
 # MMRec MGCN baseline for Wang et al. (2026), without the DAMPS module.
-# Inherits seed=999 and MMRec model conventions; cl_weight=0.01 is one candidate.
+# Inherits fixed MGCN parameters from configs/models/mgcn.yaml and seed=999.
 data:
   name: sports
 model:

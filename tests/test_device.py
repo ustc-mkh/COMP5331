@@ -73,3 +73,25 @@ def test_assemble_selects_cuda_before_seed_or_model_initialization(tiny_config, 
     monkeypatch.setattr(runner, 'load_dataset', stop_before_loading)
     with pytest.raises(ReachedDataLoading):
         runner.assemble(tiny_config)
+
+
+@pytest.mark.skipif(torch.cuda.device_count() < 2, reason='CUDA device 1 unavailable')
+def test_resident_cuda_training_exact_resume(tiny_config):
+    from copy import deepcopy
+    from mmrecsys.experiment.runner import train_experiment
+    config = deepcopy(tiny_config)
+    config['runtime']['device'] = 'cuda:1'
+    config['train']['preload_to_device'] = True
+    config['model']['damps_enabled'] = True
+    config['train']['epochs'] = 3
+    full, _ = train_experiment(config, evaluate_test=False)
+    partial = deepcopy(config)
+    partial['train']['epochs'] = 1
+    resumed, _ = train_experiment(partial, evaluate_test=False)
+    train_experiment(config, resumed / 'last.pt', evaluate_test=False)
+    expected = torch.load(full / 'last.pt', weights_only=False, map_location='cpu')
+    actual = torch.load(resumed / 'last.pt', weights_only=False, map_location='cpu')
+    assert actual['sampler']['algorithm_version'] == 3
+    assert actual['state'] == expected['state']
+    for key in expected['model']:
+        torch.testing.assert_close(actual['model'][key], expected['model'][key], rtol=0, atol=0)

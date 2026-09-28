@@ -1,0 +1,10 @@
+# DAMPS with trainable AVRF and fixed phase prior with the MGCN backbone; select parameters on validation only.
+data:
+  name: sports
+model:
+  name: mgcn
+  damps_enabled: true
+  damps_apc: true
+  damps_avrf: true
+  damps_imcf: true
+  damps_eps: 1.0e-6

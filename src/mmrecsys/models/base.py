@@ -39,3 +39,7 @@ class Recommender(nn.Module):
 
     def on_epoch_end(self, epoch: int) -> None:
         pass
+
+    def training_diagnostics(self) -> dict[str, torch.Tensor]:
+        """Detached diagnostics after the first backward of each epoch, before step."""
+        return {}
