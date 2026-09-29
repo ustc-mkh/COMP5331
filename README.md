@@ -54,6 +54,43 @@ python -m mmrecsys.experiment.ablation --config configs/experiments/damps_mgcn_b
 
 本版更改了频域计算，旧 DAMPS checkpoint 不直接兼容，请新建训练运行。
 
+## 四数据集多 GPU 对比
+
+新增入口默认比较 Baby、Sports、Clothing、Elec 的 MGCN 与完整 MGCN+DAMPS，每个种子共 8 次训练。采用独立实验并行：每张 GPU 同时运行一个训练进程，空闲后领取下一个任务，单次训练仍使用一张 GPU。
+
+```bash
+# 查看全部配置，不读取数据、不占用 GPU、不创建输出目录
+python -m mmrecsys.experiment.compare --dry-run
+
+# 快速检查：默认 seed=999，最多 20 轮，验证指标连续 5 次未提升则早停
+python -m mmrecsys.experiment.compare --gpus 1 2 3 4
+
+# 更短的流程检查：仍使用完整数据和模型
+python -m mmrecsys.experiment.compare --gpus 1 2 --set train.epochs=2
+
+# 完整训练：最多 1000 轮、patience=20，三个配对种子（共 24 次训练）
+python -m mmrecsys.experiment.compare --mode full --gpus 1 2 3 4 --seeds 999 2024 2025
+
+# 选择部分数据集，或使用 CPU
+python -m mmrecsys.experiment.compare --datasets baby sports --gpus cpu
+
+# 中断后跳过已完成的任务；失败或未完成的任务从头重跑
+python -m mmrecsys.experiment.compare --resume runs/compare-<时间>-<ID> --gpus 1 2 3 4
+```
+
+不传 `--gpus` 时使用所有可见 GPU，无 CUDA 时使用 CPU。GPU 编号相对于 `CUDA_VISIBLE_DEVICES`；例如 `CUDA_VISIBLE_DEVICES=4,5` 时应传 `--gpus 0 1`。按机器空闲情况显式指定 GPU；脚本不会自动判断其他进程是否占用显存。`--set` 同时覆盖两种模型的公共配置；种子由 `--seeds`、设备由 `--gpus`、DAMPS 开关由对照组定义决定。`--output` 可指定一个尚不存在的结果目录。
+
+每个任务使用同一种子、相同 backbone、采样及训练预算，仅切换 DAMPS；在各自验证集最佳 checkpoint 上评估测试集。结果写入 `runs/compare-*/`：
+
+- `summary.md`：可直接阅读的四数据集对照表。
+- `summary.csv`、`summary.json`：Recall@10/20、NDCG@10/20 的均值、样本标准差、配对绝对差和相对提升；单种子标准差为空。
+- `runs.json`：完整配置、任务状态、最佳轮次、验证指标、测试指标、耗时、日志及 checkpoint 目录。
+- 各任务目录下的 `train.log`：独立训练日志；启动时打印路径，可用 `tail -f` 查看。
+
+绝对差为 `DAMPS − MGCN`；相对提升为 `100 × (DAMPS均值 − MGCN均值) / MGCN均值`。另外记录逐种子相对提升的均值 `paired_gain_pct_mean`，零基线种子从此统计中排除并报告有效数量；总体基线为零时相对提升为空。汇总仅纳入两种模型均成功完成的种子，不混合未配对结果。某项失败时保留其余结果并返回非零退出码，修改问题后可恢复；恢复使用原配置，可重新指定 GPU。
+
+快速模式适合检查训练、梯度诊断和评估流程，不代表已经收敛。提升为正不能单独证明实现正确，短轮次无提升也不能判定实现错误；复现结论应结合完整训练、多种子波动和现有单元测试。首次运行仍需建立完整物品图，可能耗时较长，后续运行复用缓存。
+
 ## 超参数搜索
 
 ```bash

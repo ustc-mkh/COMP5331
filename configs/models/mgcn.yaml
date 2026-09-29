@@ -2,7 +2,7 @@
 # Sources: MMRec/src/configs/model/MGCN.yaml and MMRec/src/models/mgcn.py.
 model:
   name: mgcn
-  embedding_dim: 64
+  embedding_dim: 256
   n_ui_layers: 2
   n_item_layers: 1
   knn_k: 10
