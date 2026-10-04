@@ -6,7 +6,7 @@ import numpy as np
 import pytest
 import torch
 
-from mmrecsys.config import load_config
+from mmrecsys.config import PROJECT_ROOT, load_config
 from mmrecsys.engine.checkpoint import load_checkpoint
 from mmrecsys.experiment.runner import assemble, evaluate_experiment, train_experiment
 from mmrecsys.experiment.seed import random_state, restore_random_state
@@ -16,7 +16,7 @@ def test_config_precedence_unknown_fields_and_root(tmp_path, monkeypatch):
     monkeypatch.chdir(tmp_path)
     config = load_config("configs/experiments/mgcn_baby.yaml", overrides=["model.cl_weight=0.1"])
     assert config["model"]["fusion"] == "author" and config["model"]["cl_weight"] == 0.1
-    assert config["data"]["root"].endswith("COMP5331/data")
+    assert config["data"]["root"] == str((PROJECT_ROOT / "data").resolve())
     for expression in ("model.cl_weigth=1", "train.bach_size=1", "eval.topk=[]", "train.epochs=-1", "train=false"):
         with pytest.raises(ValueError):
             load_config(overrides=[expression])

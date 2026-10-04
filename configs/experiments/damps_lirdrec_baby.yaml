@@ -1,0 +1,5 @@
+data:
+  name: baby
+model:
+  name: lirdrec
+  damps_enabled: true

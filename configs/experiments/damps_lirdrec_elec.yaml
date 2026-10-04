@@ -1,0 +1,5 @@
+data:
+  name: elec
+model:
+  name: lirdrec
+  damps_enabled: true

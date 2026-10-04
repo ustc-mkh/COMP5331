@@ -1,0 +1,5 @@
+data:
+  name: microlens
+model:
+  name: lirdrec
+  damps_enabled: false
