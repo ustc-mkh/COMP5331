@@ -1,0 +1,26 @@
+# LIRDRec author configuration, expressed through the shared experiment interface.
+# Source: enoche/LIRDRec, src/configs/model/LIRDRec.yaml.
+# Fixed settings used for the 75-run project comparison; not verified paper-optimal settings.
+optimizer:
+  lr: 0.0001
+  weight_decay: 0.0
+  decay_base: 1.0
+  decay_steps: 50
+model:
+  name: lirdrec
+  embedding_dim: 64
+  n_ui_layers: 2
+  n_item_layers: 1
+  knn_k: 10
+  knn_chunk_size: 512
+  mm_image_weight: 0.1
+  dropout: 0.0
+  reg_weight: 0.0001
+  # Progressive weight copying (PWC); separate from the optimizer LR schedule.
+  decay_base: 0.9
+  decay_weight: 0.9
+  damps_enabled: false
+  damps_apc: true
+  damps_avrf: true
+  damps_imcf: true
+  damps_eps: 1.0e-6

@@ -1,0 +1,1376 @@
+{
+  "complete": true,
+  "n_runs": 75,
+  "seeds": [
+    999,
+    2024,
+    2025
+  ],
+  "datasets": [
+    "baby",
+    "sports",
+    "clothing",
+    "elec",
+    "microlens"
+  ],
+  "variants": [
+    "baseline",
+    "full",
+    "no_apc",
+    "no_avrf",
+    "no_imcf"
+  ],
+  "selection": "Best validation Recall@20 checkpoint; test metrics do not select epochs or seeds.",
+  "runs": [
+    {
+      "id": "baby-999-baseline",
+      "dataset": "baby",
+      "variant": "baseline",
+      "seed": 999,
+      "best_epoch": 89,
+      "validation": {
+        "metric": "Recall@20",
+        "value": 0.10246390919443121
+      },
+      "test": {
+        "Recall@10": 0.06651005889627645,
+        "Recall@20": 0.10463113484327163,
+        "NDCG@10": 0.035891014388886575,
+        "NDCG@20": 0.04569566042168934,
+        "n_users": 19445
+      }
+    },
+    {
+      "id": "baby-999-full",
+      "dataset": "baby",
+      "variant": "full",
+      "seed": 999,
+      "best_epoch": 98,
+      "validation": {
+        "metric": "Recall@20",
+        "value": 0.09897237629945267
+      },
+      "test": {
+        "Recall@10": 0.0652068326804763,
+        "Recall@20": 0.1033396003156867,
+        "NDCG@10": 0.03466140273067423,
+        "NDCG@20": 0.044496749828885115,
+        "n_users": 19445
+      }
+    },
+    {
+      "id": "baby-999-no_apc",
+      "dataset": "baby",
+      "variant": "no_apc",
+      "seed": 999,
+      "best_epoch": 102,
+      "validation": {
+        "metric": "Recall@20",
+        "value": 0.09839933144767293
+      },
+      "test": {
+        "Recall@10": 0.06600993032852125,
+        "Recall@20": 0.10301793418147237,
+        "NDCG@10": 0.03510138273912008,
+        "NDCG@20": 0.04462920024194329,
+        "n_users": 19445
+      }
+    },
+    {
+      "id": "baby-999-no_avrf",
+      "dataset": "baby",
+      "variant": "no_avrf",
+      "seed": 999,
+      "best_epoch": 85,
+      "validation": {
+        "metric": "Recall@20",
+        "value": 0.10153822135694085
+      },
+      "test": {
+        "Recall@10": 0.06858214255102918,
+        "Recall@20": 0.10639383772708534,
+        "NDCG@10": 0.03629410874757961,
+        "NDCG@20": 0.04599611099696536,
+        "n_users": 19445
+      }
+    },
+    {
+      "id": "baby-999-no_imcf",
+      "dataset": "baby",
+      "variant": "no_imcf",
+      "seed": 999,
+      "best_epoch": 117,
+      "validation": {
+        "metric": "Recall@20",
+        "value": 0.10176107213263297
+      },
+      "test": {
+        "Recall@10": 0.06775337031186866,
+        "Recall@20": 0.10281308289150923,
+        "NDCG@10": 0.03595093619807589,
+        "NDCG@20": 0.04498987566950487,
+        "n_users": 19445
+      }
+    },
+    {
+      "id": "sports-999-baseline",
+      "dataset": "sports",
+      "variant": "baseline",
+      "seed": 999,
+      "best_epoch": 117,
+      "validation": {
+        "metric": "Recall@20",
+        "value": 0.11164777600668035
+      },
+      "test": {
+        "Recall@10": 0.07455063687366065,
+        "Recall@20": 0.11474890019681863,
+        "NDCG@10": 0.04028233972000536,
+        "NDCG@20": 0.05063756168052575,
+        "n_users": 35598
+      }
+    },
+    {
+      "id": "sports-999-full",
+      "dataset": "sports",
+      "variant": "full",
+      "seed": 999,
+      "best_epoch": 124,
+      "validation": {
+        "metric": "Recall@20",
+        "value": 0.11009658087087373
+      },
+      "test": {
+        "Recall@10": 0.07286398959456433,
+        "Recall@20": 0.11305876377930989,
+        "NDCG@10": 0.039545102210546274,
+        "NDCG@20": 0.04989919798507762,
+        "n_users": 35598
+      }
+    },
+    {
+      "id": "sports-999-no_apc",
+      "dataset": "sports",
+      "variant": "no_apc",
+      "seed": 999,
+      "best_epoch": 127,
+      "validation": {
+        "metric": "Recall@20",
+        "value": 0.10972540565771303
+      },
+      "test": {
+        "Recall@10": 0.07279435174260726,
+        "Recall@20": 0.11206467145915995,
+        "NDCG@10": 0.03927655115273668,
+        "NDCG@20": 0.04941507605867693,
+        "n_users": 35598
+      }
+    },
+    {
+      "id": "sports-999-no_avrf",
+      "dataset": "sports",
+      "variant": "no_avrf",
+      "seed": 999,
+      "best_epoch": 118,
+      "validation": {
+        "metric": "Recall@20",
+        "value": 0.11227002528264614
+      },
+      "test": {
+        "Recall@10": 0.07590027574226124,
+        "Recall@20": 0.1151619227761146,
+        "NDCG@10": 0.040845657188670524,
+        "NDCG@20": 0.05096166914317814,
+        "n_users": 35598
+      }
+    },
+    {
+      "id": "sports-999-no_imcf",
+      "dataset": "sports",
+      "variant": "no_imcf",
+      "seed": 999,
+      "best_epoch": 144,
+      "validation": {
+        "metric": "Recall@20",
+        "value": 0.11103800169262491
+      },
+      "test": {
+        "Recall@10": 0.07437925663738912,
+        "Recall@20": 0.11259226708830619,
+        "NDCG@10": 0.03990934641403708,
+        "NDCG@20": 0.04976991448761574,
+        "n_users": 35598
+      }
+    },
+    {
+      "id": "clothing-999-baseline",
+      "dataset": "clothing",
+      "variant": "baseline",
+      "seed": 999,
+      "best_epoch": 127,
+      "validation": {
+        "metric": "Recall@20",
+        "value": 0.0963603115175969
+      },
+      "test": {
+        "Recall@10": 0.0645169363350489,
+        "Recall@20": 0.09507747903284502,
+        "NDCG@10": 0.03506874398504301,
+        "NDCG@20": 0.04282058595985255,
+        "n_users": 39387
+      }
+    },
+    {
+      "id": "clothing-999-full",
+      "dataset": "clothing",
+      "variant": "full",
+      "seed": 999,
+      "best_epoch": 173,
+      "validation": {
+        "metric": "Recall@20",
+        "value": 0.09435262057700934
+      },
+      "test": {
+        "Recall@10": 0.06354816128599357,
+        "Recall@20": 0.09286929334914713,
+        "NDCG@10": 0.0340984647187545,
+        "NDCG@20": 0.041521426161084535,
+        "n_users": 39387
+      }
+    },
+    {
+      "id": "clothing-999-no_apc",
+      "dataset": "clothing",
+      "variant": "no_apc",
+      "seed": 999,
+      "best_epoch": 171,
+      "validation": {
+        "metric": "Recall@20",
+        "value": 0.09421001853403407
+      },
+      "test": {
+        "Recall@10": 0.0633357392516506,
+        "Recall@20": 0.09350063533169636,
+        "NDCG@10": 0.033933806383832324,
+        "NDCG@20": 0.04158027361148271,
+        "n_users": 39387
+      }
+    },
+    {
+      "id": "clothing-999-no_avrf",
+      "dataset": "clothing",
+      "variant": "no_avrf",
+      "seed": 999,
+      "best_epoch": 133,
+      "validation": {
+        "metric": "Recall@20",
+        "value": 0.09676780637630664
+      },
+      "test": {
+        "Recall@10": 0.06413525371557209,
+        "Recall@20": 0.0951087922410948,
+        "NDCG@10": 0.034894361952171965,
+        "NDCG@20": 0.042773438261809064,
+        "n_users": 39387
+      }
+    },
+    {
+      "id": "clothing-999-no_imcf",
+      "dataset": "clothing",
+      "variant": "no_imcf",
+      "seed": 999,
+      "best_epoch": 136,
+      "validation": {
+        "metric": "Recall@20",
+        "value": 0.09299920084823735
+      },
+      "test": {
+        "Recall@10": 0.06330224983587768,
+        "Recall@20": 0.09298312109264963,
+        "NDCG@10": 0.03416754219108954,
+        "NDCG@20": 0.04170166729985108,
+        "n_users": 39387
+      }
+    },
+    {
+      "id": "elec-999-baseline",
+      "dataset": "elec",
+      "variant": "baseline",
+      "seed": 999,
+      "best_epoch": 123,
+      "validation": {
+        "metric": "Recall@20",
+        "value": 0.06793849198015486
+      },
+      "test": {
+        "Recall@10": 0.044336953375460404,
+        "Recall@20": 0.06714243997832665,
+        "NDCG@10": 0.024600366135343676,
+        "NDCG@20": 0.030480255975824155,
+        "n_users": 192403
+      }
+    },
+    {
+      "id": "elec-999-full",
+      "dataset": "elec",
+      "variant": "full",
+      "seed": 999,
+      "best_epoch": 120,
+      "validation": {
+        "metric": "Recall@20",
+        "value": 0.06742922094342324
+      },
+      "test": {
+        "Recall@10": 0.043737372752200486,
+        "Recall@20": 0.06638533394088779,
+        "NDCG@10": 0.024271015230410805,
+        "NDCG@20": 0.03011489251460417,
+        "n_users": 192403
+      }
+    },
+    {
+      "id": "elec-999-no_apc",
+      "dataset": "elec",
+      "variant": "no_apc",
+      "seed": 999,
+      "best_epoch": 140,
+      "validation": {
+        "metric": "Recall@20",
+        "value": 0.06770280823090843
+      },
+      "test": {
+        "Recall@10": 0.044576076011420905,
+        "Recall@20": 0.066790425698874,
+        "NDCG@10": 0.02461941844715231,
+        "NDCG@20": 0.03035759358547494,
+        "n_users": 192403
+      }
+    },
+    {
+      "id": "elec-999-no_avrf",
+      "dataset": "elec",
+      "variant": "no_avrf",
+      "seed": 999,
+      "best_epoch": 170,
+      "validation": {
+        "metric": "Recall@20",
+        "value": 0.06851925550174476
+      },
+      "test": {
+        "Recall@10": 0.04478715788864788,
+        "Recall@20": 0.06740851570576047,
+        "NDCG@10": 0.02478745103997498,
+        "NDCG@20": 0.030633876360327193,
+        "n_users": 192403
+      }
+    },
+    {
+      "id": "elec-999-no_imcf",
+      "dataset": "elec",
+      "variant": "no_imcf",
+      "seed": 999,
+      "best_epoch": 120,
+      "validation": {
+        "metric": "Recall@20",
+        "value": 0.067565308126772
+      },
+      "test": {
+        "Recall@10": 0.04439356952990989,
+        "Recall@20": 0.06663421975745178,
+        "NDCG@10": 0.024542248431763634,
+        "NDCG@20": 0.030282819159543624,
+        "n_users": 192403
+      }
+    },
+    {
+      "id": "microlens-999-baseline",
+      "dataset": "microlens",
+      "variant": "baseline",
+      "seed": 999,
+      "best_epoch": 118,
+      "validation": {
+        "metric": "Recall@20",
+        "value": 0.11359648401093846
+      },
+      "test": {
+        "Recall@10": 0.07271211808275263,
+        "Recall@20": 0.11167422952980734,
+        "NDCG@10": 0.0375872397912497,
+        "NDCG@20": 0.04763057908527652,
+        "n_users": 98129
+      }
+    },
+    {
+      "id": "microlens-999-full",
+      "dataset": "microlens",
+      "variant": "full",
+      "seed": 999,
+      "best_epoch": 132,
+      "validation": {
+        "metric": "Recall@20",
+        "value": 0.11213337008285494
+      },
+      "test": {
+        "Recall@10": 0.07256208943503217,
+        "Recall@20": 0.11189652217215426,
+        "NDCG@10": 0.037463428559884125,
+        "NDCG@20": 0.04756435287098582,
+        "n_users": 98129
+      }
+    },
+    {
+      "id": "microlens-999-no_apc",
+      "dataset": "microlens",
+      "variant": "no_apc",
+      "seed": 999,
+      "best_epoch": 122,
+      "validation": {
+        "metric": "Recall@20",
+        "value": 0.11156737519586422
+      },
+      "test": {
+        "Recall@10": 0.07158299680235088,
+        "Recall@20": 0.11072233160759486,
+        "NDCG@10": 0.03703945941306012,
+        "NDCG@20": 0.04709383693189475,
+        "n_users": 98129
+      }
+    },
+    {
+      "id": "microlens-999-no_avrf",
+      "dataset": "microlens",
+      "variant": "no_avrf",
+      "seed": 999,
+      "best_epoch": 122,
+      "validation": {
+        "metric": "Recall@20",
+        "value": 0.11327887388761336
+      },
+      "test": {
+        "Recall@10": 0.0727346797101915,
+        "Recall@20": 0.11176958163858058,
+        "NDCG@10": 0.037710512310872475,
+        "NDCG@20": 0.04775847180225174,
+        "n_users": 98129
+      }
+    },
+    {
+      "id": "microlens-999-no_imcf",
+      "dataset": "microlens",
+      "variant": "no_imcf",
+      "seed": 999,
+      "best_epoch": 137,
+      "validation": {
+        "metric": "Recall@20",
+        "value": 0.11277355905753218
+      },
+      "test": {
+        "Recall@10": 0.07305381744385502,
+        "Recall@20": 0.11227233336140999,
+        "NDCG@10": 0.03768116508487258,
+        "NDCG@20": 0.04774628995282275,
+        "n_users": 98129
+      }
+    },
+    {
+      "id": "baby-2024-baseline",
+      "dataset": "baby",
+      "variant": "baseline",
+      "seed": 2024,
+      "best_epoch": 71,
+      "validation": {
+        "metric": "Recall@20",
+        "value": 0.10228342455521679
+      },
+      "test": {
+        "Recall@10": 0.06800622023044242,
+        "Recall@20": 0.10643655079242634,
+        "NDCG@10": 0.035955131529167815,
+        "NDCG@20": 0.04578682779018401,
+        "n_users": 19445
+      }
+    },
+    {
+      "id": "baby-2024-full",
+      "dataset": "baby",
+      "variant": "full",
+      "seed": 2024,
+      "best_epoch": 72,
+      "validation": {
+        "metric": "Recall@20",
+        "value": 0.10005063120645535
+      },
+      "test": {
+        "Recall@10": 0.065333296599689,
+        "Recall@20": 0.10231372981180129,
+        "NDCG@10": 0.0351044176867629,
+        "NDCG@20": 0.044610977214734344,
+        "n_users": 19445
+      }
+    },
+    {
+      "id": "baby-2024-no_apc",
+      "dataset": "baby",
+      "variant": "no_apc",
+      "seed": 2024,
+      "best_epoch": 79,
+      "validation": {
+        "metric": "Recall@20",
+        "value": 0.10135087977078208
+      },
+      "test": {
+        "Recall@10": 0.06471317146040727,
+        "Recall@20": 0.10159978788675111,
+        "NDCG@10": 0.035095415569630126,
+        "NDCG@20": 0.0445983321470696,
+        "n_users": 19445
+      }
+    },
+    {
+      "id": "baby-2024-no_avrf",
+      "dataset": "baby",
+      "variant": "no_avrf",
+      "seed": 2024,
+      "best_epoch": 84,
+      "validation": {
+        "metric": "Recall@20",
+        "value": 0.10375081120131263
+      },
+      "test": {
+        "Recall@10": 0.06748552082185409,
+        "Recall@20": 0.10402635620429398,
+        "NDCG@10": 0.03603905546570912,
+        "NDCG@20": 0.045464486377927917,
+        "n_users": 19445
+      }
+    },
+    {
+      "id": "baby-2024-no_imcf",
+      "dataset": "baby",
+      "variant": "no_imcf",
+      "seed": 2024,
+      "best_epoch": 86,
+      "validation": {
+        "metric": "Recall@20",
+        "value": 0.10154201716685647
+      },
+      "test": {
+        "Recall@10": 0.06507224283387823,
+        "Recall@20": 0.10025787018330089,
+        "NDCG@10": 0.03484886261599071,
+        "NDCG@20": 0.043956514295375976,
+        "n_users": 19445
+      }
+    },
+    {
+      "id": "sports-2024-baseline",
+      "dataset": "sports",
+      "variant": "baseline",
+      "seed": 2024,
+      "best_epoch": 128,
+      "validation": {
+        "metric": "Recall@20",
+        "value": 0.11269527555409561
+      },
+      "test": {
+        "Recall@10": 0.0746745737454485,
+        "Recall@20": 0.11398052057499217,
+        "NDCG@10": 0.04019387038058716,
+        "NDCG@20": 0.05032148293677659,
+        "n_users": 35598
+      }
+    },
+    {
+      "id": "sports-2024-full",
+      "dataset": "sports",
+      "variant": "full",
+      "seed": 2024,
+      "best_epoch": 110,
+      "validation": {
+        "metric": "Recall@20",
+        "value": 0.110285161556252
+      },
+      "test": {
+        "Recall@10": 0.0726970125840849,
+        "Recall@20": 0.10979532691777763,
+        "NDCG@10": 0.03936778095462583,
+        "NDCG@20": 0.04894703797512939,
+        "n_users": 35598
+      }
+    },
+    {
+      "id": "sports-2024-no_apc",
+      "dataset": "sports",
+      "variant": "no_apc",
+      "seed": 2024,
+      "best_epoch": 110,
+      "validation": {
+        "metric": "Recall@20",
+        "value": 0.10993625886241416
+      },
+      "test": {
+        "Recall@10": 0.07254781568787973,
+        "Recall@20": 0.1110213298945812,
+        "NDCG@10": 0.03874056148628133,
+        "NDCG@20": 0.048657962814823756,
+        "n_users": 35598
+      }
+    },
+    {
+      "id": "sports-2024-no_avrf",
+      "dataset": "sports",
+      "variant": "no_avrf",
+      "seed": 2024,
+      "best_epoch": 99,
+      "validation": {
+        "metric": "Recall@20",
+        "value": 0.1127032447969696
+      },
+      "test": {
+        "Recall@10": 0.07602429064589862,
+        "Recall@20": 0.11333660175308587,
+        "NDCG@10": 0.040341083243480895,
+        "NDCG@20": 0.049929424471958084,
+        "n_users": 35598
+      }
+    },
+    {
+      "id": "sports-2024-no_imcf",
+      "dataset": "sports",
+      "variant": "no_imcf",
+      "seed": 2024,
+      "best_epoch": 110,
+      "validation": {
+        "metric": "Recall@20",
+        "value": 0.11040059295644658
+      },
+      "test": {
+        "Recall@10": 0.07255546280912874,
+        "Recall@20": 0.11165314263241115,
+        "NDCG@10": 0.03957866156174799,
+        "NDCG@20": 0.04967233649798718,
+        "n_users": 35598
+      }
+    },
+    {
+      "id": "clothing-2024-baseline",
+      "dataset": "clothing",
+      "variant": "baseline",
+      "seed": 2024,
+      "best_epoch": 82,
+      "validation": {
+        "metric": "Recall@20",
+        "value": 0.09457689085231168
+      },
+      "test": {
+        "Recall@10": 0.06338953993763956,
+        "Recall@20": 0.09366935186494942,
+        "NDCG@10": 0.03433881577008806,
+        "NDCG@20": 0.04203240615021822,
+        "n_users": 39387
+      }
+    },
+    {
+      "id": "clothing-2024-full",
+      "dataset": "clothing",
+      "variant": "full",
+      "seed": 2024,
+      "best_epoch": 92,
+      "validation": {
+        "metric": "Recall@20",
+        "value": 0.09090943712392414
+      },
+      "test": {
+        "Recall@10": 0.06058053962692549,
+        "Recall@20": 0.08868178647293584,
+        "NDCG@10": 0.03260609492475023,
+        "NDCG@20": 0.0397362020265599,
+        "n_users": 39387
+      }
+    },
+    {
+      "id": "clothing-2024-no_apc",
+      "dataset": "clothing",
+      "variant": "no_apc",
+      "seed": 2024,
+      "best_epoch": 124,
+      "validation": {
+        "metric": "Recall@20",
+        "value": 0.09120503864581861
+      },
+      "test": {
+        "Recall@10": 0.06153408122331879,
+        "Recall@20": 0.09122631711937829,
+        "NDCG@10": 0.03319290123695715,
+        "NDCG@20": 0.04071957626449456,
+        "n_users": 39387
+      }
+    },
+    {
+      "id": "clothing-2024-no_avrf",
+      "dataset": "clothing",
+      "variant": "no_avrf",
+      "seed": 2024,
+      "best_epoch": 107,
+      "validation": {
+        "metric": "Recall@20",
+        "value": 0.09451638019312633
+      },
+      "test": {
+        "Recall@10": 0.06412902734404753,
+        "Recall@20": 0.0944228032696309,
+        "NDCG@10": 0.034491361037149434,
+        "NDCG@20": 0.04218733514174384,
+        "n_users": 39387
+      }
+    },
+    {
+      "id": "clothing-2024-no_imcf",
+      "dataset": "clothing",
+      "variant": "no_imcf",
+      "seed": 2024,
+      "best_epoch": 110,
+      "validation": {
+        "metric": "Recall@20",
+        "value": 0.09223754681519933
+      },
+      "test": {
+        "Recall@10": 0.06270034710509995,
+        "Recall@20": 0.09120014217889151,
+        "NDCG@10": 0.03382080036330702,
+        "NDCG@20": 0.041049163776851416,
+        "n_users": 39387
+      }
+    },
+    {
+      "id": "elec-2024-baseline",
+      "dataset": "elec",
+      "variant": "baseline",
+      "seed": 2024,
+      "best_epoch": 146,
+      "validation": {
+        "metric": "Recall@20",
+        "value": 0.06795461001081787
+      },
+      "test": {
+        "Recall@10": 0.044629375695584124,
+        "Recall@20": 0.06734300366636194,
+        "NDCG@10": 0.024763193592405055,
+        "NDCG@20": 0.030622573204554606,
+        "n_users": 192403
+      }
+    },
+    {
+      "id": "elec-2024-full",
+      "dataset": "elec",
+      "variant": "full",
+      "seed": 2024,
+      "best_epoch": 123,
+      "validation": {
+        "metric": "Recall@20",
+        "value": 0.06757350668720266
+      },
+      "test": {
+        "Recall@10": 0.04454355371216946,
+        "Recall@20": 0.06655467438345668,
+        "NDCG@10": 0.02468263289291487,
+        "NDCG@20": 0.030360584746342865,
+        "n_users": 192403
+      }
+    },
+    {
+      "id": "elec-2024-no_apc",
+      "dataset": "elec",
+      "variant": "no_apc",
+      "seed": 2024,
+      "best_epoch": 122,
+      "validation": {
+        "metric": "Recall@20",
+        "value": 0.06739157895273833
+      },
+      "test": {
+        "Recall@10": 0.044433503419543025,
+        "Recall@20": 0.06644750300643147,
+        "NDCG@10": 0.024606926686906515,
+        "NDCG@20": 0.030295821866800944,
+        "n_users": 192403
+      }
+    },
+    {
+      "id": "elec-2024-no_avrf",
+      "dataset": "elec",
+      "variant": "no_avrf",
+      "seed": 2024,
+      "best_epoch": 122,
+      "validation": {
+        "metric": "Recall@20",
+        "value": 0.06771148817278465
+      },
+      "test": {
+        "Recall@10": 0.0446293247071327,
+        "Recall@20": 0.06713866184435778,
+        "NDCG@10": 0.02473613125057363,
+        "NDCG@20": 0.030546890000135874,
+        "n_users": 192403
+      }
+    },
+    {
+      "id": "elec-2024-no_imcf",
+      "dataset": "elec",
+      "variant": "no_imcf",
+      "seed": 2024,
+      "best_epoch": 147,
+      "validation": {
+        "metric": "Recall@20",
+        "value": 0.06788379475366944
+      },
+      "test": {
+        "Recall@10": 0.04431220127683937,
+        "Recall@20": 0.06698031280078326,
+        "NDCG@10": 0.02459025164506512,
+        "NDCG@20": 0.030440318674380133,
+        "n_users": 192403
+      }
+    },
+    {
+      "id": "microlens-2024-baseline",
+      "dataset": "microlens",
+      "variant": "baseline",
+      "seed": 2024,
+      "best_epoch": 146,
+      "validation": {
+        "metric": "Recall@20",
+        "value": 0.11389489998565808
+      },
+      "test": {
+        "Recall@10": 0.07307939282062625,
+        "Recall@20": 0.11271636986130153,
+        "NDCG@10": 0.037828375256898236,
+        "NDCG@20": 0.04801198943053293,
+        "n_users": 98129
+      }
+    },
+    {
+      "id": "microlens-2024-full",
+      "dataset": "microlens",
+      "variant": "full",
+      "seed": 2024,
+      "best_epoch": 160,
+      "validation": {
+        "metric": "Recall@20",
+        "value": 0.11305820715386182
+      },
+      "test": {
+        "Recall@10": 0.07272281791588009,
+        "Recall@20": 0.11224687654489243,
+        "NDCG@10": 0.037766758207697246,
+        "NDCG@20": 0.047918685341859814,
+        "n_users": 98129
+      }
+    },
+    {
+      "id": "microlens-2024-no_apc",
+      "dataset": "microlens",
+      "variant": "no_apc",
+      "seed": 2024,
+      "best_epoch": 152,
+      "validation": {
+        "metric": "Recall@20",
+        "value": 0.11280583380268491
+      },
+      "test": {
+        "Recall@10": 0.07218778625867762,
+        "Recall@20": 0.11201984443342757,
+        "NDCG@10": 0.03704279252873992,
+        "NDCG@20": 0.04727710919129357,
+        "n_users": 98129
+      }
+    },
+    {
+      "id": "microlens-2024-no_avrf",
+      "dataset": "microlens",
+      "variant": "no_avrf",
+      "seed": 2024,
+      "best_epoch": 147,
+      "validation": {
+        "metric": "Recall@20",
+        "value": 0.11412768394496528
+      },
+      "test": {
+        "Recall@10": 0.07412517164399887,
+        "Recall@20": 0.11288515201221945,
+        "NDCG@10": 0.03816447031445679,
+        "NDCG@20": 0.04811952133821542,
+        "n_users": 98129
+      }
+    },
+    {
+      "id": "microlens-2024-no_imcf",
+      "dataset": "microlens",
+      "variant": "no_imcf",
+      "seed": 2024,
+      "best_epoch": 95,
+      "validation": {
+        "metric": "Recall@20",
+        "value": 0.11141255083183567
+      },
+      "test": {
+        "Recall@10": 0.07251760132942044,
+        "Recall@20": 0.11057680813639804,
+        "NDCG@10": 0.03735598729282295,
+        "NDCG@20": 0.047118632558598425,
+        "n_users": 98129
+      }
+    },
+    {
+      "id": "baby-2025-baseline",
+      "dataset": "baby",
+      "variant": "baseline",
+      "seed": 2025,
+      "best_epoch": 117,
+      "validation": {
+        "metric": "Recall@20",
+        "value": 0.10273463615325276
+      },
+      "test": {
+        "Recall@10": 0.06925755182504992,
+        "Recall@20": 0.10548286375491313,
+        "NDCG@10": 0.03653853369642063,
+        "NDCG@20": 0.045866550725698375,
+        "n_users": 19445
+      }
+    },
+    {
+      "id": "baby-2025-full",
+      "dataset": "baby",
+      "variant": "full",
+      "seed": 2025,
+      "best_epoch": 112,
+      "validation": {
+        "metric": "Recall@20",
+        "value": 0.10095440130281992
+      },
+      "test": {
+        "Recall@10": 0.06668791095764613,
+        "Recall@20": 0.10408667915610574,
+        "NDCG@10": 0.035642408445546885,
+        "NDCG@20": 0.04528095931063637,
+        "n_users": 19445
+      }
+    },
+    {
+      "id": "baby-2025-no_apc",
+      "dataset": "baby",
+      "variant": "no_apc",
+      "seed": 2025,
+      "best_epoch": 75,
+      "validation": {
+        "metric": "Recall@20",
+        "value": 0.10000091834110862
+      },
+      "test": {
+        "Recall@10": 0.06573608100993035,
+        "Recall@20": 0.10151824604640237,
+        "NDCG@10": 0.03479167873497983,
+        "NDCG@20": 0.044013505086643,
+        "n_users": 19445
+      }
+    },
+    {
+      "id": "baby-2025-no_avrf",
+      "dataset": "baby",
+      "variant": "no_avrf",
+      "seed": 2025,
+      "best_epoch": 113,
+      "validation": {
+        "metric": "Recall@20",
+        "value": 0.10321878558571797
+      },
+      "test": {
+        "Recall@10": 0.06797530274645217,
+        "Recall@20": 0.10517436236515691,
+        "NDCG@10": 0.03646438858475946,
+        "NDCG@20": 0.04603916940898813,
+        "n_users": 19445
+      }
+    },
+    {
+      "id": "baby-2025-no_imcf",
+      "dataset": "baby",
+      "variant": "no_imcf",
+      "seed": 2025,
+      "best_epoch": 118,
+      "validation": {
+        "metric": "Recall@20",
+        "value": 0.10107341831049725
+      },
+      "test": {
+        "Recall@10": 0.06736411612729434,
+        "Recall@20": 0.10488427046796807,
+        "NDCG@10": 0.03565551802497484,
+        "NDCG@20": 0.04531328394284041,
+        "n_users": 19445
+      }
+    },
+    {
+      "id": "sports-2025-baseline",
+      "dataset": "sports",
+      "variant": "baseline",
+      "seed": 2025,
+      "best_epoch": 77,
+      "validation": {
+        "metric": "Recall@20",
+        "value": 0.11040972268283572
+      },
+      "test": {
+        "Recall@10": 0.07538488652385499,
+        "Recall@20": 0.1119638097200039,
+        "NDCG@10": 0.04054912856892645,
+        "NDCG@20": 0.04996424068943672,
+        "n_users": 35598
+      }
+    },
+    {
+      "id": "sports-2025-full",
+      "dataset": "sports",
+      "variant": "full",
+      "seed": 2025,
+      "best_epoch": 92,
+      "validation": {
+        "metric": "Recall@20",
+        "value": 0.11048299731788348
+      },
+      "test": {
+        "Recall@10": 0.07339766056056296,
+        "Recall@20": 0.11202324769449327,
+        "NDCG@10": 0.03981250830245602,
+        "NDCG@20": 0.049780878915819886,
+        "n_users": 35598
+      }
+    },
+    {
+      "id": "sports-2025-no_apc",
+      "dataset": "sports",
+      "variant": "no_apc",
+      "seed": 2025,
+      "best_epoch": 94,
+      "validation": {
+        "metric": "Recall@20",
+        "value": 0.10934202504721291
+      },
+      "test": {
+        "Recall@10": 0.07265096264548479,
+        "Recall@20": 0.11046443887965883,
+        "NDCG@10": 0.039343159437943996,
+        "NDCG@20": 0.049121879839897395,
+        "n_users": 35598
+      }
+    },
+    {
+      "id": "sports-2025-no_avrf",
+      "dataset": "sports",
+      "variant": "no_avrf",
+      "seed": 2025,
+      "best_epoch": 107,
+      "validation": {
+        "metric": "Recall@20",
+        "value": 0.11232384395057235
+      },
+      "test": {
+        "Recall@10": 0.0748525532467046,
+        "Recall@20": 0.11354590546820448,
+        "NDCG@10": 0.040100476267697686,
+        "NDCG@20": 0.05005623729441448,
+        "n_users": 35598
+      }
+    },
+    {
+      "id": "sports-2025-no_imcf",
+      "dataset": "sports",
+      "variant": "no_imcf",
+      "seed": 2025,
+      "best_epoch": 112,
+      "validation": {
+        "metric": "Recall@20",
+        "value": 0.11094180058302416
+      },
+      "test": {
+        "Recall@10": 0.07340668996028847,
+        "Recall@20": 0.11150240739403056,
+        "NDCG@10": 0.03994355362945928,
+        "NDCG@20": 0.04977153311017401,
+        "n_users": 35598
+      }
+    },
+    {
+      "id": "clothing-2025-baseline",
+      "dataset": "clothing",
+      "variant": "baseline",
+      "seed": 2025,
+      "best_epoch": 75,
+      "validation": {
+        "metric": "Recall@20",
+        "value": 0.09350208613671177
+      },
+      "test": {
+        "Recall@10": 0.06390167410808739,
+        "Recall@20": 0.09238357592002197,
+        "NDCG@10": 0.03476975255680351,
+        "NDCG@20": 0.04201519200144851,
+        "n_users": 39387
+      }
+    },
+    {
+      "id": "clothing-2025-full",
+      "dataset": "clothing",
+      "variant": "full",
+      "seed": 2025,
+      "best_epoch": 152,
+      "validation": {
+        "metric": "Recall@20",
+        "value": 0.09212472812518513
+      },
+      "test": {
+        "Recall@10": 0.06092655662310625,
+        "Recall@20": 0.08991309677957555,
+        "NDCG@10": 0.03284036477226717,
+        "NDCG@20": 0.04018079812369139,
+        "n_users": 39387
+      }
+    },
+    {
+      "id": "clothing-2025-no_apc",
+      "dataset": "clothing",
+      "variant": "no_apc",
+      "seed": 2025,
+      "best_epoch": 158,
+      "validation": {
+        "metric": "Recall@20",
+        "value": 0.0918919948206261
+      },
+      "test": {
+        "Recall@10": 0.06104413227956529,
+        "Recall@20": 0.08990626590596126,
+        "NDCG@10": 0.03280019203711178,
+        "NDCG@20": 0.040116943019604785,
+        "n_users": 39387
+      }
+    },
+    {
+      "id": "clothing-2025-no_avrf",
+      "dataset": "clothing",
+      "variant": "no_avrf",
+      "seed": 2025,
+      "best_epoch": 71,
+      "validation": {
+        "metric": "Recall@20",
+        "value": 0.09392142923638089
+      },
+      "test": {
+        "Recall@10": 0.06303421360927644,
+        "Recall@20": 0.0925955748029021,
+        "NDCG@10": 0.034381809678700095,
+        "NDCG@20": 0.041872094837654424,
+        "n_users": 39387
+      }
+    },
+    {
+      "id": "clothing-2025-no_imcf",
+      "dataset": "clothing",
+      "variant": "no_imcf",
+      "seed": 2025,
+      "best_epoch": 101,
+      "validation": {
+        "metric": "Recall@20",
+        "value": 0.09159562604607925
+      },
+      "test": {
+        "Recall@10": 0.060188882722967574,
+        "Recall@20": 0.08900047997465928,
+        "NDCG@10": 0.032397985679160766,
+        "NDCG@20": 0.039688344897133424,
+        "n_users": 39387
+      }
+    },
+    {
+      "id": "elec-2025-baseline",
+      "dataset": "elec",
+      "variant": "baseline",
+      "seed": 2025,
+      "best_epoch": 139,
+      "validation": {
+        "metric": "Recall@20",
+        "value": 0.06855514666759419
+      },
+      "test": {
+        "Recall@10": 0.044862833040932346,
+        "Recall@20": 0.0677559839519744,
+        "NDCG@10": 0.02485199472238925,
+        "NDCG@20": 0.030752940565918492,
+        "n_users": 192403
+      }
+    },
+    {
+      "id": "elec-2025-full",
+      "dataset": "elec",
+      "variant": "full",
+      "seed": 2025,
+      "best_epoch": 95,
+      "validation": {
+        "metric": "Recall@20",
+        "value": 0.06731247254039861
+      },
+      "test": {
+        "Recall@10": 0.04392120576154063,
+        "Recall@20": 0.06621954462750604,
+        "NDCG@10": 0.024377083123478735,
+        "NDCG@20": 0.030136829376636545,
+        "n_users": 192403
+      }
+    },
+    {
+      "id": "elec-2025-no_apc",
+      "dataset": "elec",
+      "variant": "no_apc",
+      "seed": 2025,
+      "best_epoch": 107,
+      "validation": {
+        "metric": "Recall@20",
+        "value": 0.06735247790255094
+      },
+      "test": {
+        "Recall@10": 0.043870199660479246,
+        "Recall@20": 0.06626549535195594,
+        "NDCG@10": 0.02420986427392234,
+        "NDCG@20": 0.029997803844728877,
+        "n_users": 192403
+      }
+    },
+    {
+      "id": "elec-2025-no_avrf",
+      "dataset": "elec",
+      "variant": "no_avrf",
+      "seed": 2025,
+      "best_epoch": 127,
+      "validation": {
+        "metric": "Recall@20",
+        "value": 0.06780974426886772
+      },
+      "test": {
+        "Recall@10": 0.044310450226611994,
+        "Recall@20": 0.06727247024533073,
+        "NDCG@10": 0.024580219341330273,
+        "NDCG@20": 0.030508130768809084,
+        "n_users": 192403
+      }
+    },
+    {
+      "id": "elec-2025-no_imcf",
+      "dataset": "elec",
+      "variant": "no_imcf",
+      "seed": 2025,
+      "best_epoch": 107,
+      "validation": {
+        "metric": "Recall@20",
+        "value": 0.06728380151621981
+      },
+      "test": {
+        "Recall@10": 0.043776664135154665,
+        "Recall@20": 0.06619727994172092,
+        "NDCG@10": 0.024276314191546362,
+        "NDCG@20": 0.030071207012047702,
+        "n_users": 192403
+      }
+    },
+    {
+      "id": "microlens-2025-baseline",
+      "dataset": "microlens",
+      "variant": "baseline",
+      "seed": 2025,
+      "best_epoch": 137,
+      "validation": {
+        "metric": "Recall@20",
+        "value": 0.11304635138300523
+      },
+      "test": {
+        "Recall@10": 0.0738280908259966,
+        "Recall@20": 0.1127627663274618,
+        "NDCG@10": 0.038055953456608824,
+        "NDCG@20": 0.04807589599614281,
+        "n_users": 98129
+      }
+    },
+    {
+      "id": "microlens-2025-full",
+      "dataset": "microlens",
+      "variant": "full",
+      "seed": 2025,
+      "best_epoch": 149,
+      "validation": {
+        "metric": "Recall@20",
+        "value": 0.11278572304262977
+      },
+      "test": {
+        "Recall@10": 0.07301730393986504,
+        "Recall@20": 0.11234668380440788,
+        "NDCG@10": 0.03779953708615993,
+        "NDCG@20": 0.047904178282490405,
+        "n_users": 98129
+      }
+    },
+    {
+      "id": "microlens-2025-no_apc",
+      "dataset": "microlens",
+      "variant": "no_apc",
+      "seed": 2025,
+      "best_epoch": 212,
+      "validation": {
+        "metric": "Recall@20",
+        "value": 0.11461194081966229
+      },
+      "test": {
+        "Recall@10": 0.07353123366763574,
+        "Recall@20": 0.11215054985245249,
+        "NDCG@10": 0.03795018706039672,
+        "NDCG@20": 0.04788021387495149,
+        "n_users": 98129
+      }
+    },
+    {
+      "id": "microlens-2025-no_avrf",
+      "dataset": "microlens",
+      "variant": "no_avrf",
+      "seed": 2025,
+      "best_epoch": 231,
+      "validation": {
+        "metric": "Recall@20",
+        "value": 0.11502569239298444
+      },
+      "test": {
+        "Recall@10": 0.07498103403569673,
+        "Recall@20": 0.11437372544333793,
+        "NDCG@10": 0.038834885662547815,
+        "NDCG@20": 0.04894881421442433,
+        "n_users": 98129
+      }
+    },
+    {
+      "id": "microlens-2025-no_imcf",
+      "dataset": "microlens",
+      "variant": "no_imcf",
+      "seed": 2025,
+      "best_epoch": 139,
+      "validation": {
+        "metric": "Recall@20",
+        "value": 0.11309877266131278
+      },
+      "test": {
+        "Recall@10": 0.07329392596655586,
+        "Recall@20": 0.11212593251605678,
+        "NDCG@10": 0.0378575397733998,
+        "NDCG@20": 0.04781745531561926,
+        "n_users": 98129
+      }
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 # DAMPS 复现项目架构
 
-目标：按 [DAMPS.pdf](../DAMPS.pdf) 复现频域多模态表示校准，并在一致的数据和评估协议下比较 backbone 与 backbone + DAMPS。当前完成 MGCN 接入及统一实验框架，公式与歧义见 [DAMPS 实现说明](damps.md)，MGCN 原始约定见 [backbone 文档](mgcn.md)。其他 backbone 和 MicroLens 属于后续扩展。
+目标：按 [DAMPS.pdf](../DAMPS.pdf) 复现频域多模态表示校准，并在一致的数据和评估协议下比较 backbone 与 backbone + DAMPS。当前已接入 MGCN 与 [LIRDRec](lirdrec.md)，后者已完成含 MicroLens 的五数据集、五组对照/消融、三种子共 75 组正式实验；结果与实现局限见 [LIRDRec 实验结果](results/lirdrec/)。公式与歧义见 [DAMPS 实现说明](damps.md)，MGCN 原始约定见 [backbone 文档](mgcn.md)。以下数据流以 MGCN 为例。
 
 ## 分层与数据流
 
@@ -29,6 +29,7 @@ DAMPS 是模型内的 `nn.Module`，接收两个 `[n_items, embedding_dim]` 投�
 | --- | --- |
 | `src/mmrecsys/nn/damps.py` | 论文频谱校准、组件消融与可学习参数 |
 | `src/mmrecsys/models/mgcn.py` | MGCNConfig、模态投影后的 DAMPS 接入及 backbone 计算 |
+| `src/mmrecsys/models/lirdrec.py` | LIRDRecConfig、固定 DCT 分支、PWC 状态及投影后的 DAMPS 接入 |
 | `src/mmrecsys/models/base.py` | Recommender、LossOutput、Scorer 接口 |
 | `src/mmrecsys/registry.py` | backbone 工厂、配置解析、模态与 batch 需求 |
 | `src/mmrecsys/data/` | 发布数据校验、训练评估视图隔离、训练负采样 |
@@ -36,9 +37,12 @@ DAMPS 是模型内的 `nn.Module`，接收两个 `[n_items, embedding_dim]` 投�
 | `src/mmrecsys/engine/` | 训练、评估、排序指标与 checkpoint |
 | `src/mmrecsys/experiment/search.py` | 配对验证提升搜索、候选跳过测试评估、恢复与最佳配置导出 |
 | `src/mmrecsys/experiment/ablation.py` | 同 backbone 配置、多种子配对消融与汇总 |
+| `src/mmrecsys/experiment/lirdrec_suite.py` | LIRDRec 五数据集五组实验、单卡队列、恢复及跨种子汇总 |
 | `src/mmrecsys/experiment/` | 实验组装、设备、种子、缓存和产物 |
 | `configs/experiments/damps_mgcn_*.yaml` | 四个 Amazon 数据集的 DAMPS + MGCN 配置 |
 | `configs/experiments/mgcn_*.yaml` | MGCN 基线配置 |
+| `configs/experiments/{damps_,}lirdrec_*.yaml` | 五数据集的 LIRDRec 基线与 DAMPS 配置 |
+| `docs/results/lirdrec/` | 提交到版本控制的精选结果与论文对照 |
 | `tests/test_damps.py` | 独立公式与模块集成测试 |
 | `tests/test_experiment.py` | 基线和 DAMPS 的完整小数据训练、评估、恢复 |
 | `MMRec/` | 参考代码，不作为运行依赖 |
@@ -59,9 +63,9 @@ DAMPS 在模型构造时用全部物品的初始投影一次性估计 AVRF 权�
 
 ## 配置、产物和恢复
 
-配置优先级：default < dataset < model < experiment < CLI。未知字段报错，相对路径按项目根解析。`model.name=mgcn` 表示 backbone，`model.damps_enabled` 控制校准；三个组件开关与 epsilon 均属于模型配置。添加其他 backbone 时复用 DAMPS 模块，在其对应投影之后接入，不复制训练器。
+配置优先级：default < dataset < model < experiment < CLI。未知字段报错，相对路径按项目根解析。`model.name` 选择 `mgcn` 或 `lirdrec` backbone，`model.damps_enabled` 控制校准；三个组件开关与 epsilon 均属于模型配置。添加其他 backbone 时复用 DAMPS 模块，在其对应投影之后接入，不复制训练器。
 
-启用 DAMPS 的新运行建立独立 `runs/damps-mgcn-<dataset>-<time>-<id>/`；关闭 DAMPS 时使用 `runs/mgcn-<dataset>-<time>-<id>/`。目录保存最终 config、manifest、逐轮指标、best.pt、last.pt 和 result.json，具体组件配置以 config.yaml 为准。已有目录不重命名，断点恢复继续使用原目录。
+新运行目录以 backbone 名称命名，启用 DAMPS 时增加 `damps-` 前缀，例如 `runs/damps-lirdrec-<dataset>-<time>-<id>/`。目录保存最终 config、manifest、逐轮指标、best.pt、last.pt 和 result.json，具体组件配置以 config.yaml 为准。已有目录不重命名，断点恢复继续使用原目录。原始数据、缓存、运行目录与 checkpoint 不提交 Git，精选结果单独保存在 `docs/results/lirdrec/`。
 
 checkpoint 保存模型、优化器、调度器、采样器、随机状态、epoch 和早停状态；恢复检查配置与数据指纹，仅允许延长训练轮数、变更产物位置等既有允许项，不允许中途切换 DAMPS 组件。承诺 epoch 边界恢复，不承诺跨设备逐位一致。新增 DAMPS 配置字段后，旧版本 checkpoint 的配置字典可能不兼容；没有自动迁移旧 checkpoint。
 

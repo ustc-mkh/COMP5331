@@ -1,0 +1,171 @@
+{
+  "source": {
+    "title": "Enhancing Multimodal Recommendation via Multimodal Representation Calibration in Spectral Domain",
+    "pdf_sha256": "def42e62de471de7abc50c18bcb142255f4cd0bcf2cc2a5d68af7ad9151d73d4",
+    "table": "Table 3",
+    "physical_pdf_page_1based": 8,
+    "printed_page": 1466,
+    "pdf_path": "../../../DAMPS.pdf",
+    "path_base": "this JSON file directory"
+  },
+  "scope": {
+    "model": "LIRDRec",
+    "paper_columns": {
+      "no_apc": "-APC",
+      "no_avrf": "-AVRF",
+      "no_imcf": "-IMCF",
+      "full": "+Ours (DAMPS)"
+    },
+    "metric_order": [
+      "Recall@10",
+      "Recall@20",
+      "NDCG@10",
+      "NDCG@20"
+    ],
+    "dataset_labels": {
+      "baby": "Baby",
+      "sports": "Sports",
+      "clothing": "Clothing",
+      "elec": "Electronics",
+      "microlens": "Microlens"
+    },
+    "value_scale": "fraction (not percent)",
+    "notes": [
+      "Paper-reported component-removal ablations, not local reproduced measurements.",
+      "These Table 3 LIRDRec columns are distinct from Figure 3, which only illustrates individual-component additions to MGCN.",
+      "All twenty full (+Ours) metrics exactly equal the corresponding Table 2 values."
+    ]
+  },
+  "datasets": {
+    "baby": {
+      "no_apc": {
+        "Recall@10": 0.0686,
+        "Recall@20": 0.1055,
+        "NDCG@10": 0.0371,
+        "NDCG@20": 0.0465
+      },
+      "no_avrf": {
+        "Recall@10": 0.0687,
+        "Recall@20": 0.1051,
+        "NDCG@10": 0.0366,
+        "NDCG@20": 0.0458
+      },
+      "no_imcf": {
+        "Recall@10": 0.0684,
+        "Recall@20": 0.1037,
+        "NDCG@10": 0.0368,
+        "NDCG@20": 0.0458
+      },
+      "full": {
+        "Recall@10": 0.0692,
+        "Recall@20": 0.1061,
+        "NDCG@10": 0.0372,
+        "NDCG@20": 0.0467
+      }
+    },
+    "sports": {
+      "no_apc": {
+        "Recall@10": 0.0747,
+        "Recall@20": 0.1135,
+        "NDCG@10": 0.0407,
+        "NDCG@20": 0.0508
+      },
+      "no_avrf": {
+        "Recall@10": 0.0742,
+        "Recall@20": 0.1137,
+        "NDCG@10": 0.0407,
+        "NDCG@20": 0.0508
+      },
+      "no_imcf": {
+        "Recall@10": 0.0744,
+        "Recall@20": 0.1138,
+        "NDCG@10": 0.0406,
+        "NDCG@20": 0.0508
+      },
+      "full": {
+        "Recall@10": 0.0765,
+        "Recall@20": 0.116,
+        "NDCG@10": 0.042,
+        "NDCG@20": 0.0522
+      }
+    },
+    "clothing": {
+      "no_apc": {
+        "Recall@10": 0.0659,
+        "Recall@20": 0.098,
+        "NDCG@10": 0.0364,
+        "NDCG@20": 0.0446
+      },
+      "no_avrf": {
+        "Recall@10": 0.066,
+        "Recall@20": 0.0981,
+        "NDCG@10": 0.0365,
+        "NDCG@20": 0.0446
+      },
+      "no_imcf": {
+        "Recall@10": 0.0661,
+        "Recall@20": 0.098,
+        "NDCG@10": 0.0365,
+        "NDCG@20": 0.0447
+      },
+      "full": {
+        "Recall@10": 0.0679,
+        "Recall@20": 0.0994,
+        "NDCG@10": 0.0372,
+        "NDCG@20": 0.0449
+      }
+    },
+    "elec": {
+      "no_apc": {
+        "Recall@10": 0.0451,
+        "Recall@20": 0.0676,
+        "NDCG@10": 0.025,
+        "NDCG@20": 0.0306
+      },
+      "no_avrf": {
+        "Recall@10": 0.0448,
+        "Recall@20": 0.067,
+        "NDCG@10": 0.0249,
+        "NDCG@20": 0.0306
+      },
+      "no_imcf": {
+        "Recall@10": 0.0448,
+        "Recall@20": 0.0673,
+        "NDCG@10": 0.0248,
+        "NDCG@20": 0.0306
+      },
+      "full": {
+        "Recall@10": 0.0457,
+        "Recall@20": 0.0684,
+        "NDCG@10": 0.0254,
+        "NDCG@20": 0.0313
+      }
+    },
+    "microlens": {
+      "no_apc": {
+        "Recall@10": 0.0819,
+        "Recall@20": 0.1218,
+        "NDCG@10": 0.0424,
+        "NDCG@20": 0.0527
+      },
+      "no_avrf": {
+        "Recall@10": 0.0822,
+        "Recall@20": 0.1224,
+        "NDCG@10": 0.0426,
+        "NDCG@20": 0.0526
+      },
+      "no_imcf": {
+        "Recall@10": 0.082,
+        "Recall@20": 0.1218,
+        "NDCG@10": 0.0424,
+        "NDCG@20": 0.0526
+      },
+      "full": {
+        "Recall@10": 0.0827,
+        "Recall@20": 0.1239,
+        "NDCG@10": 0.043,
+        "NDCG@20": 0.0534
+      }
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "source": "Training-time manifest.json files from all 75 runs; not the export machine environment.",
+  "n_manifests_checked": 75,
+  "all_recorded_versions_identical": true,
+  "dependencies": {
+    "PyYAML": "6.0.2",
+    "numpy": "1.26.4",
+    "scipy": "1.13.1",
+    "torch": "2.4.1+cu124"
+  },
+  "device_name": "NVIDIA A100 80GB PCIe",
+  "python": "3.10.12",
+  "unrecorded": [
+    "NVIDIA driver version",
+    "operating system release",
+    "exact Python package lock"
+  ],
+  "notes": [
+    "The CUDA build tag is included in the recorded torch version. No separately recorded driver/toolkit version is inferred.",
+    "No physical GPU UUID, device serial, process ID, hostname or user path is included."
+  ]
+}

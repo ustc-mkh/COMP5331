@@ -1,0 +1,141 @@
+{
+  "scope": "Recorded effective configuration for all 75 runs; artifact and data locations omitted.",
+  "seeds": [
+    999,
+    2024,
+    2025
+  ],
+  "common_configuration": {
+    "data": {
+      "features": {
+        "image": "image_feat.npy",
+        "text": "text_feat.npy"
+      },
+      "item_field": "itemID",
+      "separator": "\t",
+      "split_field": "x_label",
+      "user_field": "userID"
+    },
+    "eval": {
+      "history": "train",
+      "item_chunk_size": 4096,
+      "mode": "max",
+      "monitor": "Recall@20",
+      "require_train_user": true,
+      "topk": [
+        10,
+        20
+      ],
+      "user_batch_size": 256
+    },
+    "model": {
+      "damps_eps": 1e-06,
+      "decay_base": 0.9,
+      "decay_weight": 0.9,
+      "dropout": 0.0,
+      "embedding_dim": 64,
+      "knn_chunk_size": 512,
+      "knn_k": 10,
+      "mm_image_weight": 0.1,
+      "n_item_layers": 1,
+      "n_ui_layers": 2,
+      "name": "lirdrec",
+      "reg_weight": 0.0001
+    },
+    "optimizer": {
+      "decay_base": 1.0,
+      "decay_steps": 50,
+      "lr": 0.0001,
+      "name": "adam",
+      "weight_decay": 0.0
+    },
+    "runtime": {
+      "deterministic": true,
+      "device": "cuda:0",
+      "num_threads": 2
+    },
+    "train": {
+      "batch_size": 2048,
+      "epochs": 1000,
+      "eval_every": 1,
+      "patience": 20,
+      "preload_to_device": true
+    }
+  },
+  "dataset_data_overrides": {
+    "baby": {
+      "name": "baby",
+      "interactions": "baby.inter"
+    },
+    "sports": {
+      "name": "sports",
+      "interactions": "sports.inter"
+    },
+    "clothing": {
+      "name": "clothing",
+      "interactions": "clothing.inter"
+    },
+    "elec": {
+      "name": "elec",
+      "interactions": "elec.inter"
+    },
+    "microlens": {
+      "name": "microlens",
+      "interactions": "microlens.inter"
+    }
+  },
+  "variant_model_overrides": {
+    "baseline": {
+      "damps_enabled": false,
+      "damps_apc": true,
+      "damps_avrf": true,
+      "damps_imcf": true
+    },
+    "full": {
+      "damps_enabled": true,
+      "damps_apc": true,
+      "damps_avrf": true,
+      "damps_imcf": true
+    },
+    "no_apc": {
+      "damps_enabled": true,
+      "damps_apc": false,
+      "damps_avrf": true,
+      "damps_imcf": true
+    },
+    "no_avrf": {
+      "damps_enabled": true,
+      "damps_apc": true,
+      "damps_avrf": false,
+      "damps_imcf": true
+    },
+    "no_imcf": {
+      "damps_enabled": true,
+      "damps_apc": true,
+      "damps_avrf": true,
+      "damps_imcf": false
+    }
+  },
+  "evaluation_protocol": {
+    "aggregation": "macro_user_mean",
+    "history": "train",
+    "item_chunk_size": 4096,
+    "mode": "max",
+    "monitor": "Recall@20",
+    "padding": "excluded",
+    "ranking": "all_items",
+    "require_train_user": true,
+    "tie_break": "item_id_ascending",
+    "topk": [
+      10,
+      20
+    ],
+    "user_batch_size": 256
+  },
+  "notes": [
+    "Merge common_configuration with the dataset data overrides and variant model overrides, then set the seed.",
+    "Paths for data.root, runtime.output_root and runtime.cache_root are intentionally omitted.",
+    "Runtime device is the logical device inside each single-GPU worker, not a physical GPU identity.",
+    "Scheduling changed between serial and parallel workers; these model, optimizer, training and evaluation settings stayed fixed."
+  ]
+}

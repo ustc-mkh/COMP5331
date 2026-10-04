@@ -1,0 +1,23 @@
+{
+  "suite_id": "lirdrec-five-datasets-20260930",
+  "suite_created_at_utc": "2026-09-30T04:03:39.869438+00:00",
+  "suite_completed_at_utc": "2026-10-02T21:48:04.272061+00:00",
+  "complete": true,
+  "n_completed_runs": 75,
+  "source_artifact_sha256": {
+    "suite.json": "3a1026ec6211278cf054f24d4b0b22632ddac7358e4b0a4bb00afd219a21e75d",
+    "results.json": "9af5294db7c988cd4ddf88d68856e074ab3445cb46bec50770d938d649413b10",
+    "summary.json": "67421fceea0b54c64b456a38794767307525a07328dd90f7b67a4127a497fa80",
+    "summary.csv": "d1018ca332a4b82800119d635ded569af2e069103ee6f7bf1dce91f0566c5f50",
+    "three-seeds-vs-paper.csv": "c0b09db214d566dd21974a29a08f7e7fc0de7d6ea4fdafd23dddbdd0ffd9ac63",
+    "three-seeds-damps-gains.csv": "3b423ba510167af4bc2cc77c573345efcf2b185aa23db4509fc164cdaf353865",
+    "paper-reference.json": "94711519537165bf8cf443646ac362ab3be0b907f8eb4207f096e663c1f99aed",
+    "paper-ablation-reference.json": "227814b5885b3f034c10794b22c5c0feaed243b6fe669f0036ca1a8944245d4c"
+  },
+  "notes": [
+    "Artifact names identify the original suite inputs; original machine-specific state files are not included.",
+    "All 75 suite result records were checked against their on-disk result.json before export.",
+    "Portable copies remove physical paths and operational identities; original artifact hashes therefore need not equal rewritten file hashes.",
+    "CSV line endings are normalized to LF for version control; numeric values and rows are unchanged."
+  ]
+}
