@@ -1,6 +1,6 @@
 # LIRDRec author configuration, expressed through the shared experiment interface.
 # Source: enoche/LIRDRec, src/configs/model/LIRDRec.yaml.
-# These are starting settings for a smoke run, not a claim of tuned paper results.
+# Fixed settings used for the 75-run project comparison; not verified paper-optimal settings.
 optimizer:
   lr: 0.0001
   weight_decay: 0.0

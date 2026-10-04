@@ -1,0 +1,2129 @@
+{
+  "complete": true,
+  "metrics": [
+    {
+      "dataset": "baby",
+      "delta_mean": null,
+      "delta_sample_std": null,
+      "mean": 0.03612822653815834,
+      "metric": "NDCG@10",
+      "n_pairs": 0,
+      "n_runs": 3,
+      "paired_seeds": [],
+      "relative_gain_pct": null,
+      "sample_std": 0.0003567796589078714,
+      "seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "variant": "baseline"
+    },
+    {
+      "dataset": "baby",
+      "delta_mean": null,
+      "delta_sample_std": null,
+      "mean": 0.045783012979190574,
+      "metric": "NDCG@20",
+      "n_pairs": 0,
+      "n_runs": 3,
+      "paired_seeds": [],
+      "relative_gain_pct": null,
+      "sample_std": 8.55089971187925e-05,
+      "seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "variant": "baseline"
+    },
+    {
+      "dataset": "baby",
+      "delta_mean": null,
+      "delta_sample_std": null,
+      "mean": 0.06792461031725626,
+      "metric": "Recall@10",
+      "n_pairs": 0,
+      "n_runs": 3,
+      "paired_seeds": [],
+      "relative_gain_pct": null,
+      "sample_std": 0.0013755633325524264,
+      "seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "variant": "baseline"
+    },
+    {
+      "dataset": "baby",
+      "delta_mean": null,
+      "delta_sample_std": null,
+      "mean": 0.10551684979687037,
+      "metric": "Recall@20",
+      "n_pairs": 0,
+      "n_runs": 3,
+      "paired_seeds": [],
+      "relative_gain_pct": null,
+      "sample_std": 0.0009031876746565381,
+      "seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "variant": "baseline"
+    },
+    {
+      "dataset": "baby",
+      "delta_mean": -0.000992150250497,
+      "delta_sample_std": 0.00020689729123503638,
+      "mean": 0.03513607628766134,
+      "metric": "NDCG@10",
+      "n_pairs": 3,
+      "n_runs": 3,
+      "paired_seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "relative_gain_pct": -2.746191400923317,
+      "sample_std": 0.000491268514573585,
+      "seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "variant": "full"
+    },
+    {
+      "dataset": "baby",
+      "delta_mean": -0.0009867841944386317,
+      "delta_sample_std": 0.00034763439957526777,
+      "mean": 0.044796228784751944,
+      "metric": "NDCG@20",
+      "n_pairs": 3,
+      "n_runs": 3,
+      "paired_seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "relative_gain_pct": -2.1553500528397893,
+      "sample_std": 0.00042365638902609916,
+      "seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "variant": "full"
+    },
+    {
+      "dataset": "baby",
+      "delta_mean": -0.0021819302379857825,
+      "delta_sample_std": 0.0007627302283607195,
+      "mean": 0.06574268007927048,
+      "metric": "Recall@10",
+      "n_pairs": 3,
+      "n_runs": 3,
+      "paired_seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "relative_gain_pct": -3.212282305035856,
+      "sample_std": 0.0008210324846141972,
+      "seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "variant": "full"
+    },
+    {
+      "dataset": "baby",
+      "delta_mean": -0.002270180035672457,
+      "delta_sample_std": 0.0016052871277556086,
+      "mean": 0.10324666976119791,
+      "metric": "Recall@20",
+      "n_pairs": 3,
+      "n_runs": 3,
+      "paired_seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "relative_gain_pct": -2.151485795911044,
+      "sample_std": 0.0008901204470944345,
+      "seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "variant": "full"
+    },
+    {
+      "dataset": "baby",
+      "delta_mean": -0.00113206752358166,
+      "delta_sample_std": 0.0005335734700405139,
+      "mean": 0.03499615901457668,
+      "metric": "NDCG@10",
+      "n_pairs": 3,
+      "n_runs": 3,
+      "paired_seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "relative_gain_pct": -3.133471061431647,
+      "sample_std": 0.00017711024909906702,
+      "seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "variant": "no_apc"
+    },
+    {
+      "dataset": "baby",
+      "delta_mean": -0.001369333820638613,
+      "delta_sample_std": 0.00042332730367520736,
+      "mean": 0.04441367915855196,
+      "metric": "NDCG@20",
+      "n_pairs": 3,
+      "n_runs": 3,
+      "paired_seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "relative_gain_pct": -2.9909211551039827,
+      "sample_std": 0.0003469044186680721,
+      "seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "variant": "no_apc"
+    },
+    {
+      "dataset": "baby",
+      "delta_mean": -0.002438216050969976,
+      "delta_sample_std": 0.0016823143217352269,
+      "mean": 0.06548639426628629,
+      "metric": "Recall@10",
+      "n_pairs": 3,
+      "n_runs": 3,
+      "paired_seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "relative_gain_pct": -3.5895915185700327,
+      "sample_std": 0.0006834862785541077,
+      "seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "variant": "no_apc"
+    },
+    {
+      "dataset": "baby",
+      "delta_mean": -0.0034715270919950802,
+      "delta_sample_std": 0.001667390821645456,
+      "mean": 0.10204532270487529,
+      "metric": "Recall@20",
+      "n_pairs": 3,
+      "n_runs": 3,
+      "paired_seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "relative_gain_pct": -3.2900215450689525,
+      "sample_std": 0.0008432924055380405,
+      "seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "variant": "no_apc"
+    },
+    {
+      "dataset": "baby",
+      "delta_mean": 0.00013762439452439054,
+      "delta_sample_std": 0.00024310940419219442,
+      "mean": 0.03626585093268273,
+      "metric": "NDCG@10",
+      "n_pairs": 3,
+      "n_runs": 3,
+      "paired_seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "relative_gain_pct": 0.38093315867313,
+      "sample_std": 0.00021406995029039835,
+      "seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "variant": "no_avrf"
+    },
+    {
+      "dataset": "baby",
+      "delta_mean": 5.0242615436559466e-05,
+      "delta_sample_std": 0.0003289367589992894,
+      "mean": 0.045833255594627136,
+      "metric": "NDCG@20",
+      "n_pairs": 3,
+      "n_runs": 3,
+      "paired_seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "relative_gain_pct": 0.10974073606600747,
+      "sample_std": 0.00032008835983240227,
+      "seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "variant": "no_avrf"
+    },
+    {
+      "dataset": "baby",
+      "delta_mean": 8.971172252221493e-05,
+      "delta_sample_std": 0.0017585045729950105,
+      "mean": 0.06801432203977847,
+      "metric": "Recall@10",
+      "n_pairs": 3,
+      "n_runs": 3,
+      "paired_seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "relative_gain_pct": 0.13207543201675703,
+      "sample_std": 0.0005493511474125664,
+      "seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "variant": "no_avrf"
+    },
+    {
+      "dataset": "baby",
+      "delta_mean": -0.0003186643646916204,
+      "delta_sample_std": 0.0020864672996210865,
+      "mean": 0.10519818543217875,
+      "metric": "Recall@20",
+      "n_pairs": 3,
+      "n_runs": 3,
+      "paired_seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "relative_gain_pct": -0.3020032964451446,
+      "sample_std": 0.0011839205395977237,
+      "seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "variant": "no_avrf"
+    },
+    {
+      "dataset": "baby",
+      "delta_mean": -0.0006431209251445252,
+      "delta_sample_std": 0.0006190010639817911,
+      "mean": 0.035485105613013816,
+      "metric": "NDCG@10",
+      "n_pairs": 3,
+      "n_runs": 3,
+      "paired_seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "relative_gain_pct": -1.7801065448514783,
+      "sample_std": 0.0005704575687071703,
+      "seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "variant": "no_imcf"
+    },
+    {
+      "dataset": "baby",
+      "delta_mean": -0.001029788343283491,
+      "delta_sample_std": 0.0006974566806687109,
+      "mean": 0.044753224635907085,
+      "metric": "NDCG@20",
+      "n_pairs": 3,
+      "n_runs": 3,
+      "paired_seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "relative_gain_pct": -2.2492804126970705,
+      "sample_std": 0.0007086668842604168,
+      "seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "variant": "no_imcf"
+    },
+    {
+      "dataset": "baby",
+      "delta_mean": -0.0011947005595758509,
+      "delta_sample_std": 0.002174536398876099,
+      "mean": 0.06672990975768041,
+      "metric": "Recall@10",
+      "n_pairs": 3,
+      "n_runs": 3,
+      "paired_seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "relative_gain_pct": -1.7588625889729057,
+      "sample_std": 0.0014487147503055913,
+      "seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "variant": "no_imcf"
+    },
+    {
+      "dataset": "baby",
+      "delta_mean": -0.0028651086159443054,
+      "delta_sample_std": 0.0029336989235937924,
+      "mean": 0.10265174118092606,
+      "metric": "Recall@20",
+      "n_pairs": 3,
+      "n_runs": 3,
+      "paired_seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "relative_gain_pct": -2.7153090918274216,
+      "sample_std": 0.002317416289571766,
+      "seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "variant": "no_imcf"
+    },
+    {
+      "dataset": "sports",
+      "delta_mean": null,
+      "delta_sample_std": null,
+      "mean": 0.04034177955650632,
+      "metric": "NDCG@10",
+      "n_pairs": 0,
+      "n_runs": 3,
+      "paired_seeds": [],
+      "relative_gain_pct": null,
+      "sample_std": 0.00018493759952474502,
+      "seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "variant": "baseline"
+    },
+    {
+      "dataset": "sports",
+      "delta_mean": null,
+      "delta_sample_std": null,
+      "mean": 0.05030776176891302,
+      "metric": "NDCG@20",
+      "n_pairs": 0,
+      "n_runs": 3,
+      "paired_seeds": [],
+      "relative_gain_pct": null,
+      "sample_std": 0.00033687014129473244,
+      "seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "variant": "baseline"
+    },
+    {
+      "dataset": "sports",
+      "delta_mean": null,
+      "delta_sample_std": null,
+      "mean": 0.07487003238098805,
+      "metric": "Recall@10",
+      "n_pairs": 0,
+      "n_runs": 3,
+      "paired_seeds": [],
+      "relative_gain_pct": null,
+      "sample_std": 0.0004501623911074521,
+      "seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "variant": "baseline"
+    },
+    {
+      "dataset": "sports",
+      "delta_mean": null,
+      "delta_sample_std": null,
+      "mean": 0.11356441016393823,
+      "metric": "Recall@20",
+      "n_pairs": 0,
+      "n_runs": 3,
+      "paired_seeds": [],
+      "relative_gain_pct": null,
+      "sample_std": 0.001438416889031699,
+      "seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "variant": "baseline"
+    },
+    {
+      "dataset": "sports",
+      "delta_mean": -0.0007666490672969493,
+      "delta_sample_std": 5.147778575113245e-05,
+      "mean": 0.039575130489209374,
+      "metric": "NDCG@10",
+      "n_pairs": 3,
+      "n_runs": 3,
+      "paired_seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "relative_gain_pct": -1.9003848509536165,
+      "sample_std": 0.0002238791562799477,
+      "seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "variant": "full"
+    },
+    {
+      "dataset": "sports",
+      "delta_mean": -0.0007653901435707202,
+      "delta_sample_std": 0.000596001352243208,
+      "mean": 0.0495423716253423,
+      "metric": "NDCG@20",
+      "n_pairs": 3,
+      "n_runs": 3,
+      "paired_seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "relative_gain_pct": -1.5214156159173085,
+      "sample_std": 0.0005189570953791584,
+      "seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "variant": "full"
+    },
+    {
+      "dataset": "sports",
+      "delta_mean": -0.0018838114679173151,
+      "delta_sample_std": 0.00017081756383393703,
+      "mean": 0.07298622091307073,
+      "metric": "Recall@10",
+      "n_pairs": 3,
+      "n_runs": 3,
+      "paired_seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "relative_gain_pct": -2.51610879280944,
+      "sample_std": 0.00036596757800870923,
+      "seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "variant": "full"
+    },
+    {
+      "dataset": "sports",
+      "delta_mean": -0.0019386307000779691,
+      "delta_sample_std": 0.0021331986495794395,
+      "mean": 0.11162577946386026,
+      "metric": "Recall@20",
+      "n_pairs": 3,
+      "n_runs": 3,
+      "paired_seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "relative_gain_pct": -1.7070759204220927,
+      "sample_std": 0.0016676302896846706,
+      "seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "variant": "full"
+    },
+    {
+      "dataset": "sports",
+      "delta_mean": -0.0012216888641856567,
+      "delta_sample_std": 0.00022417391303816703,
+      "mean": 0.03912009069232067,
+      "metric": "NDCG@10",
+      "n_pairs": 3,
+      "n_runs": 3,
+      "paired_seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "relative_gain_pct": -3.0283464874781973,
+      "sample_std": 0.00033036491882795825,
+      "seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "variant": "no_apc"
+    },
+    {
+      "dataset": "sports",
+      "delta_mean": -0.0012427888644469948,
+      "delta_sample_std": 0.00041095596347135376,
+      "mean": 0.04906497290446603,
+      "metric": "NDCG@20",
+      "n_pairs": 3,
+      "n_runs": 3,
+      "paired_seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "relative_gain_pct": -2.4703720077146403,
+      "sample_std": 0.0003817511171949732,
+      "seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "variant": "no_apc"
+    },
+    {
+      "dataset": "sports",
+      "delta_mean": -0.0022056556889974523,
+      "delta_sample_std": 0.0004935716840010032,
+      "mean": 0.07266437669199059,
+      "metric": "Recall@10",
+      "n_pairs": 3,
+      "n_runs": 3,
+      "paired_seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "relative_gain_pct": -2.9459793442770574,
+      "sample_std": 0.00012381421183733002,
+      "seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "variant": "no_apc"
+    },
+    {
+      "dataset": "sports",
+      "delta_mean": -0.0023809300861382388,
+      "delta_sample_std": 0.0007757325862519192,
+      "mean": 0.11118348007779999,
+      "metric": "Recall@20",
+      "n_pairs": 3,
+      "n_runs": 3,
+      "paired_seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "relative_gain_pct": -2.096545988924874,
+      "sample_std": 0.0008123457321624941,
+      "seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "variant": "no_apc"
+    },
+    {
+      "dataset": "sports",
+      "delta_mean": 8.729267677671144e-05,
+      "delta_sample_std": 0.0005086388948193172,
+      "mean": 0.040429072233283035,
+      "metric": "NDCG@10",
+      "n_pairs": 3,
+      "n_runs": 3,
+      "paired_seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "relative_gain_pct": 0.21638281140880627,
+      "sample_std": 0.00038030277147331243,
+      "seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "variant": "no_avrf"
+    },
+    {
+      "dataset": "sports",
+      "delta_mean": 8.015200937213732e-06,
+      "delta_sample_std": 0.0003653943979948596,
+      "mean": 0.050315776969850234,
+      "metric": "NDCG@20",
+      "n_pairs": 3,
+      "n_runs": 3,
+      "paired_seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "relative_gain_pct": 0.015932334604809657,
+      "sample_std": 0.0005629412914856404,
+      "seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "variant": "no_avrf"
+    },
+    {
+      "dataset": "sports",
+      "delta_mean": 0.0007223408306334436,
+      "delta_sample_std": 0.0010865796515118421,
+      "mean": 0.07559237321162149,
+      "metric": "Recall@10",
+      "n_pairs": 3,
+      "n_runs": 3,
+      "paired_seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "relative_gain_pct": 0.9647929988298891,
+      "sample_std": 0.0006436964420037313,
+      "seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "variant": "no_avrf"
+    },
+    {
+      "dataset": "sports",
+      "delta_mean": 0.0004503998351967492,
+      "delta_sample_std": 0.0011134778897787013,
+      "mean": 0.11401480999913498,
+      "metric": "Recall@20",
+      "n_pairs": 3,
+      "n_runs": 3,
+      "paired_seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "relative_gain_pct": 0.3966029802352386,
+      "sample_std": 0.0009989258248854294,
+      "seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "variant": "no_avrf"
+    },
+    {
+      "dataset": "sports",
+      "delta_mean": -0.0005312590214248727,
+      "delta_sample_std": 0.00013714674777288307,
+      "mean": 0.03981052053508145,
+      "metric": "NDCG@10",
+      "n_pairs": 3,
+      "n_runs": 3,
+      "paired_seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "relative_gain_pct": -1.3168953557954566,
+      "sample_std": 0.00020152287967665204,
+      "seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "variant": "no_imcf"
+    },
+    {
+      "dataset": "sports",
+      "delta_mean": -0.0005698337369873796,
+      "delta_sample_std": 0.00034438895019722217,
+      "mean": 0.04973792803192564,
+      "metric": "NDCG@20",
+      "n_pairs": 3,
+      "n_runs": 3,
+      "paired_seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "relative_gain_pct": -1.1326954667649325,
+      "sample_std": 5.680969968277487e-05,
+      "seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "variant": "no_imcf"
+    },
+    {
+      "dataset": "sports",
+      "delta_mean": -0.001422895912052603,
+      "delta_sample_std": 0.0010861320500548859,
+      "mean": 0.07344713646893544,
+      "metric": "Recall@10",
+      "n_pairs": 3,
+      "n_runs": 3,
+      "paired_seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "relative_gain_pct": -1.90048790791484,
+      "sample_std": 0.0009125694067009157,
+      "seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "variant": "no_imcf"
+    },
+    {
+      "dataset": "sports",
+      "delta_mean": -0.0016484711256889346,
+      "delta_sample_std": 0.001031570502212008,
+      "mean": 0.1119159390382493,
+      "metric": "Recall@20",
+      "n_pairs": 3,
+      "n_runs": 3,
+      "paired_seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "relative_gain_pct": -1.4515737133748594,
+      "sample_std": 0.0005905463584620033,
+      "seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "variant": "no_imcf"
+    },
+    {
+      "dataset": "clothing",
+      "delta_mean": null,
+      "delta_sample_std": null,
+      "mean": 0.034725770770644857,
+      "metric": "NDCG@10",
+      "n_pairs": 0,
+      "n_runs": 3,
+      "paired_seeds": [],
+      "relative_gain_pct": null,
+      "sample_std": 0.0003669463147138969,
+      "seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "variant": "baseline"
+    },
+    {
+      "dataset": "clothing",
+      "delta_mean": null,
+      "delta_sample_std": null,
+      "mean": 0.04228939470383976,
+      "metric": "NDCG@20",
+      "n_pairs": 0,
+      "n_runs": 3,
+      "paired_seeds": [],
+      "relative_gain_pct": null,
+      "sample_std": 0.0004601056341513352,
+      "seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "variant": "baseline"
+    },
+    {
+      "dataset": "clothing",
+      "delta_mean": null,
+      "delta_sample_std": null,
+      "mean": 0.06393605012692528,
+      "metric": "Recall@10",
+      "n_pairs": 0,
+      "n_runs": 3,
+      "paired_seeds": [],
+      "relative_gain_pct": null,
+      "sample_std": 0.0005644837838470201,
+      "seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "variant": "baseline"
+    },
+    {
+      "dataset": "clothing",
+      "delta_mean": null,
+      "delta_sample_std": null,
+      "mean": 0.0937101356059388,
+      "metric": "Recall@20",
+      "n_pairs": 0,
+      "n_runs": 3,
+      "paired_seeds": [],
+      "relative_gain_pct": null,
+      "sample_std": 0.0013474145540501824,
+      "seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "variant": "baseline"
+    },
+    {
+      "dataset": "clothing",
+      "delta_mean": -0.0015441292987208911,
+      "delta_sample_std": 0.000506603756436341,
+      "mean": 0.03318164147192397,
+      "metric": "NDCG@10",
+      "n_pairs": 3,
+      "n_runs": 3,
+      "paired_seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "relative_gain_pct": -4.446637941946585,
+      "sample_std": 0.0008025859703549305,
+      "seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "variant": "full"
+    },
+    {
+      "dataset": "clothing",
+      "delta_mean": -0.0018099192667278205,
+      "delta_sample_std": 0.0004989725457254813,
+      "mean": 0.04047947543711194,
+      "metric": "NDCG@20",
+      "n_pairs": 3,
+      "n_runs": 3,
+      "paired_seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "relative_gain_pct": -4.279841977883606,
+      "sample_std": 0.0009293343885741013,
+      "seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "variant": "full"
+    },
+    {
+      "dataset": "clothing",
+      "delta_mean": -0.0022509642815835146,
+      "delta_sample_std": 0.0011135105073168474,
+      "mean": 0.06168508584534177,
+      "metric": "Recall@10",
+      "n_pairs": 3,
+      "n_runs": 3,
+      "paired_seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "relative_gain_pct": -3.5206495820666435,
+      "sample_std": 0.0016227197889905106,
+      "seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "variant": "full"
+    },
+    {
+      "dataset": "clothing",
+      "delta_mean": -0.0032220767387192936,
+      "delta_sample_std": 0.0015345722866800411,
+      "mean": 0.09048805886721951,
+      "metric": "Recall@20",
+      "n_pairs": 3,
+      "n_runs": 3,
+      "paired_seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "relative_gain_pct": -3.438343907929525,
+      "sample_std": 0.002152147650894365,
+      "seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "variant": "full"
+    },
+    {
+      "dataset": "clothing",
+      "delta_mean": -0.0014168042180111075,
+      "delta_sample_std": 0.00047873246186604497,
+      "mean": 0.033308966552633754,
+      "metric": "NDCG@10",
+      "n_pairs": 3,
+      "n_runs": 3,
+      "paired_seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "relative_gain_pct": -4.079979181365763,
+      "sample_std": 0.0005756507099795796,
+      "seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "variant": "no_apc"
+    },
+    {
+      "dataset": "clothing",
+      "delta_mean": -0.001483797071979075,
+      "delta_sample_std": 0.0003607526680411472,
+      "mean": 0.04080559763186069,
+      "metric": "NDCG@20",
+      "n_pairs": 3,
+      "n_runs": 3,
+      "paired_seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "relative_gain_pct": -3.5086741779360353,
+      "sample_std": 0.0007354480688764537,
+      "seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "variant": "no_apc"
+    },
+    {
+      "dataset": "clothing",
+      "delta_mean": -0.001964732542080389,
+      "delta_sample_std": 0.0008434977790136613,
+      "mean": 0.06197131758484489,
+      "metric": "Recall@10",
+      "n_pairs": 3,
+      "n_runs": 3,
+      "paired_seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "relative_gain_pct": -3.07296515530756,
+      "sample_std": 0.0012067507429075598,
+      "seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "variant": "no_apc"
+    },
+    {
+      "dataset": "clothing",
+      "delta_mean": -0.0021657294869268325,
+      "delta_sample_std": 0.0005102779144997252,
+      "mean": 0.09154440611901198,
+      "metric": "Recall@20",
+      "n_pairs": 3,
+      "n_runs": 3,
+      "paired_seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "relative_gain_pct": -2.3110941766576434,
+      "sample_std": 0.0018181744555819683,
+      "seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "variant": "no_apc"
+    },
+    {
+      "dataset": "clothing",
+      "delta_mean": -0.00013659321463769386,
+      "delta_sample_std": 0.0002722183955090534,
+      "mean": 0.03458917755600716,
+      "metric": "NDCG@10",
+      "n_pairs": 3,
+      "n_runs": 3,
+      "paired_seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "relative_gain_pct": -0.39334825867468376,
+      "sample_std": 0.00026991389697712695,
+      "seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "variant": "no_avrf"
+    },
+    {
+      "dataset": "clothing",
+      "delta_mean": -1.1771956770651829e-05,
+      "delta_sample_std": 0.00015212981172870984,
+      "mean": 0.04227762274706911,
+      "metric": "NDCG@20",
+      "n_pairs": 3,
+      "n_runs": 3,
+      "paired_seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "relative_gain_pct": -0.027836664140248307,
+      "sample_std": 0.000457404504594382,
+      "seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "variant": "no_avrf"
+    },
+    {
+      "dataset": "clothing",
+      "delta_mean": -0.000169885237293263,
+      "delta_sample_std": 0.0008241443992691608,
+      "mean": 0.06376616488963202,
+      "metric": "Recall@10",
+      "n_pairs": 3,
+      "n_runs": 3,
+      "paired_seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "relative_gain_pct": -0.2657111863432419,
+      "sample_std": 0.0006338960478944641,
+      "seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "variant": "no_avrf"
+    },
+    {
+      "dataset": "clothing",
+      "delta_mean": 0.0003322544986037966,
+      "delta_sample_std": 0.00037578844250617976,
+      "mean": 0.0940423901045426,
+      "metric": "Recall@20",
+      "n_pairs": 3,
+      "n_runs": 3,
+      "paired_seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "relative_gain_pct": 0.3545555626991754,
+      "sample_std": 0.001299077020441178,
+      "seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "variant": "no_avrf"
+    },
+    {
+      "dataset": "clothing",
+      "delta_mean": -0.0012636613594590822,
+      "delta_sample_std": 0.0009785863944488352,
+      "mean": 0.03346210941118578,
+      "metric": "NDCG@10",
+      "n_pairs": 3,
+      "n_runs": 3,
+      "paired_seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "relative_gain_pct": -3.6389728187899806,
+      "sample_std": 0.0009377243526632,
+      "seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "variant": "no_imcf"
+    },
+    {
+      "dataset": "clothing",
+      "delta_mean": -0.0014763360458944542,
+      "delta_sample_std": 0.0007396815592270625,
+      "mean": 0.04081305865794531,
+      "metric": "NDCG@20",
+      "n_pairs": 3,
+      "n_runs": 3,
+      "paired_seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "relative_gain_pct": -3.4910313950660705,
+      "sample_std": 0.0010272175985162296,
+      "seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "variant": "no_imcf"
+    },
+    {
+      "dataset": "clothing",
+      "delta_mean": -0.0018722235722768849,
+      "delta_sample_std": 0.0016154885650082912,
+      "mean": 0.0620638265546484,
+      "metric": "Recall@10",
+      "n_pairs": 3,
+      "n_runs": 3,
+      "paired_seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "relative_gain_pct": -2.9282753134736397,
+      "sample_std": 0.0016514031922271145,
+      "seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "variant": "no_imcf"
+    },
+    {
+      "dataset": "clothing",
+      "delta_mean": -0.0026488878572053323,
+      "delta_sample_std": 0.0006628910886267877,
+      "mean": 0.09106124774873348,
+      "metric": "Recall@20",
+      "n_pairs": 3,
+      "n_runs": 3,
+      "paired_seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "relative_gain_pct": -2.8266823434598263,
+      "sample_std": 0.0019949502038205235,
+      "seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "variant": "no_imcf"
+    },
+    {
+      "dataset": "elec",
+      "delta_mean": null,
+      "delta_sample_std": null,
+      "mean": 0.024738518150045994,
+      "metric": "NDCG@10",
+      "n_pairs": 0,
+      "n_runs": 3,
+      "paired_seeds": [],
+      "relative_gain_pct": null,
+      "sample_std": 0.00012761620017203814,
+      "seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "variant": "baseline"
+    },
+    {
+      "dataset": "elec",
+      "delta_mean": null,
+      "delta_sample_std": null,
+      "mean": 0.03061858991543242,
+      "metric": "NDCG@20",
+      "n_pairs": 0,
+      "n_runs": 3,
+      "paired_seeds": [],
+      "relative_gain_pct": null,
+      "sample_std": 0.00013638592802376026,
+      "seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "variant": "baseline"
+    },
+    {
+      "dataset": "elec",
+      "delta_mean": null,
+      "delta_sample_std": null,
+      "mean": 0.044609720703992294,
+      "metric": "Recall@10",
+      "n_pairs": 0,
+      "n_runs": 3,
+      "paired_seeds": [],
+      "relative_gain_pct": null,
+      "sample_std": 0.00026349021738970976,
+      "seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "variant": "baseline"
+    },
+    {
+      "dataset": "elec",
+      "delta_mean": null,
+      "delta_sample_std": null,
+      "mean": 0.06741380919888766,
+      "metric": "Recall@20",
+      "n_pairs": 0,
+      "n_runs": 3,
+      "paired_seeds": [],
+      "relative_gain_pct": null,
+      "sample_std": 0.00031284040576155326,
+      "seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "variant": "baseline"
+    },
+    {
+      "dataset": "elec",
+      "delta_mean": -0.00029494106777785734,
+      "delta_sample_std": 0.00019941460738416835,
+      "mean": 0.024443577082268138,
+      "metric": "NDCG@10",
+      "n_pairs": 3,
+      "n_runs": 3,
+      "paired_seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "relative_gain_pct": -1.1922341750179122,
+      "sample_std": 0.00021371326570417332,
+      "seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "variant": "full"
+    },
+    {
+      "dataset": "elec",
+      "delta_mean": -0.0004144877029045579,
+      "delta_sample_std": 0.00018210057799460317,
+      "mean": 0.03020410221252786,
+      "metric": "NDCG@20",
+      "n_pairs": 3,
+      "n_runs": 3,
+      "paired_seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "relative_gain_pct": -1.3537125780428163,
+      "sample_std": 0.0001359610018381379,
+      "seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "variant": "full"
+    },
+    {
+      "dataset": "elec",
+      "delta_mean": -0.000542343295355433,
+      "delta_sample_std": 0.00043076415813624573,
+      "mean": 0.04406737740863686,
+      "metric": "Recall@10",
+      "n_pairs": 3,
+      "n_runs": 3,
+      "paired_seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "relative_gain_pct": -1.215751380633272,
+      "sample_std": 0.00042250035250310003,
+      "seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "variant": "full"
+    },
+    {
+      "dataset": "elec",
+      "delta_mean": -0.0010272915482708266,
+      "delta_sample_std": 0.00044121119236657005,
+      "mean": 0.06638651765061683,
+      "metric": "Recall@20",
+      "n_pairs": 3,
+      "n_runs": 3,
+      "paired_seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "relative_gain_pct": -1.5238592218399327,
+      "sample_std": 0.00016756801367631496,
+      "seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "variant": "full"
+    },
+    {
+      "dataset": "elec",
+      "delta_mean": -0.000259781680718939,
+      "delta_sample_std": 0.00034253049811380906,
+      "mean": 0.024478736469327054,
+      "metric": "NDCG@10",
+      "n_pairs": 3,
+      "n_runs": 3,
+      "paired_seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "relative_gain_pct": -1.050110112268208,
+      "sample_std": 0.00023293390503493203,
+      "seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "variant": "no_apc"
+    },
+    {
+      "dataset": "elec",
+      "delta_mean": -0.00040151681643083026,
+      "delta_sample_std": 0.00032279769576992474,
+      "mean": 0.03021707309900159,
+      "metric": "NDCG@20",
+      "n_pairs": 3,
+      "n_runs": 3,
+      "paired_seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "relative_gain_pct": -1.311349796119962,
+      "sample_std": 0.00019238812517660177,
+      "seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "variant": "no_apc"
+    },
+    {
+      "dataset": "elec",
+      "delta_mean": -0.00031646100684456596,
+      "delta_sample_std": 0.0006246694745946599,
+      "mean": 0.04429325969714772,
+      "metric": "Recall@10",
+      "n_pairs": 3,
+      "n_runs": 3,
+      "paired_seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "relative_gain_pct": -0.7093992113163907,
+      "sample_std": 0.0003732513656480647,
+      "seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "variant": "no_apc"
+    },
+    {
+      "dataset": "elec",
+      "delta_mean": -0.0009126678464671892,
+      "delta_sample_std": 0.0005694312766850167,
+      "mean": 0.06650114135242047,
+      "metric": "Recall@20",
+      "n_pairs": 3,
+      "n_runs": 3,
+      "paired_seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "relative_gain_pct": -1.353829218839407,
+      "sample_std": 0.0002665441265516924,
+      "seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "variant": "no_apc"
+    },
+    {
+      "dataset": "elec",
+      "delta_mean": -3.725093941969968e-05,
+      "delta_sample_std": 0.00022959975193051434,
+      "mean": 0.024701267210626293,
+      "metric": "NDCG@10",
+      "n_pairs": 3,
+      "n_runs": 3,
+      "paired_seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "relative_gain_pct": -0.1505787015768785,
+      "sample_std": 0.00010792529912805275,
+      "seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "variant": "no_avrf"
+    },
+    {
+      "dataset": "elec",
+      "delta_mean": -5.5624205675034365e-05,
+      "delta_sample_std": 0.0001999710603509451,
+      "mean": 0.030562965709757382,
+      "metric": "NDCG@20",
+      "n_pairs": 3,
+      "n_runs": 3,
+      "paired_seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "relative_gain_pct": -0.18166808409096133,
+      "sample_std": 6.439572793622327e-05,
+      "seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "variant": "no_avrf"
+    },
+    {
+      "dataset": "elec",
+      "delta_mean": -3.407642986143442e-05,
+      "delta_sample_std": 0.0005021589741478096,
+      "mean": 0.044575644274130855,
+      "metric": "Recall@10",
+      "n_pairs": 3,
+      "n_runs": 3,
+      "paired_seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "relative_gain_pct": -0.07638790228602528,
+      "sample_std": 0.00024284509553700802,
+      "seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "variant": "no_avrf"
+    },
+    {
+      "dataset": "elec",
+      "delta_mean": -0.00014059326707133632,
+      "delta_sample_std": 0.000378839000912215,
+      "mean": 0.06727321593181633,
+      "metric": "Recall@20",
+      "n_pairs": 3,
+      "n_runs": 3,
+      "paired_seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "relative_gain_pct": -0.2085526225888688,
+      "sample_std": 0.00013492847610766263,
+      "seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "variant": "no_avrf"
+    },
+    {
+      "dataset": "elec",
+      "delta_mean": -0.0002689133939209551,
+      "delta_sample_std": 0.00027180086269218916,
+      "mean": 0.02446960475612504,
+      "metric": "NDCG@10",
+      "n_pairs": 3,
+      "n_runs": 3,
+      "paired_seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "relative_gain_pct": -1.0870230475807832,
+      "sample_std": 0.00016910650161414438,
+      "seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "variant": "no_imcf"
+    },
+    {
+      "dataset": "elec",
+      "delta_mean": -0.0003538083001085983,
+      "delta_sample_std": 0.00028409303844709015,
+      "mean": 0.03026478161532382,
+      "metric": "NDCG@20",
+      "n_pairs": 3,
+      "n_runs": 3,
+      "paired_seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "relative_gain_pct": -1.1555342721066046,
+      "sample_std": 0.00018521573790734836,
+      "seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "variant": "no_imcf"
+    },
+    {
+      "dataset": "elec",
+      "delta_mean": -0.0004489090566909826,
+      "delta_sample_std": 0.0005826705197585675,
+      "mean": 0.04416081164730131,
+      "metric": "Recall@10",
+      "n_pairs": 3,
+      "n_runs": 3,
+      "paired_seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "relative_gain_pct": -1.006303221824045,
+      "sample_std": 0.000335159934163197,
+      "seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "variant": "no_imcf"
+    },
+    {
+      "dataset": "elec",
+      "delta_mean": -0.0008098716989023425,
+      "delta_sample_std": 0.0006525772530557888,
+      "mean": 0.06660393749998532,
+      "metric": "Recall@20",
+      "n_pairs": 3,
+      "n_runs": 3,
+      "paired_seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "relative_gain_pct": -1.201343921262508,
+      "sample_std": 0.00039239377662086267,
+      "seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "variant": "no_imcf"
+    },
+    {
+      "dataset": "microlens",
+      "delta_mean": null,
+      "delta_sample_std": null,
+      "mean": 0.037823856168252255,
+      "metric": "NDCG@10",
+      "n_pairs": 0,
+      "n_runs": 3,
+      "paired_seeds": [],
+      "relative_gain_pct": null,
+      "sample_std": 0.0002343895083941238,
+      "seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "variant": "baseline"
+    },
+    {
+      "dataset": "microlens",
+      "delta_mean": null,
+      "delta_sample_std": null,
+      "mean": 0.047906154837317416,
+      "metric": "NDCG@20",
+      "n_pairs": 0,
+      "n_runs": 3,
+      "paired_seeds": [],
+      "relative_gain_pct": null,
+      "sample_std": 0.0002407851918550891,
+      "seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "variant": "baseline"
+    },
+    {
+      "dataset": "microlens",
+      "delta_mean": null,
+      "delta_sample_std": null,
+      "mean": 0.07320653390979183,
+      "metric": "Recall@10",
+      "n_pairs": 0,
+      "n_runs": 3,
+      "paired_seeds": [],
+      "relative_gain_pct": null,
+      "sample_std": 0.0005687463699501969,
+      "seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "variant": "baseline"
+    },
+    {
+      "dataset": "microlens",
+      "delta_mean": null,
+      "delta_sample_std": null,
+      "mean": 0.11238445523952355,
+      "metric": "Recall@20",
+      "n_pairs": 0,
+      "n_runs": 3,
+      "paired_seeds": [],
+      "relative_gain_pct": null,
+      "sample_std": 0.0006155108261228775,
+      "seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "variant": "baseline"
+    },
+    {
+      "dataset": "microlens",
+      "delta_mean": -0.00014728155033848686,
+      "delta_sample_std": 9.949791854194186e-05,
+      "mean": 0.037676574617913766,
+      "metric": "NDCG@10",
+      "n_pairs": 3,
+      "n_runs": 3,
+      "paired_seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "relative_gain_pct": -0.3893879822388622,
+      "sample_std": 0.00018531606853831948,
+      "seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "variant": "full"
+    },
+    {
+      "dataset": "microlens",
+      "delta_mean": -0.0001104160055387382,
+      "delta_sample_std": 5.4788022263147554e-05,
+      "mean": 0.04779573883177868,
+      "metric": "NDCG@20",
+      "n_pairs": 3,
+      "n_runs": 3,
+      "paired_seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "relative_gain_pct": -0.2304839658154479,
+      "sample_std": 0.00020051735793170721,
+      "seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "variant": "full"
+    },
+    {
+      "dataset": "microlens",
+      "delta_mean": -0.0004391301461993957,
+      "delta_sample_std": 0.00033802646098432656,
+      "mean": 0.07276740376359243,
+      "metric": "Recall@10",
+      "n_pairs": 3,
+      "n_runs": 3,
+      "paired_seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "relative_gain_pct": -0.5998510279704137,
+      "sample_std": 0.00023085923138295553,
+      "seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "variant": "full"
+    },
+    {
+      "dataset": "microlens",
+      "delta_mean": -0.000221094399038696,
+      "delta_sample_std": 0.00038491197638320876,
+      "mean": 0.11216336084048485,
+      "metric": "Recall@20",
+      "n_pairs": 3,
+      "n_runs": 3,
+      "paired_seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "relative_gain_pct": -0.1967304095281508,
+      "sample_std": 0.00023641600717872277,
+      "seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "variant": "full"
+    },
+    {
+      "dataset": "microlens",
+      "delta_mean": -0.0004797098341866683,
+      "delta_sample_std": 0.0003449822611611218,
+      "mean": 0.03734414633406558,
+      "metric": "NDCG@10",
+      "n_pairs": 3,
+      "n_runs": 3,
+      "paired_seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "relative_gain_pct": -1.2682732084554522,
+      "sample_std": 0.0005248493106540296,
+      "seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "variant": "no_apc"
+    },
+    {
+      "dataset": "microlens",
+      "delta_mean": -0.0004891015046041489,
+      "delta_sample_std": 0.00027273774250844346,
+      "mean": 0.04741705333271327,
+      "metric": "NDCG@20",
+      "n_pairs": 3,
+      "n_runs": 3,
+      "paired_seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "relative_gain_pct": -1.0209575497450567,
+      "sample_std": 0.0004114431263019101,
+      "seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "variant": "no_apc"
+    },
+    {
+      "dataset": "microlens",
+      "delta_mean": -0.0007725283335704158,
+      "delta_sample_std": 0.0004287197342838257,
+      "mean": 0.07243400557622141,
+      "metric": "Recall@10",
+      "n_pairs": 3,
+      "n_runs": 3,
+      "paired_seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "relative_gain_pct": -1.055272381181655,
+      "sample_std": 0.0009971833758454585,
+      "seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "variant": "no_apc"
+    },
+    {
+      "dataset": "microlens",
+      "delta_mean": -0.0007535466083652501,
+      "delta_sample_std": 0.00017687405875926334,
+      "mean": 0.11163090863115831,
+      "metric": "Recall@20",
+      "n_pairs": 3,
+      "n_runs": 3,
+      "paired_seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "relative_gain_pct": -0.6705078622832898,
+      "sample_std": 0.0007895600879294608,
+      "seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "variant": "no_apc"
+    },
+    {
+      "dataset": "microlens",
+      "delta_mean": 0.00041276659437344126,
+      "delta_sample_std": 0.000334486620783607,
+      "mean": 0.0382366227626257,
+      "metric": "NDCG@10",
+      "n_pairs": 3,
+      "n_runs": 3,
+      "paired_seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "relative_gain_pct": 1.091286389566752,
+      "sample_std": 0.0005656486014496842,
+      "seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "variant": "no_avrf"
+    },
+    {
+      "dataset": "microlens",
+      "delta_mean": 0.00036944761431307915,
+      "delta_sample_std": 0.0004361371658481165,
+      "mean": 0.0482756024516305,
+      "metric": "NDCG@20",
+      "n_pairs": 3,
+      "n_runs": 3,
+      "paired_seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "relative_gain_pct": 0.7711902897814934,
+      "sample_std": 0.0006103275760015141,
+      "seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "variant": "no_avrf"
+    },
+    {
+      "dataset": "microlens",
+      "delta_mean": 0.0007404278868372027,
+      "delta_sample_std": 0.0006239952132918604,
+      "mean": 0.07394696179662903,
+      "metric": "Recall@10",
+      "n_pairs": 3,
+      "n_runs": 3,
+      "paired_seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "relative_gain_pct": 1.0114232258961873,
+      "sample_std": 0.0011337310091920816,
+      "seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "variant": "no_avrf"
+    },
+    {
+      "dataset": "microlens",
+      "delta_mean": 0.0006250311251891025,
+      "delta_sample_std": 0.0008546276937283697,
+      "mean": 0.11300948636471266,
+      "metric": "Recall@20",
+      "n_pairs": 3,
+      "n_runs": 3,
+      "paired_seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "relative_gain_pct": 0.5561544288816292,
+      "sample_std": 0.0013065165564857747,
+      "seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "variant": "no_avrf"
+    },
+    {
+      "dataset": "microlens",
+      "delta_mean": -0.0001922921178871458,
+      "delta_sample_std": 0.00028320625281351083,
+      "mean": 0.03763156405036511,
+      "metric": "NDCG@10",
+      "n_pairs": 3,
+      "n_runs": 3,
+      "paired_seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "relative_gain_pct": -0.5083884547143231,
+      "sample_std": 0.00025442861407741984,
+      "seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "variant": "no_imcf"
+    },
+    {
+      "dataset": "microlens",
+      "delta_mean": -0.0003453622283039401,
+      "delta_sample_std": 0.0005101185571184326,
+      "mean": 0.047560792609013476,
+      "metric": "NDCG@20",
+      "n_pairs": 3,
+      "n_runs": 3,
+      "paired_seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "relative_gain_pct": -0.7209141069174552,
+      "sample_std": 0.00038457152761582825,
+      "seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "variant": "no_imcf"
+    },
+    {
+      "dataset": "microlens",
+      "delta_mean": -0.0002514189965147258,
+      "delta_sample_std": 0.0005138412666402777,
+      "mean": 0.07295511491327711,
+      "metric": "Recall@10",
+      "n_pairs": 3,
+      "n_runs": 3,
+      "paired_seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "relative_gain_pct": -0.34343791884005176,
+      "sample_std": 0.00039746273751475636,
+      "seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "variant": "no_imcf"
+    },
+    {
+      "dataset": "microlens",
+      "delta_mean": -0.0007260972349019493,
+      "delta_sample_std": 0.001371013910907108,
+      "mean": 0.11165835800462161,
+      "metric": "Recall@20",
+      "n_pairs": 3,
+      "n_runs": 3,
+      "paired_seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "relative_gain_pct": -0.6460833336375814,
+      "sample_std": 0.0009395056625538943,
+      "seeds": [
+        999,
+        2024,
+        2025
+      ],
+      "variant": "no_imcf"
+    }
+  ],
+  "selection": "Validation-selected checkpoints; gains include only complete baseline/variant seed pairs",
+  "statuses": {
+    "completed": 75
+  }
+}

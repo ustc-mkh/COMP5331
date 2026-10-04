@@ -1,6 +1,6 @@
 # DAMPS 实现与复现约定
 
-依据项目根目录 [DAMPS.pdf](../DAMPS.pdf)：*Enhancing Multimodal Recommendation via Multimodal Representation Calibration in Spectral Domain*（KDD 2026）。本项目当前目标为 MGCN + DAMPS，AVRF、FFT、IMCF 及融合初始化依据本地作者源码 `KDD2026_DAMPS-v1.0.0/Wmhwxl-KDD2026_DAMPS-af90958/src/models/damps.py` 实现；相位旋转方向已恢复为与论文及作者源码一致的 image−/text+。不增加 author/paper 模式；不依赖 MMRec 运行，也不声称全部行为或论文指标已对齐。
+依据项目根目录 [DAMPS.pdf](../DAMPS.pdf)：*Enhancing Multimodal Recommendation via Multimodal Representation Calibration in Spectral Domain*（KDD 2026）。本项目已将统一 DAMPS 模块接入 MGCN 与 LIRDRec，AVRF、FFT、IMCF 及融合初始化依据作者源码 `KDD2026_DAMPS-v1.0.0/Wmhwxl-KDD2026_DAMPS-af90958/src/models/damps.py` 实现；相位旋转方向已恢复为与论文及作者源码一致的 image−/text+。不依赖 MMRec 运行，也不声称全部行为或论文指标已对齐。
 
 ## 接入位置与模块
 
@@ -8,11 +8,13 @@
 
 MGCN 在门控净化之前调用 DAMPS，频域统计初始化和每次前向均使用 DAMPS 内部的特征 embedding 与投影层。外部 MGCN 特征层仍注册在模型中，但在默认 `batch_final` 正则下不接收推荐损失梯度。与作者一样，内部 embedding 是独立 Parameter，构造时与外部 embedding 共享原始特征存储；投影层参数独立。`trainable_features=false` 时两套特征均冻结，投影仍可训练。校准后的两个表示继续进入原有门控、物品图传播、用户侧聚合和多视图融合。ID 协同分支、由原始特征构建的固定 kNN 图及损失结构沿用 backbone。`regularization=parameters` 时新增可训练参数也进入既有参数正则项；默认 `batch_final` 仍只正则化最终批次表示。
 
+LIRDRec 使用纯频域接口，在原 backbone 的图文投影后接入 DAMPS，保持固定原始特征、4 倍隐藏宽度、原始特征构图与 DCT 共享分支。这是本项目统一模块的受控接入，与参考 DAMPS 版 LIRDRec 的内部特征层、投影和接入位置存在差异，详见 [LIRDRec 说明](lirdrec.md)。
+
 ## 公式对应
 
 | 论文 | 实现 |
 | --- | --- |
-| 式（1） | DAMPS 内部独立 embedding 和投影，与作者源码一致 |
+| 式（1） | MGCN 使用 DAMPS 内部独立 embedding 和投影；LIRDRec 复用 backbone 投影 |
 | 式（2）—（4） | 沿最后一维 `rfft`，F = floor(d/2)+1；振幅 `abs`，相位 `angle` |
 | 式（5）—（8），APC | text − image 相位差，初始化时跨物品求 sin/cos 均值并使用 atan2，保存为固定先验；image 乘 exp(−j(θ/2+ψ))，text 乘 exp(+j(θ/2+ψ)) |
 | 式（9）—（18），AVRF | 按频率跨物品计算 median、MAD、总体方差；noise=(1.4826 MAD)²，signal=max(var−noise,0)，以 signal/(signal+noise+ε) 为初始统计，再标准化、sigmoid、logit，作为可学习权重 |
@@ -34,7 +36,7 @@ APC 使用共享频率残差 ψ，形状 `[F]`；融合 logits 形状 `[2]`。ψ
 
 AVRF 前向直接乘可学习参数，不再 sigmoid 或截断，因此权重可以为负或大于 1，与作者源码一致。相位先验固定、残差可学习，旋转符号恢复为 image−/text+。
 
-当前已使用作者的两套特征层结构，DAMPS 内部特征层的初始化顺序与作者一致；完整 MGCN 的层初始化顺序及训练采样仍与作者不完全相同。因此数值算子对齐不代表训练轨迹或论文指标完全对齐。模块保存 implementation_version=3 标记；加载时显式检查版本，原作者方向的版本 3 checkpoint 可按原配置恢复，旋转修正实验的版本 4 checkpoint 会被拒绝。已有实验结果保留用于对照。
+MGCN 已使用作者的两套特征层结构，DAMPS 内部特征层的初始化顺序与作者一致；完整 MGCN 的层初始化顺序及训练采样仍与作者不完全相同。因此数值算子对齐不代表训练轨迹或论文指标完全对齐。模块保存 implementation_version=3 标记；加载时显式检查版本，原作者方向的版本 3 checkpoint 可按原配置恢复，旋转修正实验的版本 4 checkpoint 会被拒绝。已有实验结果保留用于对照。
 
 ## 配置和命令
 
@@ -45,7 +47,7 @@ python -m mmrecsys.cli train --config configs/experiments/damps_mgcn_clothing.ya
 python -m mmrecsys.cli train --config configs/experiments/damps_mgcn_elec.yaml
 ```
 
-`model.name` 保持 mgcn，主开关为 `model.damps_enabled`（默认 false）。实验配置将其设为 true。`model.damps_apc`、`model.damps_avrf`、`model.damps_imcf` 默认 true，可用 CLI 覆盖：
+上述配置的 `model.name=mgcn`；LIRDRec 配置使用 `model.name=lirdrec`。两者的主开关均为 `model.damps_enabled`（默认 false），DAMPS 实验配置将其设为 true。`model.damps_apc`、`model.damps_avrf`、`model.damps_imcf` 默认 true，可用 CLI 覆盖：
 
 ```bash
 python -m mmrecsys.cli train --config configs/experiments/damps_mgcn_baby.yaml --set model.damps_apc=false
@@ -53,13 +55,15 @@ python -m mmrecsys.cli train --config configs/experiments/damps_mgcn_baby.yaml -
 
 消融时，去掉 APC 即跳过相位旋转；去掉任一过滤分支后，剩余分支权重为 1；两个过滤分支都去掉时，直接还原相位校准频谱；三个组件都去掉时返回内部投影（纯频域接口则原样返回输入），因此 MGCN 中该消融不再等价于关闭 DAMPS。未使用的 ψ、AVRF 权重和 logits 不注册为参数。论文没有详细指定消融权重处理，这里是显式工程约定。
 
-对照实验应在相同数据、种子、backbone 参数与评估协议下切换 `damps_enabled`。遵循论文第 4.1 节，沿用 backbone 参数，不针对 DAMPS 单独优化 backbone。当前 cl_weight=0.01 是启动值，不代表已核验的逐数据集最优值。数据沿用发布划分，使用全物品排序及 Recall/NDCG@10、@20；验证选模，测试只用于最终指标。
+对照实验应在相同数据、种子、backbone 参数与评估协议下切换 `damps_enabled`。遵循论文第 4.1 节，沿用 backbone 参数，不针对 DAMPS 单独优化 backbone。MGCN 的 cl_weight=0.01 是启动值，不代表已核验的逐数据集最优值；LIRDRec 的固定参数见其模型配置和说明。数据沿用发布划分，使用全物品排序及 Recall/NDCG@10、@20；验证选模，测试只用于最终指标。
 
 ## 验证与范围
 
 测试覆盖独立 NumPy 公式参考、相位符号与小功率 coherence、独立 AVRF 初始化统计参考、权重更新与先验固定、状态保存恢复、奇偶 embedding 维度、八种组件组合、零/常量/单物品输入、参数与输入梯度、关闭组件后的内部投影直通、作者源码前向和梯度对照、特征层更新及冻结、MGCN 损失与 scorer，以及启用 DAMPS 的训练—评估—epoch 边界恢复。
 
-运行 `python -m pytest -q`（若使用项目虚拟环境则 `.venv/bin/python -m pytest -q`）。这些测试验证公式和工程行为，不代表论文指标已复现。当前提供四个 Amazon 数据集的 MGCN 实验配置；其他 backbone 和 MicroLens 尚未实现。
+运行 `python -m pytest -q`（若使用项目虚拟环境则 `.venv/bin/python -m pytest -q`）。这些测试验证公式和工程行为，不代表论文指标已复现。当前提供四个 Amazon 数据集的 MGCN 实验配置，以及五个数据集（含 MicroLens）的 LIRDRec 配置。LIRDRec 使用纯频域接口并保留原基线结构，接入差异与完整实验约定见 [LIRDRec 说明](lirdrec.md)。
+
+LIRDRec 的五数据集 × 五组 × 三种子（999、2024、2025），共 75 组正式实验已完成。完整 DAMPS 的 20 项跨种子指标均值均低于本项目基线，尚未复现论文所报提升；数值与论文对照见 [实验结果](results/lirdrec/)。
 
 FFT 计算量约 O(N d log d)；全物品 median 和方差仅在初始化时计算，不再每个训练 batch 重新统计。没有新增 N×N 稠密矩阵。优先保持公式与梯度语义，后续应先测量真实开销，再考虑等价优化。
 
@@ -89,7 +93,7 @@ python -m mmrecsys.experiment.ablation --seeds 999 2024 2025 --variants baseline
 
 各组共享 backbone 配置；同种子下 backbone 初始参数相同，DAMPS 独立投影层初始化会消耗额外随机数，但创建于 backbone 初始化之后，采样由 seed/epoch 独立确定。组件消融仅改变对应开关。程序验证集选取每次运行的 checkpoint，不按测试指标筛选种子或组合。
 
-结果保存在 `runs/ablation-<dataset>-<time>-<id>/<variant>/`，每次运行仍遵循 mgcn/damps-mgcn 目录前缀。`runs.json` 逐次记录已完成实验；`summary.json` 汇总各组跨种子的指标均值与样本标准差，单种子标准差为 null。未实现套件自动续跑；中断时可按 runs.json 找到已完成或对应子目录中的未完成实验，并使用常规 --resume 入口恢复单次运行。
+该入口的结果保存在 `runs/ablation-<dataset>-<time>-<id>/<variant>/`，每次运行使用对应 backbone 的目录前缀。`runs.json` 逐次记录已完成实验；`summary.json` 汇总各组跨种子的指标均值与样本标准差，单种子标准差为 null。此 `ablation` 入口不自动续跑；中断时可按 runs.json 找到已完成或对应子目录中的未完成实验，并使用常规 --resume 入口恢复单次运行。LIRDRec 的 `lirdrec_suite` 另行支持队列恢复，详见 [完整实验协议与队列](lirdrec.md#完整实验协议与队列)。
 
 
 ## 当前推荐的参数范围

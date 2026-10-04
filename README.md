@@ -1,6 +1,8 @@
 # COMP5331 · DAMPS 复现项目
 
-基于 [DAMPS.pdf](DAMPS.pdf)（KDD 2026）复现频域多模态表示校准框架 DAMPS，当前接入 MGCN backbone，支持 APC、AVRF、IMCF 及组件消融。直接读取 MMRec 发布的数据，不依赖 MMRec 运行。
+基于 [DAMPS.pdf](DAMPS.pdf)（KDD 2026）复现频域多模态表示校准框架 DAMPS，当前接入 MGCN 与 LIRDRec backbone，支持 APC、AVRF、IMCF 及组件消融。LIRDRec 提供 Baby、Sports、Clothing、Electronics 和 MicroLens 的配置。直接读取 MMRec 发布的数据，不依赖 MMRec 运行。
+
+LIRDRec 已完成五个数据集 × 五组对照/消融 × 三个种子（999、2024、2025），共 75 组正式实验。完整 DAMPS 在五数据集四项指标的 20 项跨种子均值上均低于本项目基线，尚未复现论文所报提升；精选结果与论文对照见 [LIRDRec 实验结果](docs/results/lirdrec/)。基线参数、统一 DAMPS 接入方式、作者代码差异及运行命令见 [LIRDRec 接入说明](docs/lirdrec.md)。
 
 当前已恢复作者源码的 image−/text+ 相位旋转方向。可训练 AVRF、固定相位先验、正交 FFT、带 epsilon 的 IMCF 及融合初始化沿用已核对的源码行为。提供门控/梯度诊断与配对消融入口；初始化顺序及训练协议仍有差异，尚未复现论文指标。公式对应、数值约定与局限见 [DAMPS 实现说明](docs/damps.md)，工程结构见 [架构设计](docs/architecture.md)，基线细节见 [MGCN backbone](docs/mgcn.md)。
 
@@ -15,9 +17,11 @@ python -m pytest -q
 
 默认自动选择 CUDA 或 CPU，可使用 `--device cpu` 或 `--device cuda:0` 指定设备。
 
+LIRDRec 完整套件要求显式传入一张卡的 UUID，默认串行运行，详见 [完整实验入口](docs/lirdrec.md#完整实验协议与队列)。
+
 新 GPU 实验默认将训练交互及采样索引常驻显存，每轮在 GPU 上生成负样本；可用 `--set train.preload_to_device=false` 关闭。旧实验恢复保留原采样方式。性能与计时说明见 [性能说明](docs/performance.md)。
 
-常规训练固定使用 `n_ui_layers=4`、`n_item_layers=2`（原版 `n_layers`）、`cl_weight=0.01`（原版 `cl_loss`）、`knn_k=10`、`seed=999`，DAMPS 与基线共享这些设置。超参数搜索有独立的覆盖配置。
+MGCN 常规训练固定使用 `n_ui_layers=4`、`n_item_layers=2`（原版 `n_layers`）、`cl_weight=0.01`（原版 `cl_loss`）、`knn_k=10`、`seed=999`，DAMPS 与基线共享这些设置。LIRDRec 使用独立的 `configs/models/lirdrec.yaml`。超参数搜索有独立的覆盖配置。
 
 训练命令：
 
@@ -109,13 +113,13 @@ python -m mmrecsys.experiment.search --resume runs/search-baby-<时间>-<ID>
 将已发布数据放在项目根目录：
 
 ```text
-data/<baby|sports|clothing|elec>/
+data/<baby|sports|clothing|elec|microlens>/
   <dataset>.inter
   image_feat.npy
   text_feat.npy
 ```
 
-沿用发布的全局编号、划分和特征行顺序。训练图仅使用 `x_label=0` 交互；验证标签选模，测试标签仅用于最终评估。数据格式与来源见 [数据使用指南](docs/data.md) 和 [MMRec 数据说明](https://github.com/enoche/MMRec/tree/master/data)。不重新预处理或下载数据。
+沿用发布的全局编号、划分和特征行顺序；MicroLens 使用图像和文本特征。训练图仅使用 `x_label=0` 交互；验证标签选模，测试标签仅用于最终评估。数据需按 [数据使用指南](docs/data.md) 和 [MMRec 数据说明](https://github.com/enoche/MMRec/tree/master/data) 自行下载，训练入口不会自动下载或重新预处理。
 
 ## 恢复与评估
 
@@ -126,6 +130,6 @@ python -m mmrecsys.cli train --resume runs/<run_id>/last.pt --set train.epochs=1
 python -m mmrecsys.cli evaluate --run runs/<run_id> --split test
 ```
 
-配置支持 `--set dotted.key=value`，未知字段报错。相对配置和数据路径按项目根解析。图缓存位于 `cache/`，实验产物与缓存均不提交 Git。
+配置支持 `--set dotted.key=value`，未知字段报错。相对配置和数据路径按项目根解析。原始 `runs/`、`data/`、`cache/` 及 checkpoint 不提交 Git；可审阅的 LIRDRec 精选结果和说明保存在 `docs/results/lirdrec/`。
 
 代码位于 `src/mmrecsys/`，模型注册表负责声明所需模态和批次类型，训练器不包含模型名称分支。关键行为测试位于 `tests/`。
