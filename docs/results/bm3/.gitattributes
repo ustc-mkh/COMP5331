@@ -1,0 +1,2 @@
+# Preserve original CSV bytes and CRLF endings checked by the verifier.
+histories/*.csv -text -whitespace

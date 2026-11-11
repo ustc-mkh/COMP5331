@@ -1,0 +1,8 @@
+runtime/data/
+runtime/runs/
+runtime/validation/
+*.pt
+*.npz
+*.npy
+*.inter
+__pycache__/
