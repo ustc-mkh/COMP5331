@@ -1,0 +1,3 @@
+# Preserve the executed and referenced source bytes for provenance hashes.
+*.py -text -whitespace
+tests/*.py -text -whitespace

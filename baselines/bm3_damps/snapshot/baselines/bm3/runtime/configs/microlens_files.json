@@ -1,0 +1,32 @@
+{
+  "image_feat.npy": {
+    "file_id": "13gEC5LFR0ojoYDURSPzz_U3xwxaCOMQd",
+    "bytes": 70566016,
+    "sha256": "39de7154581be32f32f3ad0a90d4c0c1410537722d8209c880b8962afcaabbd3",
+    "shape": [
+      17228,
+      1024
+    ],
+    "dtype": "float32"
+  },
+  "microlens.inter": {
+    "file_id": "13-SUO3xtXieHLuzchvDZ7txVNuoghmKw",
+    "bytes": 21354300,
+    "sha256": "bdc0bda6725ecec664178199a6f3b7024c52c30ab0c170e7bcfd547310cd16d7"
+  },
+  "readme.txt": {
+    "file_id": "1eQzePt5xWZQVMB0uP8n9mXWbgzmtTp7y",
+    "bytes": 93,
+    "sha256": "5ecb6cfa39db6bcab82a938059b960e3f139e5df4319f32f866bafa05857eba2"
+  },
+  "text_feat.npy": {
+    "file_id": "10RWBtt_f3D5GobW-NKcyBJOjD8vnZ2O_",
+    "bytes": 70566016,
+    "sha256": "40d087f70d6561189c00622d69cfabbf728c1b9982f05136c850098385697981",
+    "shape": [
+      17228,
+      1024
+    ],
+    "dtype": "float32"
+  }
+}

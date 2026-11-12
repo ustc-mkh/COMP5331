@@ -1,0 +1,14 @@
+{
+  "verified_at": "2026-11-12T13:10:46.690436+00:00",
+  "uploaded": true,
+  "url": "https://docs.google.com/spreadsheets/d/1cn-XI8QMNgfaHDFhru-nk8k3NYC_jIrblqfPF2lOP8E/edit#gid=0",
+  "range": "主实验!O1:P21",
+  "seeds": [
+    999,
+    2024,
+    2025
+  ],
+  "metric_values_checked": 40,
+  "other_cells_and_notes_unchanged": true,
+  "display_number_format": "0.0000"
+}

@@ -1,0 +1,151 @@
+{
+  "training_digest": "ea83b40c3d0d3bae4319818fc6797ba9e2bdadadefc16536050a0d16bfd4a58d",
+  "base_commit": "13691bf6016939f68bf487ca547febca789f67e7",
+  "author_reference_tag": "af90958f5fb43214caeda9729fefd5c9044e26ac",
+  "source_sha256": {
+    "baselines/bm3/runtime/bm3baseline/__init__.py": "3927b3cacf0a3bdb63e29dc2c766eddeae745922062b10caf6170314eea58f00",
+    "baselines/bm3/runtime/bm3baseline/cli.py": "40c0a37483ce9ce2c3719e4fcf070b48719a921f8637a03370f685ae5818f07b",
+    "baselines/bm3/runtime/bm3baseline/config.py": "85a3ed88765419453ce5571d68b69a9e340d16dbd0ff14240543f7f128ccca47",
+    "baselines/bm3/runtime/bm3baseline/data.py": "fdb626819729fb106fa81083c0019f63bbc9daa6b4912ea01870ef4c6d1aaa90",
+    "baselines/bm3/runtime/bm3baseline/engine.py": "4cca84e2f4de0227e49394175885c14628c89ca14753c994dfdcc32248a46959",
+    "baselines/bm3/runtime/bm3baseline/model.py": "4d8851f9c3711e26a27478da58fac852e9cd55f94cadcf939f4192b85e5c4f29",
+    "baselines/bm3/runtime/bm3baseline/report.py": "ecbba1f3472c356911e4cb961e24ba917b6f91923c5c595b3febc64c2d3bbc6c",
+    "baselines/bm3_damps/author_bm3_reference.py": "6c86a70ca8a868522433ed00c07784cdb966a02b6638ba7f2dbc3a836ede5116",
+    "baselines/bm3_damps/author_damps_reference.py": "4434e56d5b44a9becb8d1af80da576dd14eb6ea93e28c41d13084d217f267515",
+    "baselines/bm3_damps/damps.py": "869e98f5d3a9899d7c404ccb1efcb50985cfcd01540ca7a275253b5164438d7a",
+    "baselines/bm3_damps/maintain.py": "f014fdf205bfbdc5978285efe4e3700c396c54f46fce3a9be7099a5b25beeecc",
+    "baselines/bm3_damps/model.py": "8da94e824595c05db2244a6a786d9ace7666c4be6768a86e6ab9dd8b7a047d6f",
+    "baselines/bm3_damps/plot_results.py": "99b03aeb5124e3f28d91fa2e03fbaad805d2ae350c4f6aba2712b360e67715e4",
+    "baselines/bm3_damps/results.py": "4559ee304cb92824c34a4b2888cd928abf12a678d46464afa61352163262c533",
+    "baselines/bm3_damps/run_selected.py": "071610f906fbd84011affa82055398863329678f7bb835569dac127826a22128",
+    "baselines/bm3_damps/run_suite.py": "0e72563c1c0b9d20f02491e86ffc7818fa8a506b515ba60f9826ac1b82e9d80b",
+    "baselines/bm3_damps/select_main_three.py": "e617b80154283f07629df9b5ee4cc9b844c81ed90618cd3a10bd82354027241f",
+    "baselines/bm3_damps/smoke.py": "30408513d478033cba0e6a02e287a1c67e836b5b45644df5832f8a7dd0b03e2c",
+    "baselines/bm3_damps/tests/test_integration.py": "8399da6d3bea018d27c450ce0cbab3b674027fc8a0264b4be39b76e62f14398e",
+    "baselines/bm3_damps/tests/test_maintenance.py": "70bfdfaebd43fbb3fe02e68f8568a952e3bf297a61dffa84c9544e5cbedfe7e7",
+    "baselines/bm3_damps/tests/test_results.py": "ad0710fdcfa62abd656cc71795f129300b41024b0964bcade5c80cd1b355e82b",
+    "baselines/bm3_damps/tests/test_selection.py": "7195b60cde46992cba51fecfaf9c357448324a1814f8253d9ea8555d0af47baa"
+  },
+  "original_artifact_sha256": {
+    "baby-full-999": {
+      "result.json": "74ebb06f5169801ad56a5688340203b5264b1c3b450b08246261bd52cf7b4838",
+      "reloaded.json": "ef2846253def2bd6e456129b6e07ad70121607d16a00105b2c6584e03adfdf1f",
+      "metadata.json": "7402df5a220fc8c42cc1bbd46b8a5ff5fcf2d108923e857b48cf7f16a43bf641",
+      "history.csv": "28343e4269528858b19a34db4eb32d9dadd6e13af9c288956f38034806aaa186",
+      "best.pt": "b4af8270f466eba3f48aab3de335b3aa9e61abffab04e5568259cb573940898f",
+      "last.pt": "fdb6514a0f17c3bd024ac9722765dbf3b10e795b849daf195c2dc87196ed531d"
+    },
+    "baby-full-2024": {
+      "result.json": "e32669216bca0075ed613d3d08db4da5c5b96b07b4c0ea6db154c443cf84da2a",
+      "reloaded.json": "9e20cd705de86406ad11677c9e1de13326ce0fd4012b9946e32411c56ddd30ca",
+      "metadata.json": "7b7cd8609bc170add8c7a2948f163254d164bd06e4e7bb9ebb0a852e117e21e7",
+      "history.csv": "b4f10279c467c74289e06855e8543c950f47a1839694baa19b7779587f67908d",
+      "best.pt": "9181a7901ae91639a2b8c30d266e31270e186c9c0fcbe323c4e5e55cd8709fb7",
+      "last.pt": "93fd207f72d2953537bf773edc2bc16748289cac90c26eb375e9de80ca4a9a70"
+    },
+    "baby-full-2025": {
+      "result.json": "bfa873386edfb72ab465404e55b445cc9f80de9383d33840d797b6e7bb860d56",
+      "reloaded.json": "f8a0bd5e318444b9cf525163374bc786ad7c1c2db234a653e3aa61da9c450dfc",
+      "metadata.json": "c6035fbae76f87ba4b8f0ecbd176b1167df8fdcd48ab9062f4b1f3cd94d89670",
+      "history.csv": "4dfc5487c9a52d17c16e5133489791caa9845a16c2926cc38ce8de6399bdb7ba",
+      "best.pt": "f35127467d9c976309c5b8bd33eac093bfb676d7ac47284c2113dac811800a74",
+      "last.pt": "5b93a9f71f34e48daa1e096c27d86529b1b885beed73a74de84514a7e59548d0"
+    },
+    "sports-full-999": {
+      "result.json": "b3edada09a15a32e0fae1283862350a02330eae2c4938602c88631b6f43a6503",
+      "reloaded.json": "ad1ca588175ee07dc952312878e45a8906499a585e6f03458bdfcc69832e8a68",
+      "metadata.json": "419d4fea1fff1d7501584bc36a1129666bcb2f2dde1f4dc5d441c4b6e31a332c",
+      "history.csv": "fe436bff32d624b8e3df0917cf49d09ebe00fde26a8b1830d4ad42bdfba56f61",
+      "best.pt": "725c782cb75b406247b15935666f0a8548e3cede4664372611cd0726f5671ab3",
+      "last.pt": "115069b3fcd3f2b8071121fbbd3b8012e34a6ab13494130eb6ba102decf687dc"
+    },
+    "sports-full-2024": {
+      "result.json": "3bafb3bd79621ba0d8ab5b1ce032a63f74bc1b59703b1d838f8b2e858da4a143",
+      "reloaded.json": "84bf093c4bb8147fa19a38866f5cfb24c66ab8f9cb5eb1c7a654c083a6718762",
+      "metadata.json": "849e9a774cf440773f9f0e8f45eabc360cd11f8c64659dc4a153931a09570cf9",
+      "history.csv": "3bcf636d6c926a8320c77ccf8ebae0c4cace35574a1d1daee5064b5268c7ae0e",
+      "best.pt": "339fb64e58609f8b8db55bc24ebb449b06ed59cf8f72c4d7a39962c0913dcf00",
+      "last.pt": "28a10eb6a43c506e98ac8f1f1c2e7662f29e4f2c7ba5640b3aac3d74d30a28a9"
+    },
+    "sports-full-2025": {
+      "result.json": "3966aa405c9b8f53b4ac3861e0292a0e13b642410632c60409d4969e09580077",
+      "reloaded.json": "c950184ea6c057829ff01509e71eb6a7d6d42a52fadd84d5646f4a9d6991e327",
+      "metadata.json": "ede54b2fb5a8fc0c2250b3eb686679070758773a03b42d0803a3291395cb12fc",
+      "history.csv": "c912c7c917bf125a2feb3a98698b8c407667b0b326ba2a06f3855e0067f97db0",
+      "best.pt": "a37709593ec97f8e940ffbe0b939d19fd9f7990b072e94439e81d92480784b72",
+      "last.pt": "2849de1b0ff0acdb470acdfc0cca9d88e685546dee3e2c4757c0c5a8aec7a42d"
+    },
+    "clothing-full-999": {
+      "result.json": "9048c6019e7228500d5cf7834751ec41c3b660c7c10d7b851c6029afd52fca69",
+      "reloaded.json": "9f6bc382f55c42cf3d1b4794d6f3cdb5572798fed6da2f017e204493d5d60c31",
+      "metadata.json": "8b03662e7ef8faa3820db51ae5337f9d4e2f6c722d302f6ad13863974eab3c98",
+      "history.csv": "c7f7f306aa5fac861ce689095dff56bbbf3e672fe64af8fd515bc99fc8db58ae",
+      "best.pt": "343fcb8173438e99069eb23814b7c5faba80b3323ef3ab35a2f8dd7b5d78cd3f",
+      "last.pt": "b566ce3cf5939d9a402a22da6dc9252c22d310018250c2807a236ef8c4aae890"
+    },
+    "clothing-full-2024": {
+      "result.json": "7fb464fe8c6a78b113468dea1584de7189f2437976b975ec892410a9bfd1a5a1",
+      "reloaded.json": "5ae3c6b620fa1324e2f15aa3a20d763812843081aae487a45d15dc1df18785f6",
+      "metadata.json": "0af6eced1a3e6a46442ec0949644b7cb34e2c64f50fa8f54c87e872f5e7678ef",
+      "history.csv": "f017e323bf670ca6a94abc03b31e5f799f3b4f6fecbad152a003d3710677e21d",
+      "best.pt": "8c6d4c053363842c0c30c658af1d3f410a461abfcfbc9cd5b4f84179a6ca325e",
+      "last.pt": "0bdb868e222b39951a47ae83ff3d22130910cea801f543dfdac7a1aa5b0be946"
+    },
+    "clothing-full-2025": {
+      "result.json": "0048bc6c19fea8d960a26114c7cc9665e045ffcccc8f8efe63d3228367cf39b6",
+      "reloaded.json": "7cc16b18a186910990cfd884c56401840b74a7af35fddbd23dea149a911ed2a9",
+      "metadata.json": "fa520833c0c54592037f888db3b754ead2d6f645ac6f5d101d061e117e53d964",
+      "history.csv": "1a5a85d3f305f1c33f573d5189be39f6c303739bc80e49dacb1f0b0a4a9e2e7c",
+      "best.pt": "8fee74ee533778b4c9fdea981a603dd9411bbcee56b29fd76296f793e679f0c6",
+      "last.pt": "15194b74b5b5209ff3507f3ffd58d13af709aa95782f7ffbf800a8570aa96011"
+    },
+    "elec-full-999": {
+      "result.json": "d96471c978cc844c1daa60254a2b1da5f2525e079ae051dace82e0eafcc94a78",
+      "reloaded.json": "d869ebfcc6514c81ec50cb11baf56ae320fbf09aa23d061636d6c4281dbc9646",
+      "metadata.json": "e2e881b6bc912d1a0afbbbf58f67f0a17d672ebc6521aeb74c01654a370dde11",
+      "history.csv": "20378eaa1a35e76629d34796348d70fab536b2ec09662c85afdcd5e8ddda1d31",
+      "best.pt": "79ed5dcbf4c79102302ca218676f224416c4f5da49388b0055ed43363ed56e7a",
+      "last.pt": "a3773cc04bdecd68a81e3b6855c672751150d51a59ad09bc2c1164a1d67a26d8"
+    },
+    "elec-full-2024": {
+      "result.json": "6e2acf7364f96a3fff0cb45f2dcb83ceb7197e155519da3e4744b2ab6fcf9c78",
+      "reloaded.json": "40decc307a7d15a1609f113f04bc4c5f4bc557bf95d6b92c9a11a7f4256703fe",
+      "metadata.json": "73226e171d8996dd2384ea771f91b6bee5ae2c00770aecf230999c14cdb8a4b2",
+      "history.csv": "ff303c0d443d5a29736f36070213c7fed4f4b70108a9b0e896f642605540f2e7",
+      "best.pt": "62d8446fbce267c1622dcef524fd85609d95645a5771ba1daecd6af5ea74357c",
+      "last.pt": "0c41a4c80489f63c4d3dd169ab405ff69835eef37f03126c3260cfd412fdc59a"
+    },
+    "elec-full-2025": {
+      "result.json": "c4de563c5abe88b41f47819f54a94d296d40f73d12d41bd5e8c68e4e12ec1e84",
+      "reloaded.json": "89e587341731e7b13e7e716a5bbdfb22e030da8b99dde78ab023e8f86eed3ca7",
+      "metadata.json": "0ca0e020146fbab05433c6e1ed210dd04713fbd9b64d30f11fcaa780222469ef",
+      "history.csv": "1035c5405ada7e6a651075dd994d8ee08bcdad8b326d4b0fa652ee9839bb114c",
+      "best.pt": "fd4d753167108d189b7d8fc831b8ba61870e3d49b1daa33c94a3d39f1e5515e7",
+      "last.pt": "d5cf754db6b7eaba3c05df2e9d5cc73f76fc23885b644a9cef52dc8ddd261771"
+    },
+    "microlens-full-999": {
+      "result.json": "97548a349026a897e501bbcb1b023605c182be20ec8821a22bc00fe3d454b359",
+      "reloaded.json": "c5859a897f991813a9335fc41d43494ed1d646d8e01358d2467ac5617d7fd103",
+      "metadata.json": "3d46ea9aaf1bf5859971c3972e80a8fe6b652dd06976d7b3891b7f7563b565a5",
+      "history.csv": "8dcbf9a1189220569b13f5fb89e167c2500cbdda1f585ab7c59b4cd8cbfae29d",
+      "best.pt": "a64f9ffaca964f006d4617593e7900b8f9c98b823a6f42a7712e1a3fcb749421",
+      "last.pt": "df48b95c12afe525c74f2f00771a224ffbaddf5aa5c4d93b017179ebea2edf21"
+    },
+    "microlens-full-2024": {
+      "result.json": "3721fa5f905e9ac5aa6ac98ad324640c0923acd702f97f37253dc19f9acf3772",
+      "reloaded.json": "e8ddf9addd8651ac423ede8931dc2854a28a3a7ee85db744ff3cd97529a610b4",
+      "metadata.json": "964cded9459cab5756efffa4be5f12a03faa1a23726c914d077c985bf9d5a694",
+      "history.csv": "bebb2fa6d8e16a2fa8fe4da9b7d55fdf7ca86594ab855a360ca29cff53590b85",
+      "best.pt": "36b0d862c490df3f03cfcbe487005e1b4a766d0b87be272b4fcf6f4c33140e85",
+      "last.pt": "587a53b831c6ab0bf86cfb9952ceec97bade749c25b4bac85033cf4711768d98"
+    },
+    "microlens-full-2025": {
+      "result.json": "367612b3d61b14f983d0ebbf1a0050119dcdfd5efd3e743c6efecc0d717d8302",
+      "reloaded.json": "0a80c3bfe3028622e3f3b3b3942ed0d37c9e7ed3524b681556927df726ada5a2",
+      "metadata.json": "8592593b6aaa860418b6324e2f3c55db08ec576158bdef38f26c5a65344c8459",
+      "history.csv": "5c9023851c0682dd93b9e9610b7e3b36f136ac85081f3de6b6ee4d7eb881abd1",
+      "best.pt": "ff0813e737be862f74d850cfb0247883557cb7696a0067c8adb5e9cd074c7caf",
+      "last.pt": "d8a97ad0f8450530544e9116c398daf20b57ac07066b1f42a80e2c5dc11b72e1"
+    }
+  }
+}
