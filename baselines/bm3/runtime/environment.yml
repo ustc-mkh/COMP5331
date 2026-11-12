@@ -1,0 +1,6 @@
+name: bm3-baby
+channels:
+  - conda-forge
+dependencies:
+  - python=3.8.20
+  - pip=24.3.1

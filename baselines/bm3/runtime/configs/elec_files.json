@@ -1,0 +1,27 @@
+{
+  "elec.inter": {
+    "file_id": "1_q091XPuvVLnKBHqcSFvZpinhiQf2Kje",
+    "bytes": 49216870,
+    "sha256": "3586c6ab2d4b2a7a0f69c5f6149dbdf7a229a092c37cfee1244f49734afa8fb5"
+  },
+  "image_feat.npy": {
+    "file_id": "1lRyEvVA0SLraJUiK3T4DPtU3J7niNeX_",
+    "bytes": 2064416896,
+    "sha256": "1cdaa24a8493a66362845913412c868a011324f2e9060150245df026f8f89cb0",
+    "shape": [
+      63001,
+      4096
+    ],
+    "dtype": "float64"
+  },
+  "text_feat.npy": {
+    "file_id": "1SPzD-9WfhkmQMDaw1QBTyxfhkDW_ZUNn",
+    "bytes": 96769664,
+    "sha256": "ae49f620ad95301914b17eab868f9c06e4da02a699a8db036e1b077eeedbc239",
+    "shape": [
+      63001,
+      384
+    ],
+    "dtype": "float32"
+  }
+}

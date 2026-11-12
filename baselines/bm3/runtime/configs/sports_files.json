@@ -1,0 +1,27 @@
+{
+  "image_feat.npy": {
+    "file_id": "1Ggd3c-Tysm7z8f7R0n_ZWR6S5MNEydtV",
+    "bytes": 601522304,
+    "sha256": "222f924a0694b6c7e2bc26ea4bc2ef4ec89f7045aa5105ef463af8455c7a7695",
+    "shape": [
+      18357,
+      4096
+    ],
+    "dtype": "float64"
+  },
+  "sports.inter": {
+    "file_id": "1K19wIN63-jrTFag7D-dlw2ql0C0_YP2j",
+    "bytes": 8278383,
+    "sha256": "b8a43979c7984a01a8ab9713ea29a3cf13a65b1784dbadc2162fa932daf1c6a0"
+  },
+  "text_feat.npy": {
+    "file_id": "1xyegrwI8J9expuPU5ZB6A1_fg-EoUzaX",
+    "bytes": 28196480,
+    "sha256": "27d6087f0d8644b8245c60052425530c6446dffe61024b8126db0009ad94de84",
+    "shape": [
+      18357,
+      384
+    ],
+    "dtype": "float32"
+  }
+}
