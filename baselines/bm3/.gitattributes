@@ -1,3 +1,0 @@
-# Preserve archived bytes, including original line endings and whitespace.
-runtime/** -text -whitespace
-source-history/** -text -whitespace

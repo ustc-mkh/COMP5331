@@ -1,0 +1,6 @@
+data:
+  name: sports
+  interactions: sports.inter
+model:
+  name: freedom
+  damps_enabled: true

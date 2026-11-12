@@ -1,0 +1,15 @@
+model:
+  name: smore
+  embedding_dim: 64
+  n_ui_layers: 4
+  n_item_layers: 1
+  image_knn_k: 40
+  text_knn_k: 15
+  dropout: 0.1
+  cl_weight: 0.01
+  reg_weight: 0.0001
+  damps_enabled: false
+optimizer:
+  lr: 0.001
+  decay_base: 0.96
+  decay_steps: 50

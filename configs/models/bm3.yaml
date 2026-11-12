@@ -1,0 +1,11 @@
+model:
+  name: bm3
+  embedding_dim: 64
+  n_ui_layers: 1
+  dropout: 0.5
+  reg_weight: 0.1
+  cl_weight: 2.0
+  damps_enabled: false
+optimizer:
+  lr: 0.001
+  decay_base: 1.0

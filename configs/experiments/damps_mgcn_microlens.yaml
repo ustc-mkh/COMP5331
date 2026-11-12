@@ -1,0 +1,10 @@
+# DAMPS with the shared MGCN backbone parameters on MicroLens.
+data:
+  name: microlens
+model:
+  name: mgcn
+  damps_enabled: true
+  damps_apc: true
+  damps_avrf: true
+  damps_imcf: true
+  damps_eps: 1.0e-6

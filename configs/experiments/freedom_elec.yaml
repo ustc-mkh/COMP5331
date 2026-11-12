@@ -1,0 +1,6 @@
+data:
+  name: elec
+  interactions: elec.inter
+model:
+  name: freedom
+  damps_enabled: false

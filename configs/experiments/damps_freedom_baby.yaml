@@ -1,0 +1,6 @@
+data:
+  name: baby
+  interactions: baby.inter
+model:
+  name: freedom
+  damps_enabled: true

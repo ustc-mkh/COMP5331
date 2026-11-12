@@ -1,0 +1,6 @@
+data:
+  name: clothing
+  interactions: clothing.inter
+model:
+  name: freedom
+  damps_enabled: false

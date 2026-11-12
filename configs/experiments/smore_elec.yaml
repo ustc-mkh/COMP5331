@@ -1,0 +1,13 @@
+data:
+  name: elec
+  interactions: elec.inter
+model:
+  name: smore
+  n_ui_layers: 3
+  n_item_layers: 1
+  image_knn_k: 10
+  text_knn_k: 10
+  cl_weight: 0.01
+  reg_weight: 0.00001
+  dropout: 0
+  damps_enabled: false

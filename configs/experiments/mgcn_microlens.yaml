@@ -1,0 +1,5 @@
+# MGCN baseline for MicroLens using the shared fixed backbone configuration.
+data:
+  name: microlens
+model:
+  name: mgcn

@@ -1,8 +1,16 @@
 # COMP5331 · DAMPS 复现项目
 
-Task 4 的 SMORE 已完成五数据集共 45 次实验：Raw/Full 各三种子，三项消融各一个种子。结果与复现说明见 [SMORE 实验结果](docs/results/smore/) 和 [Task 4 运行入口](task4/README.md)。该提交保留实际运行的 KDD2026_DAMPS/MMRec 代码与固定配置，通过独立目录重建运行环境；不改变下述 `mmrecsys` 训练器与其他 backbone。三种子对照未观察到一致的 DAMPS 提升。
+基于仓库中的 DAMPS 论文实现频域多模态表示校准。当前统一支持 BM3、SMORE、FREEDOM、MGCN、LIRDRec、PGL 和 LGMRec，全部从 `src/mmrecsys` 运行，共用数据、训练、评估和 checkpoint。支持 Baby、Sports、Clothing、Electronics 和 MicroLens 的发布数据。
 
-基于 [DAMPS.pdf](DAMPS.pdf)（KDD 2026）复现频域多模态表示校准框架 DAMPS，当前接入 MGCN、LIRDRec、PGL 与 LGMRec backbone，支持 APC、AVRF、IMCF 及组件消融。LIRDRec 提供 Baby、Sports、Clothing、Electronics 和 MicroLens 的配置。直接读取 MMRec 发布的数据，不依赖 MMRec 运行。
+BM3、SMORE、FREEDOM 已合并为原生模型，旧独立运行目录及其实验结果已移除。模型说明、DAMPS 接入和统一协议见 [新增模型说明](docs/models.md)。
+
+```bash
+python -m mmrecsys.cli train --config configs/experiments/bm3_baby.yaml
+python -m mmrecsys.cli train --config configs/experiments/smore_baby.yaml
+python -m mmrecsys.cli train --config configs/experiments/freedom_baby.yaml
+# 启用共享 DAMPS
+python -m mmrecsys.cli train --config configs/experiments/damps_smore_baby.yaml
+```
 
 LIRDRec 已完成五个数据集 × 五组对照/消融 × 三个种子（999、2024、2025），共 75 组正式实验。完整 DAMPS 在五数据集四项指标的 20 项跨种子均值上均低于本项目基线，尚未复现论文所报提升；精选结果与论文对照见 [LIRDRec 实验结果](docs/results/lirdrec/)。基线参数、统一 DAMPS 接入方式、作者代码差异及运行命令见 [LIRDRec 接入说明](docs/lirdrec.md)。
 

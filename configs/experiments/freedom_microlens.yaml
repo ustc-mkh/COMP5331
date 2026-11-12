@@ -1,0 +1,6 @@
+data:
+  name: microlens
+  interactions: microlens.inter
+model:
+  name: freedom
+  damps_enabled: false

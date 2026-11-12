@@ -1,0 +1,13 @@
+data:
+  name: sports
+  interactions: sports.inter
+model:
+  name: smore
+  n_ui_layers: 3
+  n_item_layers: 1
+  image_knn_k: 10
+  text_knn_k: 10
+  cl_weight: 0.03
+  reg_weight: 0.0001
+  dropout: 0
+  damps_enabled: false

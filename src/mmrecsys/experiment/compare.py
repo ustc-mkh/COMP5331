@@ -21,7 +21,7 @@ from ..config import PROJECT_ROOT, load_config
 from .ablation import variant_config
 from .logging import write_json
 
-DATASETS = ("baby", "sports", "clothing", "elec")
+DATASETS = ("baby", "sports", "clothing", "elec", "microlens")
 
 
 def devices_for(gpus):

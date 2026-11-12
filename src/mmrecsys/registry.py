@@ -6,6 +6,9 @@ from .models.mgcn import MGCN, MGCNConfig
 from .models.lirdrec import LIRDRec, LIRDRecConfig
 from .models.pgl import PGL, PGLConfig
 from .models.lgmrec import LGMRec, LGMRecConfig
+from .models.bm3 import BM3, BM3Config
+from .models.smore import SMORE, SMOREConfig
+from .models.freedom import FREEDOM, FREEDOMConfig
 
 
 @dataclass(frozen=True)
@@ -17,6 +20,9 @@ class ModelEntry:
 
 
 MODELS = {
+    "bm3": ModelEntry(BM3, ("image", "text"), BatchSpec("positive"), BM3Config.parse),
+    "smore": ModelEntry(SMORE, ("image", "text"), BatchSpec("pairwise", 1), SMOREConfig.parse),
+    "freedom": ModelEntry(FREEDOM, ("image", "text"), BatchSpec("pairwise", 1), FREEDOMConfig.parse),
     "pgl": ModelEntry(PGL, ("image", "text"), BatchSpec("pairwise", 1), PGLConfig.parse),
     "lgmrec": ModelEntry(LGMRec, ("image", "text"), BatchSpec("pairwise", 1), LGMRecConfig.parse),
     "mgcn": ModelEntry(MGCN, ("image", "text"), BatchSpec("pairwise", 1), MGCNConfig.parse),

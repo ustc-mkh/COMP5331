@@ -1,0 +1,6 @@
+data:
+  name: baby
+  interactions: baby.inter
+model:
+  name: bm3
+  damps_enabled: false
