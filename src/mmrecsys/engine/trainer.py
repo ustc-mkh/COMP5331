@@ -3,6 +3,7 @@ import time
 import torch
 
 from .checkpoint import load_checkpoint, save_checkpoint
+from ..experiment.artifacts import atomic_copy
 from ..experiment.logging import append_metrics, write_json
 
 
@@ -72,7 +73,11 @@ class Trainer:
             checkpoint_started = time.monotonic()
             if improved:
                 self._save("best.pt", state)
-            self._save("last.pt", state)
+                # Both files contain this exact state; serialize it only once.
+                # Preserve best-before-last publication and independent files.
+                atomic_copy(self.run_dir / "best.pt", self.run_dir / "last.pt")
+            else:
+                self._save("last.pt", state)
             record["train_seconds"] = train_seconds
             record["eval_seconds"] = eval_seconds
             record["checkpoint_seconds"] = time.monotonic() - checkpoint_started

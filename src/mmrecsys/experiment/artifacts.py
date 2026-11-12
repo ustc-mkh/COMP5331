@@ -2,6 +2,7 @@ import hashlib
 import json
 import os
 from pathlib import Path
+import shutil
 import tempfile
 
 import numpy as np
@@ -28,6 +29,23 @@ def atomic_torch_save(value, path: Path) -> None:
     try:
         torch.save(value, temporary)
         os.replace(temporary, path)
+    finally:
+        if os.path.exists(temporary):
+            os.unlink(temporary)
+
+
+def atomic_copy(source: Path, destination: Path) -> None:
+    """Publish an independent copy without exposing a partially written file.
+
+    Do not hard-link: later writes must never mutate the other checkpoint.
+    Like atomic_torch_save, each destination is atomic, not the pair together.
+    """
+    destination.parent.mkdir(parents=True, exist_ok=True)
+    fd, temporary = tempfile.mkstemp(dir=destination.parent, suffix=".tmp")
+    os.close(fd)
+    try:
+        shutil.copyfile(source, temporary)
+        os.replace(temporary, destination)
     finally:
         if os.path.exists(temporary):
             os.unlink(temporary)
