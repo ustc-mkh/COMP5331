@@ -1,0 +1,225 @@
+{
+  "direction": "comparison minus control",
+  "metrics": [
+    {
+      "dataset": "baby",
+      "comparison": "full",
+      "control": "baseline",
+      "metric": "recall@10",
+      "n_pairs": 3,
+      "paired_mean_delta": -0.001666666666666666,
+      "paired_delta_sample_std": 0.0019035055380359001,
+      "relative_mean_delta_pct": -3.1328320802004983,
+      "positive_pairs": 1
+    },
+    {
+      "dataset": "baby",
+      "comparison": "full",
+      "control": "baseline",
+      "metric": "recall@20",
+      "n_pairs": 3,
+      "paired_mean_delta": -0.0031333333333333304,
+      "paired_delta_sample_std": 0.0006027713773341751,
+      "relative_mean_delta_pct": -3.7183544303797444,
+      "positive_pairs": 0
+    },
+    {
+      "dataset": "baby",
+      "comparison": "full",
+      "control": "baseline",
+      "metric": "ndcg@10",
+      "n_pairs": 3,
+      "paired_mean_delta": -0.0009333333333333346,
+      "paired_delta_sample_std": 0.0009073771725877471,
+      "relative_mean_delta_pct": -3.259604190919674,
+      "positive_pairs": 1
+    },
+    {
+      "dataset": "baby",
+      "comparison": "full",
+      "control": "baseline",
+      "metric": "ndcg@20",
+      "n_pairs": 3,
+      "paired_mean_delta": -0.001299999999999998,
+      "paired_delta_sample_std": 0.0006082762530298234,
+      "relative_mean_delta_pct": -3.551912568306015,
+      "positive_pairs": 0
+    },
+    {
+      "dataset": "sports",
+      "comparison": "full",
+      "control": "baseline",
+      "metric": "recall@10",
+      "n_pairs": 3,
+      "paired_mean_delta": 0.002533333333333334,
+      "paired_delta_sample_std": 0.0025146238950056405,
+      "relative_mean_delta_pct": 4.053333333333331,
+      "positive_pairs": 3
+    },
+    {
+      "dataset": "sports",
+      "comparison": "full",
+      "control": "baseline",
+      "metric": "recall@20",
+      "n_pairs": 3,
+      "paired_mean_delta": 0.002433333333333334,
+      "paired_delta_sample_std": 0.003478984526170438,
+      "relative_mean_delta_pct": 2.5596072931276304,
+      "positive_pairs": 2
+    },
+    {
+      "dataset": "sports",
+      "comparison": "full",
+      "control": "baseline",
+      "metric": "ndcg@10",
+      "n_pairs": 3,
+      "paired_mean_delta": 0.0014000000000000009,
+      "paired_delta_sample_std": 0.0014798648586948784,
+      "relative_mean_delta_pct": 4.093567251461994,
+      "positive_pairs": 3
+    },
+    {
+      "dataset": "sports",
+      "comparison": "full",
+      "control": "baseline",
+      "metric": "ndcg@20",
+      "n_pairs": 3,
+      "paired_mean_delta": 0.0014333333333333327,
+      "paired_delta_sample_std": 0.0018009256878986776,
+      "relative_mean_delta_pct": 3.36726703210648,
+      "positive_pairs": 3
+    },
+    {
+      "dataset": "clothing",
+      "comparison": "full",
+      "control": "baseline",
+      "metric": "recall@10",
+      "n_pairs": 3,
+      "paired_mean_delta": 0.0007000000000000039,
+      "paired_delta_sample_std": 0.000519615242270662,
+      "relative_mean_delta_pct": 1.6894609814964046,
+      "positive_pairs": 3
+    },
+    {
+      "dataset": "clothing",
+      "comparison": "full",
+      "control": "baseline",
+      "metric": "recall@20",
+      "n_pairs": 3,
+      "paired_mean_delta": 0.0011999999999999997,
+      "paired_delta_sample_std": 0.000953939201416949,
+      "relative_mean_delta_pct": 1.9522776572667988,
+      "positive_pairs": 3
+    },
+    {
+      "dataset": "clothing",
+      "comparison": "full",
+      "control": "baseline",
+      "metric": "ndcg@10",
+      "n_pairs": 3,
+      "paired_mean_delta": 0.0005000000000000004,
+      "paired_delta_sample_std": 0.0003605551275464001,
+      "relative_mean_delta_pct": 2.2058823529411686,
+      "positive_pairs": 3
+    },
+    {
+      "dataset": "clothing",
+      "comparison": "full",
+      "control": "baseline",
+      "metric": "ndcg@20",
+      "n_pairs": 3,
+      "paired_mean_delta": 0.0006333333333333342,
+      "paired_delta_sample_std": 0.0004618802153517018,
+      "relative_mean_delta_pct": 2.2836538461538547,
+      "positive_pairs": 3
+    },
+    {
+      "dataset": "elec",
+      "comparison": "full",
+      "control": "baseline",
+      "metric": "recall@10",
+      "n_pairs": 3,
+      "paired_mean_delta": 0.0015333333333333334,
+      "paired_delta_sample_std": 0.0012662279942148393,
+      "relative_mean_delta_pct": 3.6163522012578664,
+      "positive_pairs": 3
+    },
+    {
+      "dataset": "elec",
+      "comparison": "full",
+      "control": "baseline",
+      "metric": "recall@20",
+      "n_pairs": 3,
+      "paired_mean_delta": 0.0013333333333333277,
+      "paired_delta_sample_std": 0.001205542754668345,
+      "relative_mean_delta_pct": 2.110817941952492,
+      "positive_pairs": 3
+    },
+    {
+      "dataset": "elec",
+      "comparison": "full",
+      "control": "baseline",
+      "metric": "ndcg@10",
+      "n_pairs": 3,
+      "paired_mean_delta": 0.001066666666666666,
+      "paired_delta_sample_std": 0.000907377172587745,
+      "relative_mean_delta_pct": 4.494382022471921,
+      "positive_pairs": 3
+    },
+    {
+      "dataset": "elec",
+      "comparison": "full",
+      "control": "baseline",
+      "metric": "ndcg@20",
+      "n_pairs": 3,
+      "paired_mean_delta": 0.001033333333333334,
+      "paired_delta_sample_std": 0.0008504900548115396,
+      "relative_mean_delta_pct": 3.5469107551487467,
+      "positive_pairs": 3
+    },
+    {
+      "dataset": "microlens",
+      "comparison": "full",
+      "control": "baseline",
+      "metric": "recall@10",
+      "n_pairs": 3,
+      "paired_mean_delta": 0.0023999999999999994,
+      "paired_delta_sample_std": 0.0006557438524301982,
+      "relative_mean_delta_pct": 3.8709677419354938,
+      "positive_pairs": 3
+    },
+    {
+      "dataset": "microlens",
+      "comparison": "full",
+      "control": "baseline",
+      "metric": "recall@20",
+      "n_pairs": 3,
+      "paired_mean_delta": 0.00313333333333334,
+      "paired_delta_sample_std": 0.0004932882862316262,
+      "relative_mean_delta_pct": 3.145917001338683,
+      "positive_pairs": 3
+    },
+    {
+      "dataset": "microlens",
+      "comparison": "full",
+      "control": "baseline",
+      "metric": "ndcg@10",
+      "n_pairs": 3,
+      "paired_mean_delta": 0.001299999999999998,
+      "paired_delta_sample_std": 0.00034641016151377535,
+      "relative_mean_delta_pct": 4.189044038668088,
+      "positive_pairs": 3
+    },
+    {
+      "dataset": "microlens",
+      "comparison": "full",
+      "control": "baseline",
+      "metric": "ndcg@20",
+      "n_pairs": 3,
+      "paired_mean_delta": 0.00156666666666667,
+      "paired_delta_sample_std": 0.00035118845842842776,
+      "relative_mean_delta_pct": 3.858784893267675,
+      "positive_pairs": 3
+    }
+  ]
+}

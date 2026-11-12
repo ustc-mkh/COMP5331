@@ -1,0 +1,2 @@
+histories/*.csv -text -whitespace
+baseline-histories/*.csv -text -whitespace
