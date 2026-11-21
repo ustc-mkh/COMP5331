@@ -1,6 +1,6 @@
 # LIRDRec Integration and Full Experiments
 
-English · [简体中文](zh/lirdrec.md) · [Documentation](README.md)
+English · [简体中文](zh/lirdrec.md) · [Model index](models.md)
 
 LIRDRec is integrated into the shared data, trainer, evaluator, and checkpoint stack. A historical 75-run study covered five datasets, five variants, and three seeds (999, 2024, 2025). Full DAMPS fell below the baseline on all 20 dataset-by-metric cross-seed means. This did not reproduce the reported gains and does not establish what the upstream integration would achieve. Historical result tables are not included in this checkout.
 

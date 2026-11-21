@@ -16,16 +16,14 @@ python -m mmrecsys.cli train --config configs/experiments/damps_freedom_baby.yam
 
 ### PGL and LGMRec
 
-Use model and dataset defaults directly. DAMPS is off by default. When enabled, `concat` keeps the original image/text channels and appends two calibrated channels. In PGL the fixed item graph still comes from raw features. In LGMRec the global hypergraph still uses raw features, and the collaborative and hypergraph output widths grow to match the four local channels.
+Use `--model` and `--dataset` to select the defaults. DAMPS is off by default; enabling it selects `concat` unless you choose another mode.
 
 ```bash
 python -m mmrecsys.cli train --model pgl --dataset baby
-python -m mmrecsys.cli train --model pgl --dataset baby --set model.damps_enabled=true
-python -m mmrecsys.cli train --model lgmrec --dataset baby
-python -m mmrecsys.cli train --model lgmrec --dataset baby --set model.damps_enabled=true --set model.damps_mode=official
+python -m mmrecsys.cli train --model lgmrec --dataset baby --set model.damps_enabled=true
 ```
 
-`official` follows the reference integration pattern, not a separate implementation of the DAMPS operator. PGL calibrates at initialization for graph construction and calls DAMPS during forward passes; its external modality projections do not receive a useful gradient. LGMRec calibrates only at initialization and freezes the resulting features. At embedding width 64, baseline / concat / official scoring widths are 128 / 256 / 128 for PGL and 64 / 256 / 64 for LGMRec. Do not mix checkpoints across modes or attribute all concat gains to calibration: width and parameter count also change.
+See the [PGL](pgl.md) and [LGMRec](lgmrec.md) guides for the differences between `concat` and `official` and the full commands.
 
 ## Paired ablations and search
 

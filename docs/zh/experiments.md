@@ -16,16 +16,14 @@ python -m mmrecsys.cli train --config configs/experiments/damps_freedom_baby.yam
 
 ### PGL 和 LGMRec
 
-直接使用模型和数据集默认配置。DAMPS 默认关闭；启用后默认使用 `concat`，保留原图文两路，并拼接校准后的两路。PGL 的固定物品图仍来自原始特征；LGMRec 的全局超图仍使用原始特征，协同及超图输出扩展到与局部四路表示相同的宽度。
+使用 `--model` 和 `--dataset` 选择默认配置。DAMPS 默认关闭，启用后默认使用 `concat`。
 
 ```bash
 python -m mmrecsys.cli train --model pgl --dataset baby
-python -m mmrecsys.cli train --model pgl --dataset baby --set model.damps_enabled=true
-python -m mmrecsys.cli train --model lgmrec --dataset baby
-python -m mmrecsys.cli train --model lgmrec --dataset baby --set model.damps_enabled=true --set model.damps_mode=official
+python -m mmrecsys.cli train --model lgmrec --dataset baby --set model.damps_enabled=true
 ```
 
-`official` 参考上游接入流程，但不引入另一份 DAMPS 算子。PGL 在初始化时校准后建图，前向仍调用 DAMPS；外部模态投影没有有效梯度。LGMRec 只在初始化时校准，随后冻结所得特征。嵌入宽度为 64 时，基线 / concat / official 的打分表示宽度分别为 PGL 的 128 / 256 / 128，以及 LGMRec 的 64 / 256 / 64。不同模式不能混用 checkpoint；拼接也会改变宽度和参数量，不能将所有收益归因于校准。
+参见 [PGL](pgl.md) 和 [LGMRec](lgmrec.md) 的独立指南，了解 `concat` 与 `official` 模式的区别和完整命令。
 
 ## 配对消融与超参数搜索
 

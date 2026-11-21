@@ -1,6 +1,6 @@
 # LIRDRec 接入与完整实验
 
-[English](../lirdrec.md) · 中文 · [文档首页](README.md)
+[English](../lirdrec.md) · 中文 · [模型索引](models.md)
 
 本项目已接入 LIRDRec backbone，复用已有数据加载、训练器、评估、checkpoint 和 DAMPS 组件开关。Baby、Sports、Clothing、Electronics（配置名 `elec`）和 MicroLens 的五组对照/消融均已完成种子 999、2024、2025 的正式训练，共 75 组。
 

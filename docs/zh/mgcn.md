@@ -1,6 +1,6 @@
 # DAMPS 的 MGCN backbone 与基线实验
 
-[English](../mgcn.md) · 中文 · [文档首页](README.md)
+[English](../mgcn.md) · 中文 · [模型索引](models.md)
 
 模型公式参考 *Multi-View Graph Convolutional Network for Multimedia Recommendation*（ACM MM 2023）。训练协议参考 Wang 等的 *Enhancing Multimodal Recommendation via Multimodal Representation Calibration in Spectral Domain*（KDD 2026）第 4.1 节以及上游 MMRec 的配置与实现。本项目独立实现，不导入 MMRec。
 

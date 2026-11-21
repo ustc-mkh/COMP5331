@@ -83,5 +83,5 @@ python -m mmrecsys.cli evaluate --run "$RUN_DIR" --split test
 ## 文档
 
 - [中文文档索引](docs/zh/README.md) · [English docs](docs/README.md)
-- [源码与测试文件索引](docs/zh/code-map.md)
+- [模型文档](docs/zh/models.md) · [源码与测试文件索引](docs/zh/code-map.md)
 - [项目架构](docs/zh/architecture.md) · [DAMPS 实现](docs/zh/damps.md)

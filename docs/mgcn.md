@@ -1,6 +1,6 @@
 # MGCN Backbone and Baseline
 
-English · [简体中文](zh/mgcn.md) · [Documentation](README.md)
+English · [简体中文](zh/mgcn.md) · [Model index](models.md)
 
 The MGCN implementation follows *Multi-View Graph Convolutional Network for Multimedia Recommendation* (ACM MM 2023) and the [MMRec implementation](https://github.com/enoche/MMRec/blob/master/src/models/mgcn.py). MMRec is not required at runtime. Use `mgcn_<dataset>.yaml` for the baseline and `damps_mgcn_<dataset>.yaml` for the paired [DAMPS integration](damps.md).
 

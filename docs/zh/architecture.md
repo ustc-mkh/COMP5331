@@ -2,7 +2,7 @@
 
 [English](../architecture.md) · 中文 · [文档首页](README.md)
 
-目标：在一致的数据、训练与评估协议下运行 BM3、SMORE、FREEDOM、MGCN、LIRDRec、PGL 和 LGMRec，并比较 backbone 与 backbone + DAMPS。所有模型由 `src/mmrecsys/registry.py` 注册；模型差异封装在 `models/` 内，训练器不按模型名称分支。BM3、SMORE、FREEDOM 的来源、接入方式及固定参数见 [模型说明](models.md)。以下数据流以 MGCN 为例。
+目标：在一致的数据、训练与评估协议下运行 BM3、SMORE、FREEDOM、MGCN、LIRDRec、PGL 和 LGMRec，并比较 backbone 与 backbone + DAMPS。所有模型由 `src/mmrecsys/registry.py` 注册；模型差异封装在 `models/` 内，训练器不按模型名称分支。各模型的实现、接入方式和默认参数见[模型文档](models.md)。以下数据流以 MGCN 为例。
 
 ## 分层与数据流
 

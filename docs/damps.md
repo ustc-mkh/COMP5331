@@ -6,7 +6,7 @@ The shared operator implements *Enhancing Multimodal Recommendation via Multimod
 
 ## Integration and equations
 
-MGCN's DAMPS module owns feature tables and independent projections and runs before the behavior-guided purifier. The backbone projections do not feed the DAMPS path and receive no gradient under the default final-representation regularization. LIRDRec uses the projected-input interface after its original modality MLPs and leaves its raw-feature graph and DCT branch unchanged. See [BM3, SMORE, and FREEDOM](models.md) and the [experiment guide](experiments.md) for other integrations.
+MGCN's DAMPS module owns feature tables and independent projections and runs before the behavior-guided purifier. The backbone projections do not feed the DAMPS path and receive no gradient under the default final-representation regularization. LIRDRec uses the projected-input interface after its original modality MLPs and leaves its raw-feature graph and DCT branch unchanged. See the [model guides](models.md) for the other integrations.
 
 | Paper | Implementation |
 | --- | --- |

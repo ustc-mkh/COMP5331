@@ -83,5 +83,5 @@ Resume from the original run directory with both checkpoints intact. Set the epo
 ## Documentation
 
 - [Documentation index](docs/README.md) · [中文文档](docs/zh/README.md)
-- [Source and test file reference](docs/code-map.md)
+- [Model guides](docs/models.md) · [Source and test file reference](docs/code-map.md)
 - [Architecture](docs/architecture.md) · [DAMPS implementation](docs/damps.md)
