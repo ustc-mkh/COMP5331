@@ -28,6 +28,8 @@ class FREEDOMConfig:
     dropout: float = 0.8
     reg_weight: float = 0.0001
     damps_enabled: bool = False
+    # Keep the source-faithful mode available for existing configurations.
+    damps_graph_source: str = "calibrated"
     damps_apc: bool = True
     damps_avrf: bool = True
     damps_imcf: bool = True
@@ -40,6 +42,8 @@ class FREEDOMConfig:
         if (type(self.mm_image_weight) not in (int, float)
                 or not math.isfinite(self.mm_image_weight) or not 0 <= self.mm_image_weight <= 1):
             raise ValueError("model.mm_image_weight must be in [0, 1]")
+        if self.damps_graph_source not in ("raw", "calibrated"):
+            raise ValueError("model.damps_graph_source must be raw or calibrated")
 
     @classmethod
     def parse(cls, values):
@@ -67,10 +71,12 @@ class FREEDOM(Recommender):
             self.damps = DAMPS(dim, apc=config.damps_apc, avrf=config.damps_avrf,
                                imcf=config.damps_imcf, eps=config.damps_eps,
                                raw_image=raw["image"], raw_text=raw["text"])
-            # Task 6 calibrates once, then trains independent feature Parameters.
+            # Author FREEDOM calibrates once and restores each raw feature width
+            # before creating independent trainable feature tables/projections.
             self.damps.requires_grad_(False)
+            output_sizes = (raw["image"].shape[1], raw["text"].shape[1])
             with torch.no_grad():
-                raw["image"], raw["text"] = self.damps()
+                raw["image"], raw["text"] = self.damps(output_sizes=output_sizes)
         self.features = nn.ModuleDict()
         self.projections = nn.ModuleDict()
         graphs = []
@@ -78,15 +84,18 @@ class FREEDOM(Recommender):
             features = raw[modality].detach().clone()
             self.features[modality] = nn.Embedding.from_pretrained(features, freeze=False)
             self.projections[modality] = nn.Linear(features.shape[1], dim)
-            # Calibration depends on initialization; hash its actual output, not only the data.
-            fingerprint = (array_digest(features.cpu().numpy()) if config.damps_enabled
+            # A raw graph preserves the backbone's pretrained semantic neighbors;
+            # calibration still initializes the trainable auxiliary feature table.
+            calibrated_graph = config.damps_enabled and config.damps_graph_source == "calibrated"
+            graph_features = features if calibrated_graph else data.features[modality]
+            fingerprint = (array_digest(graph_features.cpu().numpy()) if calibrated_graph
                            else data.feature_fingerprints[modality])
             metadata = {"kind": "freedom_item_knn", "feature": fingerprint,
                         "n_items": data.n_items, "numbering": "feature_row_is_item_id",
                         "similarity": "cosine", "tie_break": "item_id_ascending",
                         "k": config.knn_k, "self_loops": True, "symmetrize": False,
                         "edge_weight": "binary", "normalization": "symmetric", "epsilon": 1e-7}
-            graphs.append(cache.get_or_build(metadata, lambda features=features: normalize_with_epsilon(
+            graphs.append(cache.get_or_build(metadata, lambda features=graph_features: normalize_with_epsilon(
                 knn_graph(features, config.knn_k, chunk_size=config.knn_chunk_size,
                           self_loops=True, symmetrize=False, edge_weight="binary", normalization="none"))))
         graph = config.mm_image_weight * graphs[0] + (1 - config.mm_image_weight) * graphs[1]

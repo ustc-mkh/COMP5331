@@ -146,7 +146,18 @@ def test_smore_spectral_convolution_and_max_union(tiny_config):
 
 def test_freedom_pruning_and_initialization_state(tiny_config):
     cfg = model_config(tiny_config, "freedom", True)
-    _, _, metadata, model, _, _ = assemble(cfg)
+    data, _, metadata, model, _, _ = assemble(cfg)
+    sizes = tuple(data.features[m].shape[1] for m in ("image", "text"))
+    with torch.no_grad():
+        calibrated = model.damps(output_sizes=sizes)
+    for modality, expected in zip(("image", "text"), calibrated):
+        feature = model.features[modality].weight
+        assert feature.shape == data.features[modality].shape
+        assert model.projections[modality].in_features == feature.shape[1]
+        assert model.projections[modality].out_features == cfg['model']['embedding_dim']
+        assert feature.requires_grad
+        torch.testing.assert_close(feature, expected, rtol=0, atol=0)
+        assert feature.data_ptr() != expected.data_ptr()
     model.on_epoch_start(1)
     graph = model.masked_graph.coalesce()
     count = int(model.edge_weights.numel() * (1 - model.config.dropout))
@@ -165,6 +176,34 @@ def test_freedom_pruning_and_initialization_state(tiny_config):
         model.item_graph = model.item_graph * 0
     load_checkpoint(run / "best.pt", model, cfg, metadata["fingerprint"])
     assert model.item_graph.coalesce().values().abs().sum() > 0
+
+
+def test_freedom_raw_graph_preserves_baseline_without_changing_auxiliary_features(tiny_config):
+    baseline_cfg = model_config(tiny_config, "freedom", False)
+    _, _, _, baseline, _, _ = assemble(baseline_cfg)
+    calibrated_cfg = model_config(tiny_config, "freedom", True)
+    _, _, _, calibrated, _, _ = assemble(calibrated_cfg)
+    raw_cfg = deepcopy(calibrated_cfg)
+    raw_cfg['model']['damps_graph_source'] = 'raw'
+    _, _, _, raw, _, _ = assemble(raw_cfg)
+    torch.testing.assert_close(raw.item_graph.to_dense(), baseline.item_graph.to_dense(), rtol=0, atol=0)
+    assert not torch.equal(raw.item_graph.to_dense(), calibrated.item_graph.to_dense())
+    for name, parameter in raw.named_parameters():
+        torch.testing.assert_close(parameter, dict(calibrated.named_parameters())[name], rtol=0, atol=0)
+    raw.on_epoch_start(1)
+    batch = TrainBatch(torch.tensor([0, 1]), torch.tensor([1, 2]), torch.tensor([[4], [5]]))
+    raw.compute_loss(batch).total.backward()
+    for modality in ('image', 'text'):
+        assert raw.features[modality].weight.grad is not None
+        assert raw.projections[modality].weight.grad is not None
+    assert all(p.grad is None for p in raw.damps.parameters())
+
+
+def test_freedom_raw_graph_training_and_reload(tiny_config):
+    cfg = model_config(tiny_config, 'freedom', True)
+    cfg['model']['damps_graph_source'] = 'raw'
+    run, result = train_experiment(cfg)
+    assert evaluate_experiment(run) == result['test']
 
 
 @pytest.mark.parametrize("name", ["bm3", "smore", "freedom"])
@@ -187,3 +226,6 @@ def test_experiment_configs(name, dataset):
                      "model.damps_apc=1", "model.typo=1"):
         with pytest.raises(ValueError):
             load_config(model=name, dataset=dataset, overrides=[override])
+    if name == 'freedom':
+        with pytest.raises(ValueError, match='damps_graph_source'):
+            load_config(model=name, dataset=dataset, overrides=['model.damps_graph_source=invalid'])

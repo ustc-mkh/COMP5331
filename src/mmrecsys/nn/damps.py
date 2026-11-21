@@ -108,7 +108,16 @@ class DAMPS(nn.Module):
         if image.dtype != text.dtype or image.device != text.device or image.dtype not in (torch.float32, torch.float64):
             raise ValueError("DAMPS expects float32/float64 inputs on the same device with the same dtype")
 
-    def forward(self, image=None, text=None):
+    def forward(self, image=None, text=None, *, output_sizes=None):
+        """Calibrate features; FREEDOM may restore each modality's raw width.
+
+        The default remains ``dim`` for both outputs. Explicit lengths reproduce
+        the author's FREEDOM inverse FFT, including frequency padding/trimming.
+        """
+        if output_sizes is not None:
+            if (not isinstance(output_sizes, (tuple, list)) or len(output_sizes) != 2
+                    or any(type(size) is not int or size < 1 for size in output_sizes)):
+                raise ValueError("DAMPS output_sizes must contain two positive integers")
         if (image is None) != (text is None):
             raise ValueError("DAMPS requires both image and text inputs")
         if image is not None:
@@ -119,7 +128,7 @@ class DAMPS(nn.Module):
             image, text = self.project_features()
         if (self.apc or self.avrf) and not self.initialized.item():
             raise RuntimeError("Initialize DAMPS from full-item projections before training")
-        if not (self.apc or self.avrf or self.imcf):
+        if not (self.apc or self.avrf or self.imcf) and output_sizes is None:
             return image, text
         zi, zt = torch.fft.rfft(image, dim=-1, norm="ortho"), torch.fft.rfft(text, dim=-1, norm="ortho")
         if self.apc:
@@ -135,5 +144,7 @@ class DAMPS(nn.Module):
             zi, zt = (weights[0] * branches[0][m] + weights[1] * branches[1][m] for m in (0, 1))
         elif branches:
             zi, zt = branches[0]
-        # irfft discards imaginary DC/Nyquist components, as before.
-        return torch.fft.irfft(zi, n=self.dim, dim=-1, norm="ortho"), torch.fft.irfft(zt, n=self.dim, dim=-1, norm="ortho")
+        # irfft discards imaginary DC/Nyquist components at each output length.
+        image_size, text_size = output_sizes if output_sizes is not None else (self.dim, self.dim)
+        return (torch.fft.irfft(zi, n=image_size, dim=-1, norm="ortho"),
+                torch.fft.irfft(zt, n=text_size, dim=-1, norm="ortho"))

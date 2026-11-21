@@ -63,6 +63,35 @@ def test_author_phase_sign_and_coherence_epsilon(offset):
     torch.testing.assert_close(DAMPS(4).mix_logits.softmax(0), torch.tensor([0.549834, 0.450166]))
 
 
+@pytest.mark.parametrize('flags', list(product([False, True], repeat=3)))
+def test_explicit_output_sizes_match_independent_inverse_fft(flags):
+    torch.manual_seed(23)
+    image, text = torch.randn(12, 6), torch.randn(12, 6)
+    module = DAMPS(6, apc=flags[0], avrf=flags[1], imcf=flags[2])
+    module.initialize(image, text)
+    zi, zt = (torch.fft.rfft(x, norm='ortho') for x in (image, text))
+    if flags[0]:
+        rotation = module.phase_prior / 2 + module.phase_residual
+        zi, zt = zi * torch.exp(-1j * rotation), zt * torch.exp(1j * rotation)
+    coherence = (zi * zt.conj()).abs().square() / (zi.abs().square() * zt.abs().square() + 1e-8)
+    if flags[1] and flags[2]:
+        weights = module.mix_logits.softmax(0)
+        zi, zt = ((weights[0] * mask + weights[1] * coherence) * z
+                  for mask, z in ((module.avrf_image, zi), (module.avrf_text, zt)))
+    elif flags[1]:
+        zi, zt = module.avrf_image * zi, module.avrf_text * zt
+    elif flags[2]:
+        zi, zt = coherence * zi, coherence * zt
+    # Cover longer odd/even outputs and shorter (trimmed) inverse FFTs.
+    for sizes in ((9, 12), (3, 4)):
+        actual = module(image, text, output_sizes=sizes)
+        for result, z, size in zip(actual, (zi, zt), sizes):
+            torch.testing.assert_close(result, torch.fft.irfft(z, n=size, norm='ortho'))
+    for invalid in ((0, 6), (True, 6), (6,), '66'):
+        with pytest.raises(ValueError, match='output_sizes'):
+            module(image, text, output_sizes=invalid)
+
+
 def test_initialization_matches_author_statistics_and_is_fixed():
     torch.manual_seed(41)
     image, text = torch.randn(12, 6), torch.randn(12, 6)
