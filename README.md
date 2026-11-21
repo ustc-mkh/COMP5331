@@ -2,11 +2,13 @@
 
 English · [简体中文](README.zh-CN.md)
 
-A Linux research project for comparing multimodal recommender backbones with and without DAMPS, a spectral calibration method for image and text representations. BM3, SMORE, FREEDOM, MGCN, LIRDRec, PGL, and LGMRec share the same data loader, trainer, and evaluator. This is an implementation and experiment framework, not a claim that the paper's results have been reproduced.
+This COMP5331 group project aims to reproduce the paper *Enhancing Multimodal Recommendation via Multimodal Representation Calibration in Spectral Domain*. We implement DAMPS, the paper's method for calibrating image and text representations in the spectral domain, and compare multimodal recommenders with and without it under a common training and evaluation protocol.
 
-## 1. Set up the Linux environment
+The project supports BM3, SMORE, FREEDOM, MGCN, LIRDRec, PGL, and LGMRec. The implementation and experiments are part of the reproduction effort; they do not establish that the paper's reported results have been reproduced.
 
-Use Python **3.10 or newer** with `venv` and `pip`. The commands below assume Bash and a working copy of this repository. If `python3 -m venv` is unavailable on Debian or Ubuntu, install the `python3-venv` package for your Python version.
+## 1. Set up the environment
+
+The setup below assumes Linux, Bash, and a local checkout. Use Python **3.10 or newer** with `venv` and `pip`. If `python3 -m venv` is unavailable on Debian or Ubuntu, install the `python3-venv` package for your Python version.
 
 From the repository root:
 

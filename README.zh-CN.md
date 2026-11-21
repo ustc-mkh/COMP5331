@@ -2,11 +2,13 @@
 
 [English](README.md) · 简体中文
 
-本项目在 Linux 上比较启用与不启用 DAMPS 的多模态推荐模型。DAMPS 在频域校准图像和文本表示。BM3、SMORE、FREEDOM、MGCN、LIRDRec、PGL 和 LGMRec 共用数据加载器、训练器和评估器。项目提供实现与实验框架，不代表已经复现论文指标。
+这是 COMP5331 的小组项目，目标是复现论文《Enhancing Multimodal Recommendation via Multimodal Representation Calibration in Spectral Domain》。我们实现了论文提出的 DAMPS 方法，在频域校准图像和文本表示，并在统一的训练与评估协议下比较启用与不启用 DAMPS 的多模态推荐模型。
 
-## 1. 配置 Linux 环境
+项目支持 BM3、SMORE、FREEDOM、MGCN、LIRDRec、PGL 和 LGMRec。当前实现和实验用于验证复现效果，并不代表已达到论文报告的结果。
 
-需要 **Python 3.10 或更高版本**，以及 `venv` 和 `pip`。以下命令使用 Bash，假设已获取本仓库。如果在 Debian 或 Ubuntu 上无法运行 `python3 -m venv`，请安装与 Python 版本对应的 `python3-venv` 软件包。
+## 1. 配置环境
+
+以下步骤以 Linux 和 Bash 为例，假设已获取本仓库。需要 **Python 3.10 或更高版本**，以及 `venv` 和 `pip`。如果在 Debian 或 Ubuntu 上无法运行 `python3 -m venv`，请安装与 Python 版本对应的 `python3-venv` 软件包。
 
 在仓库根目录执行：
 
