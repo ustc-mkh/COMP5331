@@ -10,7 +10,7 @@
 | [SMORE](smore.md) | 固定模态图与原生频域融合；DAMPS 接在融合之前。 |
 | [FREEDOM](freedom.md) | 固定物品图与交互剪枝；一次性 DAMPS 校准及原始图对照。 |
 | [MGCN](mgcn.md) | 多视图图卷积与行为引导净化。 |
-| [LIRDRec](lirdrec.md) | DCT 特征共享与 PWC 融合；含完整实验队列。 |
+| [LIRDRec](lirdrec.md) | DCT 特征共享与 PWC 融合。 |
 | [PGL](pgl.md) | 局部或全局训练子图；支持两种 DAMPS 接入方式。 |
 | [LGMRec](lgmrec.md) | 局部模态传播与全局超图；支持两种 DAMPS 接入方式。 |
 

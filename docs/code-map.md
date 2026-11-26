@@ -58,8 +58,6 @@ This index covers every Python file under `src/mmrecsys/` and `tests/`. It exclu
 | [`src/mmrecsys/experiment/__init__.py`](../src/mmrecsys/experiment/__init__.py) | Marks the experiment package. |
 | [`src/mmrecsys/experiment/ablation.py`](../src/mmrecsys/experiment/ablation.py) | Runs paired baseline, full DAMPS, and component ablations across seeds. |
 | [`src/mmrecsys/experiment/artifacts.py`](../src/mmrecsys/experiment/artifacts.py) | Hashes content, writes artifacts atomically, and caches graphs. |
-| [`src/mmrecsys/experiment/compare.py`](../src/mmrecsys/experiment/compare.py) | Schedules independent MGCN comparison jobs and writes paired summaries. |
-| [`src/mmrecsys/experiment/lirdrec_suite.py`](../src/mmrecsys/experiment/lirdrec_suite.py) | Schedules, verifies, resumes, and summarizes the single-GPU LIRDRec suite. |
 | [`src/mmrecsys/experiment/logging.py`](../src/mmrecsys/experiment/logging.py) | Writes run metadata, environment manifests, and JSON Lines metrics. |
 | [`src/mmrecsys/experiment/runner.py`](../src/mmrecsys/experiment/runner.py) | Selects the device and assembles single-run training, resume, or evaluation. |
 | [`src/mmrecsys/experiment/search.py`](../src/mmrecsys/experiment/search.py) | Runs resumable paired MGCN grid search on validation metrics. |
@@ -73,7 +71,6 @@ This index covers every Python file under `src/mmrecsys/` and `tests/`. It exclu
 | [`tests/conftest.py`](../tests/conftest.py) | Defines shared tiny data/config fixtures and limits compute threads. |
 | [`tests/test_backbone_integrations_pgl_lgmrec.py`](../tests/test_backbone_integrations_pgl_lgmrec.py) | Tests PGL/LGMRec graph behavior, both DAMPS modes, gradients, and checkpoints. |
 | [`tests/test_checkpoint_copy.py`](../tests/test_checkpoint_copy.py) | Checks atomic copy, failure handling, and serialization count. |
-| [`tests/test_compare.py`](../tests/test_compare.py) | Checks paired jobs, device selection, summaries, and recovery after failures. |
 | [`tests/test_damps.py`](../tests/test_damps.py) | Compares DAMPS with reference equations and tests gradients, initialization, and state. |
 | [`tests/test_data.py`](../tests/test_data.py) | Checks split isolation, invalid data, and CPU/device sampler behavior. |
 | [`tests/test_device.py`](../tests/test_device.py) | Checks device selection, RNG isolation, and CUDA resume when available. |
@@ -82,7 +79,6 @@ This index covers every Python file under `src/mmrecsys/` and `tests/`. It exclu
 | [`tests/test_graph.py`](../tests/test_graph.py) | Checks graph normalization, exact kNN, and cache identity. |
 | [`tests/test_lirdrec.py`](../tests/test_lirdrec.py) | Checks LIRDRec against a NumPy reference and tests PWC and DAMPS gradients. |
 | [`tests/test_lirdrec_experiment.py`](../tests/test_lirdrec_experiment.py) | Exercises LIRDRec training, evaluation, and exact epoch-boundary resume on tiny data. |
-| [`tests/test_lirdrec_suite.py`](../tests/test_lirdrec_suite.py) | Tests the LIRDRec queue, GPU ownership, fault handling, and resume bookkeeping. |
 | [`tests/test_mgcn.py`](../tests/test_mgcn.py) | Compares MGCN equations and gradients with a dense reference and checks InfoNCE. |
 | [`tests/test_migrated_models.py`](../tests/test_migrated_models.py) | Verifies BM3, SMORE, and FREEDOM losses, graphs, DAMPS paths, and resume. |
 | [`tests/test_search.py`](../tests/test_search.py) | Checks grid expansion, validation-only ranking, and interrupted search recovery. |

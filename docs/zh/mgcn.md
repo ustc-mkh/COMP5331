@@ -75,11 +75,10 @@ InfoNCE 使用归一化向量、batch 内对侧向量作为候选，以及 cross
 
 ## 命令
 
-在项目根目录安装：
+在项目根目录安装并训练：
 
 ```bash
-python -m pip install -e '.[test]'
-python -m pytest -q
+pip install -e .
 python -m mmrecsys.cli train --model mgcn --dataset baby --seed 999
 python -m mmrecsys.cli train --config configs/experiments/mgcn_baby.yaml
 ```
@@ -122,12 +121,13 @@ done
 
 每个数据集比较各 run 的 `result.json` 中的 `best_validation_metric`（Recall@20），选择最大值对应的配置，再报告该 run 的测试指标。每次训练只运行一个候选值；上述循环不是已完成的调参结果。
 
-恢复与独立评估（将 `<run_id>` 替换为训练输出的目录名）：
+恢复与独立评估（将 `RUN_DIR` 设为训练输出目录）：
 
 ```bash
-python -m mmrecsys.cli train --resume runs/<run_id>/last.pt --set train.epochs=1000
-python -m mmrecsys.cli evaluate --run runs/<run_id> --split test
-python -m mmrecsys.cli evaluate --run runs/<run_id> --split valid --device cpu
+RUN_DIR="runs/YOUR_RUN_DIRECTORY"  # 换成训练输出目录
+python -m mmrecsys.cli train --resume "${RUN_DIR}/last.pt" --set train.epochs=1000
+python -m mmrecsys.cli evaluate --run "${RUN_DIR}" --split test
+python -m mmrecsys.cli evaluate --run "${RUN_DIR}" --split valid --device cpu
 ```
 
 配置优先级为公共默认 < 数据集 < 模型 < 实验 < CLI。`--set` 接受 YAML 值，未知字段报错。所有配置内相对路径按项目根解析；安装为 editable 后，从其他工作目录调用也成立。当前配置文件位于仓库中，推荐以 editable 方式使用。

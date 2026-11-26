@@ -2,7 +2,7 @@
 
 English · [简体中文](zh/data.md) · [Documentation](README.md)
 
-Download the preprocessed datasets from the [MMRec data page](https://github.com/enoche/MMRec/tree/master/data). MMRec is a reference and data source, not a runtime dependency. The project reuses the released split, IDs, and feature order; there is no download, reindexing, split generation, k-core filtering, or feature extraction step.
+Download the preprocessed data from **both** Google Drive folders: [folder 1](https://drive.google.com/drive/folders/13cBy1EA_saTUuXxVllKgtfci2A09jyaG) and [folder 2](https://drive.google.com/drive/folders/14UyTAh_YyDV8vzXteBJiy9jv8TBDK43w). Together they contain all five datasets: Baby, Sports, Clothing, Electronics (`elec`), and MicroLens. MMRec is a reference and data source, not a runtime dependency. The project reuses the released split, IDs, and feature order; there is no download, reindexing, split generation, k-core filtering, or feature extraction step.
 
 ## File layout
 

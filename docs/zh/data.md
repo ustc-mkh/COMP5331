@@ -8,7 +8,9 @@
 
 ## 1. 数据获取与目录
 
-下载入口见 [MMRec 数据说明](https://github.com/enoche/MMRec/tree/master/data)。项目支持 Baby、Sports、Clothing、Elec 和 MicroLens；上游页面对 MicroLens 单独提供下载入口。可在本地的 `provenance.json` 中记录下载链接、文件大小、SHA256 和验证统计；本地哈希用于识别本次数据版本，不代表发布者提供了独立校验值。MicroLens 使用发布的图像、文本特征与交互，不使用视频特征，也不重新划分数据。
+请分别从 [Google Drive 文件夹 1](https://drive.google.com/drive/folders/13cBy1EA_saTUuXxVllKgtfci2A09jyaG) 和 [Google Drive 文件夹 2](https://drive.google.com/drive/folders/14UyTAh_YyDV8vzXteBJiy9jv8TBDK43w) 下载预处理数据。两个文件夹合起来包含全部五个数据集：Baby、Sports、Clothing、Electronics（`elec`）和 MicroLens。
+
+可在本地的 `provenance.json` 中记录下载链接、文件大小、SHA256 和验证统计；本地哈希用于识别本次数据版本，不代表发布者提供了独立校验值。MicroLens 使用发布的图像、文本特征与交互，不使用视频特征，也不重新划分数据。
 
 下载并解压后，目录应为：
 

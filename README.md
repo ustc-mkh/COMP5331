@@ -8,33 +8,17 @@ The project supports BM3, SMORE, FREEDOM, MGCN, LIRDRec, PGL, and LGMRec. The im
 
 ## 1. Set up the environment
 
-The setup below assumes Linux, Bash, and a local checkout. Use Python **3.10 or newer** with `venv` and `pip`. If `python3 -m venv` is unavailable on Debian or Ubuntu, install the `python3-venv` package for your Python version.
-
-From the repository root:
+With Python 3.10 or newer, run these commands from the repository root to install the training, evaluation, and plotting dependencies:
 
 ```bash
-python3 --version
 python3 -m venv .venv
 source .venv/bin/activate
-python -m pip install --upgrade pip
+pip install -e .
 ```
-
-- **CPU only:** Install the CPU build with `python -m pip install 'torch>=2.1' --index-url https://download.pytorch.org/whl/cpu`.
-- **NVIDIA GPU:** Run `nvidia-smi`, then use the [PyTorch installation selector](https://pytorch.org/get-started/locally/) for Linux and a CUDA build compatible with your driver and Python version. The project requires PyTorch 2.1 or newer.
-
-Then install the project in editable mode. This installs the remaining runtime dependencies (NumPy, SciPy, and PyYAML) and the optional test dependency (pytest):
-
-```bash
-python -m pip install -e '.[test]'
-python -c 'import torch; print(torch.__version__, "CUDA available:", torch.cuda.is_available())'
-python -m pytest -q
-```
-
-The tests use small fixtures and do not require the published datasets. For training only, use `python -m pip install -e .` instead. Activate `.venv` again when opening a new shell.
 
 ## 2. Prepare a dataset
 
-Download and extract the preprocessed data from [MMRec's data page](https://github.com/enoche/MMRec/tree/master/data). To run the examples below, download **Baby** and arrange it as follows:
+Download the preprocessed data from **both** Google Drive folders: [folder 1](https://drive.google.com/drive/folders/13cBy1EA_saTUuXxVllKgtfci2A09jyaG) and [folder 2](https://drive.google.com/drive/folders/14UyTAh_YyDV8vzXteBJiy9jv8TBDK43w). Together they contain all five datasets: Baby, Sports, Clothing, Electronics (`elec`), and MicroLens. Extract the data under `data/`. The examples below use **Baby**:
 
 ```text
 data/
@@ -64,7 +48,7 @@ python -m mmrecsys.cli train --model pgl --dataset baby --set model.damps_enable
 
 Training selects CUDA automatically when available and otherwise uses CPU. Use `--device cpu` or `--device cuda:0` to override it; GPU indices refer to devices visible to the process. The first run may spend time building item graphs; later runs can reuse `cache/`. One epoch checks the workflow, not convergence.
 
-Use `--set section.key=value` to override fields. The same CLI is available as `mmrecsys` after installation. See the [experiment guide](docs/experiments.md) for other models, ablations, multi-GPU comparisons, search, and spectral analysis.
+Use `--set section.key=value` to override fields. The same CLI is available as `mmrecsys` after installation. See the [experiment guide](docs/experiments.md) for [all seven baseline/DAMPS pairs](docs/experiments.md#reproduce-the-seven-baselinedamps-pairs), ablations, search, and spectral analysis.
 
 ## 4. Inspect, resume, or evaluate a run
 

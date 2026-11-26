@@ -77,7 +77,8 @@ python -m mmrecsys.experiment.search --grid configs/search/damps_mgcn_extended.y
 - `best_baseline.yaml` / `best_full.yaml`：可直接传给常规 train 的最佳设置，种子默认使用本次搜索的第一个种子。
 
 ```bash
-python -m mmrecsys.experiment.search --resume runs/search-baby-<时间>-<ID>
+SEARCH_DIR="runs/YOUR_SEARCH_DIRECTORY"  # 换成搜索输出目录
+python -m mmrecsys.experiment.search --resume "${SEARCH_DIR}"
 ```
 
 恢复使用原计划，不接受重新指定 device、grid、seeds、--set 等参数。已完成的候选从结果文件读取；中断的运行从 last.pt 继续；若首轮 checkpoint 尚未写出，则重新启动该次训练。源代码或数据指纹变化会拒绝恢复，避免将不同实现混入同一排名。不要同时启动两个进程恢复同一个搜索目录。
@@ -87,7 +88,7 @@ python -m mmrecsys.experiment.search --resume runs/search-baby-<时间>-<ID>
 完成验证选参后，才可评估选出的同一组参数：
 
 ```bash
-python -m mmrecsys.experiment.search --resume runs/search-baby-<时间>-<ID> --evaluate-best
+python -m mmrecsys.experiment.search --resume "${SEARCH_DIR}" --evaluate-best
 ```
 
 也可在新搜索命令中加 `--evaluate-best`，它会等全部候选完成后再评估胜出组合的基线和 DAMPS checkpoints。结果写入 `best_test.json`，不会改变验证排名；已存在该文件时跳过重复评估。不将测试结果反馈给本轮选参。

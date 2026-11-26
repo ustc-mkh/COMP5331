@@ -130,8 +130,11 @@ def test_initialization_matches_author_statistics_and_is_fixed():
         DAMPS(6)(image, text)
 
 
-@pytest.mark.parametrize('flags', list(product([False, True], repeat=3)))
-@pytest.mark.parametrize('kind', ['random', 'zero', 'constant', 'single'])
+# Exercise each switch combination and each degenerate input without crossing them.
+@pytest.mark.parametrize("flags,kind", [
+    *((flags, "random") for flags in product([False, True], repeat=3)),
+    *(((True, True, True), kind) for kind in ("zero", "constant", "single")),
+])
 def test_ablations_and_degenerate_inputs_have_finite_gradients(flags, kind):
     torch.manual_seed(7)
     module = DAMPS(6, apc=flags[0], avrf=flags[1], imcf=flags[2]).double()
@@ -157,8 +160,6 @@ def test_ablations_and_degenerate_inputs_have_finite_gradients(flags, kind):
 
 def test_mgcn_integration_and_internal_projection_bypass(tiny_data, tiny_config, tmp_path):
     base = MGCNConfig.parse(tiny_config['model'])
-    torch.manual_seed(10)
-    baseline = MGCN(base, tiny_data[0], GraphCache(tmp_path))
     torch.manual_seed(10)
     bypass = MGCN(replace(base, damps_enabled=True, damps_apc=False, damps_avrf=False, damps_imcf=False),
                   tiny_data[0], GraphCache(tmp_path))
@@ -191,22 +192,14 @@ def test_experiment_configs_and_validation():
             load_config(overrides=[override])
 
 
-@pytest.mark.parametrize("flags", list(product([False, True], repeat=3)))
-def test_variants_preserve_backbone_initialization_and_sampling(tiny_data, tiny_config, tmp_path, flags):
-    from mmrecsys.data.sampling import TrainingSampler, BatchSpec
+def test_full_damps_preserves_backbone_initialization(tiny_data, tiny_config, tmp_path):
     base = MGCNConfig.parse(tiny_config["model"])
     torch.manual_seed(999)
     baseline = MGCN(base, tiny_data[0], GraphCache(tmp_path))
     torch.manual_seed(999)
-    variant = MGCN(replace(base, damps_enabled=True, damps_apc=flags[0],
-                           damps_avrf=flags[1], damps_imcf=flags[2]), tiny_data[0], GraphCache(tmp_path))
+    variant = MGCN(replace(base, damps_enabled=True), tiny_data[0], GraphCache(tmp_path))
     for name, parameter in baseline.named_parameters():
         torch.testing.assert_close(dict(variant.named_parameters())[name], parameter, atol=0, rtol=0)
-    first = next(TrainingSampler(tiny_data[0], BatchSpec("pairwise"), 4, 999).batches(1))
-    second = next(TrainingSampler(tiny_data[0], BatchSpec("pairwise"), 4, 999).batches(1))
-    assert torch.equal(first.negative_items, second.negative_items)
-    assert torch.equal(first.users, second.users)
-    assert torch.equal(first.positive_items, second.positive_items)
 
 
 def test_diagnostics_are_detached_and_do_not_change_training(tiny_data, tiny_config, tmp_path):

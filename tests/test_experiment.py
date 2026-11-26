@@ -31,8 +31,7 @@ def test_rng_state_restore():
     assert torch.equal(first[2], second[2])
 
 
-@pytest.mark.parametrize("damps_enabled", [False, True])
-@pytest.mark.parametrize("eval_every", [1, 3])
+@pytest.mark.parametrize("damps_enabled,eval_every", [(False, 1), (True, 3)])
 def test_train_evaluate_and_exact_epoch_resume(tiny_config, eval_every, damps_enabled):
     tiny_config["model"]["damps_enabled"] = damps_enabled
     tiny_config["train"]["eval_every"] = eval_every

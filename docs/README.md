@@ -6,7 +6,7 @@ English · [简体中文](zh/README.md)
 | --- | --- |
 | [Linux quickstart](../README.md) | Install, prepare data, train, resume, and evaluate. |
 | [Data](data.md) | Published files, split labels, and feature alignment. |
-| [Experiments](experiments.md) | Model selection, ablations, multi-GPU comparisons, and spectral analysis. |
+| [Experiments](experiments.md) | Model selection, ablations, and spectral analysis. |
 | [Code map](code-map.md) | A short description of every Python source and test file, plus the configuration layout. |
 | [Architecture](architecture.md) | Configuration precedence, data boundaries, training, evaluation, and artifacts. |
 | [DAMPS](damps.md) | Spectral equations, numerical conventions, integrations, and diagnostics. |

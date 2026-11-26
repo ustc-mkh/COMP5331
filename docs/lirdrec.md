@@ -19,23 +19,14 @@ python -m mmrecsys.cli train --config configs/experiments/damps_lirdrec_baby.yam
 
 These checks use full Baby data but do not count as full training. `tests/test_lirdrec.py` compares loss and representations against an independent NumPy reference; `tests/test_lirdrec_experiment.py` checks training, evaluation, and resume.
 
-## Full experiment protocol and queue
+## Full experiment protocol
 
 The full protocol trains up to 1000 epochs, validates every epoch, selects by validation Recall@20, stops after 20 checks without improvement, and then reports test Recall/NDCG@10/20. Each dataset and seed runs `baseline`, `full`, `no_apc`, `no_avrf`, and `no_imcf` with a shared backbone configuration and budget.
 
-The queue uses one explicitly chosen NVIDIA GPU by UUID. Choose a GPU you are authorized to use (see `nvidia-smi -L`), replace the placeholder, and start from the repository root:
+Run the five variants for Baby with the shared ablation command:
 
 ```bash
-LIRDREC_GPU_UUID="YOUR_GPU_UUID"
-python -m mmrecsys.experiment.lirdrec_suite \
-  --output runs/lirdrec-five-datasets --gpu-uuid "$LIRDREC_GPU_UUID" \
-  --datasets baby sports clothing elec microlens --seeds 999 2024 2025 --wait-for-gpu
-
-python -m mmrecsys.experiment.lirdrec_suite --resume runs/lirdrec-five-datasets
+python -m mmrecsys.experiment.ablation --config configs/experiments/damps_lirdrec_baby.yaml --seeds 999 2024 2025
 ```
 
-Add `--dry-run` to the first command to preview without launching workers. Default concurrency is one; `--max-parallel` accepts 1–10 workers on the same GPU if resources permit. Different datasets may overlap, but the next seed starts only after the previous seed's jobs finish. Each worker is limited to two CPU compute threads. An outside compute process blocks dispatch; `--wait-for-gpu` waits on the designated GPU, not on alternate devices.
-
-Resume validates configuration, source, and data identity and restarts unfinished runs from their original `last.pt` when available. After stopping a queue, you may resume with a different authorized GPU UUID or concurrency limit, subject to the queue and GPU locks. Reuse of existing runs requires `--reuse SLOT_ID=RUN_DIR` and a matching `--reuse-source snapshot.tar.gz`. A worker failure is recorded and stops the queue without silently changing the batch size or model.
-
-`suite.json` holds the plan and state, `results.json` holds per-run metrics, and `summary.csv` / `summary.json` aggregate seed results. Compare paired seeds and report their count and variability. The paper's Table 3 removes individual components from full LIRDRec+DAMPS; Figure 3 instead adds individual components to MGCN and is not a LIRDRec comparison target.
+Compare paired seeds and report their count and variability. The paper's Table 3 removes individual components from full LIRDRec+DAMPS; Figure 3 instead adds individual components to MGCN and is not a LIRDRec comparison target.

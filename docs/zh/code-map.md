@@ -58,8 +58,6 @@
 | [`src/mmrecsys/experiment/__init__.py`](../../src/mmrecsys/experiment/__init__.py) | 声明实验子包。 |
 | [`src/mmrecsys/experiment/ablation.py`](../../src/mmrecsys/experiment/ablation.py) | 按种子配对运行基线、完整 DAMPS 和组件消融。 |
 | [`src/mmrecsys/experiment/artifacts.py`](../../src/mmrecsys/experiment/artifacts.py) | 计算内容摘要，原子写入产物并缓存图。 |
-| [`src/mmrecsys/experiment/compare.py`](../../src/mmrecsys/experiment/compare.py) | 调度独立的 MGCN 对照任务并生成配对汇总。 |
-| [`src/mmrecsys/experiment/lirdrec_suite.py`](../../src/mmrecsys/experiment/lirdrec_suite.py) | 调度、验证、恢复和汇总 LIRDRec 单卡套件。 |
 | [`src/mmrecsys/experiment/logging.py`](../../src/mmrecsys/experiment/logging.py) | 写入运行元数据、环境清单与 JSON Lines 指标。 |
 | [`src/mmrecsys/experiment/runner.py`](../../src/mmrecsys/experiment/runner.py) | 选择设备并组装单次训练、恢复或评估流程。 |
 | [`src/mmrecsys/experiment/search.py`](../../src/mmrecsys/experiment/search.py) | 使用验证指标执行可恢复的 MGCN 配对网格搜索。 |
@@ -73,7 +71,6 @@
 | [`tests/conftest.py`](../../tests/conftest.py) | 定义公共小数据及配置样例，并限制计算线程。 |
 | [`tests/test_backbone_integrations_pgl_lgmrec.py`](../../tests/test_backbone_integrations_pgl_lgmrec.py) | 测试 PGL/LGMRec 图行为、两种 DAMPS 模式、梯度与 checkpoint。 |
 | [`tests/test_checkpoint_copy.py`](../../tests/test_checkpoint_copy.py) | 检查原子复制、失败处理及序列化次数。 |
-| [`tests/test_compare.py`](../../tests/test_compare.py) | 检查配对任务、设备选择、汇总和失败后恢复。 |
 | [`tests/test_damps.py`](../../tests/test_damps.py) | 对照 DAMPS 参考公式，并测试梯度、初始化与状态。 |
 | [`tests/test_data.py`](../../tests/test_data.py) | 检查划分隔离、非法数据与 CPU/设备采样器行为。 |
 | [`tests/test_device.py`](../../tests/test_device.py) | 检查设备选择、随机状态隔离和有 CUDA 时的恢复。 |
@@ -82,7 +79,6 @@
 | [`tests/test_graph.py`](../../tests/test_graph.py) | 检查图归一化、精确 kNN 和缓存标识。 |
 | [`tests/test_lirdrec.py`](../../tests/test_lirdrec.py) | 使用 NumPy 实现对照 LIRDRec，并测试 PWC 和 DAMPS 梯度。 |
 | [`tests/test_lirdrec_experiment.py`](../../tests/test_lirdrec_experiment.py) | 在小数据上检查 LIRDRec 训练、评估和 epoch 边界精确恢复。 |
-| [`tests/test_lirdrec_suite.py`](../../tests/test_lirdrec_suite.py) | 测试 LIRDRec 队列、GPU 占用、故障处理与恢复记录。 |
 | [`tests/test_mgcn.py`](../../tests/test_mgcn.py) | 对照 MGCN 稠密公式和梯度，并检查 InfoNCE。 |
 | [`tests/test_migrated_models.py`](../../tests/test_migrated_models.py) | 验证 BM3、SMORE 和 FREEDOM 的损失、图、DAMPS 路径和恢复。 |
 | [`tests/test_search.py`](../../tests/test_search.py) | 检查网格展开、仅用验证集的排名及中断后恢复。 |

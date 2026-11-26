@@ -61,7 +61,7 @@ python -m mmrecsys.cli train --config configs/experiments/damps_mgcn_baby.yaml -
 
 ## 验证与范围
 
-测试覆盖独立 NumPy 公式参考、相位符号与小功率 coherence、独立 AVRF 初始化统计参考、权重更新与先验固定、状态保存恢复、奇偶 embedding 维度、八种组件组合、零/常量/单物品输入、参数与输入梯度、关闭组件后的内部投影直通、作者源码前向和梯度对照、特征层更新及冻结、MGCN 损失与 scorer，以及启用 DAMPS 的训练—评估—epoch 边界恢复。
+测试覆盖独立 NumPy 公式参考、相位符号与小功率 coherence、独立 AVRF 初始化统计参考、权重更新与先验固定、状态保存恢复、奇偶 embedding 维度、随机输入下的八种组件组合、完整 DAMPS 在零/常量/单物品输入下的梯度、参数与输入梯度、关闭组件后的内部投影直通、作者源码前向和梯度对照（本地有对应源码时运行）、特征层更新及冻结、MGCN 损失与 scorer，以及启用 DAMPS 的训练—评估—epoch 边界恢复。
 
 运行 `python -m pytest -q`（若使用项目虚拟环境则 `.venv/bin/python -m pytest -q`）。这些测试验证公式和工程行为，不代表论文指标已复现。MGCN 和 LIRDRec 均提供五个数据集（含 MicroLens）的实验配置。LIRDRec 使用纯频域接口并保留原基线结构，接入差异与完整实验约定见 [LIRDRec 说明](lirdrec.md)。
 
@@ -95,7 +95,7 @@ python -m mmrecsys.experiment.ablation --seeds 999 2024 2025 --variants baseline
 
 各组共享 backbone 配置；同种子下 backbone 初始参数相同，DAMPS 独立投影层初始化会消耗额外随机数，但创建于 backbone 初始化之后，采样由 seed/epoch 独立确定。组件消融仅改变对应开关。程序验证集选取每次运行的 checkpoint，不按测试指标筛选种子或组合。
 
-该入口的结果保存在 `runs/ablation-<dataset>-<time>-<id>/<variant>/`，每次运行使用对应 backbone 的目录前缀。`runs.json` 逐次记录已完成实验；`summary.json` 汇总各组跨种子的指标均值与样本标准差，单种子标准差为 null。此 `ablation` 入口不自动续跑；中断时可按 runs.json 找到已完成或对应子目录中的未完成实验，并使用常规 --resume 入口恢复单次运行。LIRDRec 的 `lirdrec_suite` 另行支持队列恢复，详见 [完整实验协议与队列](lirdrec.md#完整实验协议与队列)。
+该入口的结果保存在 `runs/ablation-<dataset>-<time>-<id>/<variant>/`，每次运行使用对应 backbone 的目录前缀。`runs.json` 逐次记录已完成实验；`summary.json` 汇总各组跨种子的指标均值与样本标准差，单种子标准差为 null。此 `ablation` 入口不自动续跑；中断时可按 runs.json 找到已完成或对应子目录中的未完成实验，并使用常规 --resume 入口恢复单次运行。
 
 
 ## 当前推荐的参数范围

@@ -10,7 +10,7 @@ Each supported backbone has its own guide with implementation details, [DAMPS](d
 | [SMORE](smore.md) | Spectral fusion with fixed modality graphs; DAMPS before native spectral fusion. |
 | [FREEDOM](freedom.md) | Fixed item graph and interaction pruning; one-time DAMPS and a raw-graph control. |
 | [MGCN](mgcn.md) | Multiview graph convolution and behavior-guided purification. |
-| [LIRDRec](lirdrec.md) | DCT feature sharing and PWC fusion; includes the full experiment queue. |
+| [LIRDRec](lirdrec.md) | DCT feature sharing and PWC fusion. |
 | [PGL](pgl.md) | Local/global training subgraphs; two DAMPS integration modes. |
 | [LGMRec](lgmrec.md) | Local modality propagation and global hypergraphs; two DAMPS integration modes. |
 
